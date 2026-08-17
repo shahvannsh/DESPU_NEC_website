@@ -28,7 +28,7 @@ function Counter({ to }: { to: number }) {
 
 export default function About() {
   return (
-    <section id="about" className="relative bg-base-950 px-6 py-28 lg:px-10">
+    <section id="about" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <motion.div

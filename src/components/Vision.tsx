@@ -4,6 +4,7 @@ export default function Vision() {
   return (
     <section
       id="vision"
+      style={{ scrollMarginTop: "6rem" }}
       className="relative flex min-h-[70vh] items-center overflow-hidden bg-base-950 px-6 py-28 lg:px-10"
     >
       <div className="absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-accent-violet/15 via-accent-blue/10 to-transparent blur-3xl" />

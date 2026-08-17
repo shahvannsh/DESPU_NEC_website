@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, User } from "lucide-react";
 import type { TeamMember } from "../data/team";
@@ -8,10 +9,26 @@ interface Props {
 }
 
 export default function TeamCard({ member, onOpen }: Props) {
+  const cardRef = useRef<HTMLButtonElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    card.style.setProperty("--y", `${e.clientY - rect.top}px`);
+  };
+
   return (
     <motion.button
+      ref={cardRef}
       layoutId={`card-${member.id}`}
       onClick={onOpen}
+      onMouseMove={handleMouseMove}
+      style={{
+        backgroundImage:
+          "radial-gradient(320px circle at var(--x) var(--y), rgba(34,211,238,0.08), transparent 70%)",
+      }}
       className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] text-left transition-colors hover:border-accent-cyan/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-cyan"
       aria-label={`View profile of ${member.name}`}
     >

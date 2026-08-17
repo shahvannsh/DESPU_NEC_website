@@ -12,7 +12,7 @@ export default function Team() {
     filter === "ALL" ? team : team.filter((m) => m.category === filter);
 
   return (
-    <section id="team" className="relative bg-base-950 px-6 py-28 lg:px-10">
+    <section id="team" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

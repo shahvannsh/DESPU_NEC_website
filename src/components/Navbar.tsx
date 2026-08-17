@@ -13,11 +13,32 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState("#home");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = links
+      .map((l) => document.querySelector(l.href))
+      .filter((el): el is Element => !!el);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveHash(`#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -41,7 +62,11 @@ export default function Navbar() {
             <a
               key={l.label}
               href={l.href}
-              className="text-sm font-medium text-white/70 transition-colors hover:text-white"
+              className={`text-sm font-medium transition-colors ${
+                activeHash === l.href
+                  ? "text-white"
+                  : "text-white/70 hover:text-white"
+              }`}
             >
               {l.label}
             </a>

@@ -3,7 +3,7 @@ import { journey } from "../data/journey";
 
 export default function Journey() {
   return (
-    <section id="journey" className="relative bg-base-950 px-6 py-28 lg:px-10">
+    <section id="journey" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
