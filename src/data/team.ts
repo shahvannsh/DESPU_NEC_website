@@ -11,6 +11,7 @@ import mitali from "../assets/team/Mitali_Jadhav.jpg";
 import diya from "../assets/team/Diya.jpg";
 import palak from "../assets/team/Palak.jpg";
 import rudrani from "../assets/team/Rudrani_Harpale.png";
+import tanishq from "../assets/team/Tanishq.jpg";
 
 export type Category =
   | "ALL"
@@ -213,13 +214,20 @@ export const team: TeamMember[] = [
   {
     id: 10,
     name: "Tanishq Mhaske",
-    role: "Core Team Member",
+    role: "Event and Photography Lead",
     category: "BUSINESS",
-    tagline: "Information coming soon.",
-    motivation: "Information coming soon.",
-    expectations: "Information coming soon.",
-    skills: ["Information coming soon."],
-    responsibilities: ["Information coming soon."],
+    image: tanishq,
+    tagline: "Bringing people together through events that leave a mark.",
+    motivation:
+      "Tanishq is driven by a passion for learning, leadership, and creating meaningful impact — enjoying teamwork, organizing events, and taking initiatives that bring people together.",
+    expectations:
+      "He hopes NEC 2026 becomes part of an ecosystem that encourages innovation and problem-solving, sharpening his leadership, event management, and networking skills while inspiring fellow students to explore entrepreneurship.",
+    skills: ["Event Management", "Photography", "Leadership"],
+    responsibilities: [
+      "Plan and execute DESPU's events",
+      "Lead photography and visual documentation",
+      "Coordinate logistics for campus initiatives",
+    ],
     funFact: "Information coming soon.",
   },
   {
