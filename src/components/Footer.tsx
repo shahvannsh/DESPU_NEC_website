@@ -1,4 +1,4 @@
-import { AtSign, Link2, Code2 } from "lucide-react";
+import { AtSign, Link2 } from "lucide-react";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -35,14 +35,23 @@ export default function Footer() {
         </div>
 
         <div className="flex gap-4">
-          <a href="#" aria-label="Instagram" className="text-white/50 hover:text-white">
+          <a
+            href="https://instagram.com/ecell_despu"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            className="text-white/50 hover:text-white"
+          >
             <AtSign size={18} />
           </a>
-          <a href="#" aria-label="LinkedIn" className="text-white/50 hover:text-white">
+          <a
+            href="https://www.linkedin.com/in/despu-ecell-22703b42a"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="text-white/50 hover:text-white"
+          >
             <Link2 size={18} />
-          </a>
-          <a href="#" aria-label="GitHub" className="text-white/50 hover:text-white">
-            <Code2 size={18} />
           </a>
         </div>
       </div>
