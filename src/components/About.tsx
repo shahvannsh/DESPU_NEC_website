@@ -1,4 +1,5 @@
 import { motion, useInView, animate } from "framer-motion";
+import { EASE } from "../lib/motion";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
@@ -35,7 +36,7 @@ export default function About() {
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.69, ease: EASE }}
           >
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
               About DESPU
@@ -63,7 +64,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
+                transition={{ duration: 0.57, ease: EASE, delay: i * 0.08 }}
                 className="glass rounded-2xl px-6 py-8 text-center"
               >
                 <div className="font-display text-4xl font-bold text-gradient sm:text-5xl">

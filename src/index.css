@@ -11,6 +11,25 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* smoother default easing for Tailwind's transition-* utilities */
+.transition-colors,
+.transition-transform,
+.transition-all,
+.transition-opacity {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-duration: 300ms;
+}
+
+/* consistent, visible focus ring for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #05070d; }
 ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 8px; }
@@ -32,4 +51,17 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+@media print {
+  nav, footer, .no-print { display: none !important; }
+  body, html, #root { background: #ffffff !important; }
+  * { color: #111 !important; box-shadow: none !important; text-shadow: none !important; }
+  .glass {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    backdrop-filter: none !important;
+  }
+  a[href]:after { content: none !important; }
+  img { break-inside: avoid; }
 }

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, User, Link2, Code2, AtSign } from "lucide-react";
-import type { TeamMember } from "../data/team";
+import { X, User, Link2, Code2, AtSign, ArrowUpRight } from "lucide-react";
+import { slugify, type TeamMember } from "../data/team";
 
 interface Props {
   member: TeamMember | null;
@@ -39,7 +40,7 @@ export default function TeamModal({ member, onClose }: Props) {
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 40, opacity: 0 }}
-            transition={{ type: "spring", damping: 28, stiffness: 300 }}
+            transition={{ type: "spring", damping: 26, stiffness: 240, mass: 0.9 }}
             className="glass relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-3xl sm:rounded-3xl"
           >
             <button
@@ -55,7 +56,7 @@ export default function TeamModal({ member, onClose }: Props) {
                 {member.image ? (
                   <img
                     src={member.image}
-                    alt={member.name}
+                    alt={`${member.name}, ${member.role}`}
                     className="h-full w-full object-cover"
                   />
                 ) : (
@@ -143,6 +144,15 @@ export default function TeamModal({ member, onClose }: Props) {
                     )}
                   </div>
                 )}
+
+                <Link
+                  to={`/team/${slugify(member.name)}`}
+                  onClick={onClose}
+                  className="inline-flex items-center gap-1.5 border-t border-white/10 pt-5 text-sm font-medium text-accent-cyan transition-colors hover:text-accent-cyan/80"
+                >
+                  View full profile page
+                  <ArrowUpRight size={14} />
+                </Link>
               </div>
             </div>
           </motion.div>

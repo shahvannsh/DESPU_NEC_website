@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { EASE } from "../lib/motion";
 
 export default function CTA() {
   return (
@@ -7,7 +8,7 @@ export default function CTA() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.69, ease: EASE }}
         className="glass mx-auto flex max-w-4xl flex-col items-center gap-6 rounded-3xl px-8 py-16 text-center"
       >
         <h2 className="font-display text-2xl font-semibold text-white sm:text-3xl">

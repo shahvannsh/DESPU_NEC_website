@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { EASE } from "../lib/motion";
 
 export default function Vision() {
   return (
@@ -14,7 +15,7 @@ export default function Vision() {
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.8, ease: EASE }}
         className="relative z-10 mx-auto max-w-3xl text-center"
       >
         <h2 className="font-display text-3xl font-semibold leading-tight text-gradient sm:text-5xl">

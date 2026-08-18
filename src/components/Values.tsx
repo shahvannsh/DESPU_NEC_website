@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { EASE } from "../lib/motion";
 import { values } from "../data/values";
 
 export default function Values() {
@@ -9,7 +10,7 @@ export default function Values() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.69, ease: EASE }}
           className="mb-14 text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
@@ -29,7 +30,7 @@ export default function Values() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
+                transition={{ duration: 0.57, ease: EASE, delay: i * 0.08 }}
                 className="glass group rounded-2xl p-6 transition-colors hover:border-accent-cyan/30"
               >
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-accent-cyan transition-colors group-hover:bg-accent-cyan/10">

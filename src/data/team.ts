@@ -1,17 +1,17 @@
-import vannsh from "../assets/team/Vannsh_Shah.png";
-import shravani from "../assets/team/Shravani_Kadam.jpg";
-import namrata from "../assets/team/Namrata.jpg";
-import radhika from "../assets/team/Radhika.jpg";
-import sanskruti from "../assets/team/Sanskruti.jpg";
-import siya from "../assets/team/Siya_Alandkar.png";
-import saee from "../assets/team/Saee.jpg";
-import shantanu from "../assets/team/Shantanu_Ombhase.png";
-import mantsha from "../assets/team/Mantsha_Khan.png";
-import mitali from "../assets/team/Mitali_Jadhav.jpg";
-import diya from "../assets/team/Diya.jpg";
-import palak from "../assets/team/Palak.jpg";
-import rudrani from "../assets/team/Rudrani_Harpale.png";
-import tanishq from "../assets/team/Tanishq.jpg";
+import vannsh from "../assets/team/Vannsh_Shah.webp";
+import shravani from "../assets/team/Shravani_Kadam.webp";
+import namrata from "../assets/team/Namrata.webp";
+import radhika from "../assets/team/Radhika.webp";
+import sanskruti from "../assets/team/Sanskruti.webp";
+import siya from "../assets/team/Siya_Alandkar.webp";
+import saee from "../assets/team/Saee.webp";
+import shantanu from "../assets/team/Shantanu_Ombhase.webp";
+import mantsha from "../assets/team/Mantsha_Khan.webp";
+import mitali from "../assets/team/Mitali_Jadhav.webp";
+import diya from "../assets/team/Diya.webp";
+import palak from "../assets/team/Palak.webp";
+import rudrani from "../assets/team/Rudrani_Harpale.webp";
+import tanishq from "../assets/team/Tanishq.webp";
 
 export type Category =
   | "ALL"
@@ -317,3 +317,15 @@ export const categories: Category[] = [
   "DESIGN",
   "BUSINESS",
 ];
+
+export function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-");
+}
+
+export function getMemberBySlug(slug: string): TeamMember | undefined {
+  return team.find((m) => slugify(m.name) === slug);
+}

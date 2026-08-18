@@ -1,7 +1,8 @@
 {
-  "name": "despu_new",
+  "name": "despu-website",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "DESPU — National Entrepreneurship Challenge team website (Deccan Education Society's Pune University)",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +14,8 @@
     "framer-motion": "^13.1.0",
     "lucide-react": "^1.31.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.2"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

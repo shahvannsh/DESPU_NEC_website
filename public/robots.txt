@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://despu-nec.vercel.app/sitemap.xml

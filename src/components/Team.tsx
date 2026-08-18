@@ -1,15 +1,75 @@
-import { useState } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { EASE } from "../lib/motion";
 import { team, categories, type Category, type TeamMember } from "../data/team";
 import TeamCard from "./TeamCard";
 import TeamModal from "./TeamModal";
 
+interface Point {
+  x: number;
+  y: number;
+}
+
 export default function Team() {
   const [filter, setFilter] = useState<Category>("ALL");
   const [active, setActive] = useState<TeamMember | null>(null);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [lines, setLines] = useState<{ from: Point; to: Point }[]>([]);
+  const [enableConstellation, setEnableConstellation] = useState(false);
+
+  const gridRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
   const filtered =
     filter === "ALL" ? team : team.filter((m) => m.category === filter);
+
+  useEffect(() => {
+    // disable the constellation effect on small screens to protect performance
+    const check = () => setEnableConstellation(window.innerWidth >= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const handleHover = useCallback(
+    (id: number | null) => {
+      setHoveredId(id);
+      if (!enableConstellation || id === null || !gridRef.current) {
+        setLines([]);
+        return;
+      }
+
+      const gridBox = gridRef.current.getBoundingClientRect();
+      const hoveredEl = cardRefs.current.get(id);
+      if (!hoveredEl) return;
+
+      const hb = hoveredEl.getBoundingClientRect();
+      const center: Point = {
+        x: hb.left - gridBox.left + hb.width / 2,
+        y: hb.top - gridBox.top + hb.height / 2,
+      };
+
+      const candidates = filtered
+        .filter((m) => m.id !== id)
+        .map((m) => {
+          const el = cardRefs.current.get(m.id);
+          if (!el) return null;
+          const b = el.getBoundingClientRect();
+          const p: Point = {
+            x: b.left - gridBox.left + b.width / 2,
+            y: b.top - gridBox.top + b.height / 2,
+          };
+          const dist = Math.hypot(p.x - center.x, p.y - center.y);
+          return { p, dist };
+        })
+        .filter((v): v is { p: Point; dist: number } => v !== null)
+        .sort((a, b) => a.dist - b.dist)
+        .slice(0, 3);
+
+      setLines(candidates.map((c) => ({ from: center, to: c.p })));
+    },
+    [enableConstellation, filtered]
+  );
 
   return (
     <section id="team" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
@@ -18,7 +78,7 @@ export default function Team() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.69, ease: EASE }}
           className="mb-10 text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
@@ -47,25 +107,58 @@ export default function Team() {
           ))}
         </div>
 
-        <motion.div
-          layout
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          <AnimatePresence mode="popLayout">
-            {filtered.map((m) => (
-              <motion.div
-                key={m.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.35 }}
-              >
-                <TeamCard member={m} onOpen={() => setActive(m)} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        <div ref={gridRef} className="relative">
+          {enableConstellation && (
+            <svg
+              className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible"
+              aria-hidden="true"
+            >
+              <AnimatePresence>
+                {lines.map((l, i) => (
+                  <motion.line
+                    key={`${hoveredId}-${i}`}
+                    x1={l.from.x}
+                    y1={l.from.y}
+                    x2={l.to.x}
+                    y2={l.to.y}
+                    stroke="rgba(34,211,238,0.35)"
+                    strokeWidth="1"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3, ease: EASE }}
+                  />
+                ))}
+              </AnimatePresence>
+            </svg>
+          )}
+
+          <motion.div
+            layout
+            className="relative z-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            <AnimatePresence mode="popLayout">
+              {filtered.map((m, i) => (
+                <motion.div
+                  key={m.id}
+                  layout
+                  ref={(el) => {
+                    if (el) cardRefs.current.set(m.id, el);
+                    else cardRefs.current.delete(m.id);
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.45, ease: EASE, delay: (i % 8) * 0.04 }}
+                  onMouseEnter={() => handleHover(m.id)}
+                  onMouseLeave={() => handleHover(null)}
+                >
+                  <TeamCard member={m} onOpen={() => setActive(m)} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        </div>
       </div>
 
       <TeamModal member={active} onClose={() => setActive(null)} />

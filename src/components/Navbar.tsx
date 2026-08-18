@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -8,13 +10,16 @@ const links = [
   { label: "Team", href: "#team" },
   { label: "Journey", href: "#journey" },
   { label: "Vision", href: "#vision" },
-  { label: "Connect", href: "#connect" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("#home");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const onHome = location.pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -23,6 +28,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (!onHome) return;
     const sections = links
       .map((l) => document.querySelector(l.href))
       .filter((el): el is Element => !!el);
@@ -40,7 +46,27 @@ export default function Navbar() {
 
     sections.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [onHome]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const go = (href: string) => {
+    setOpen(false);
+    if (onHome) {
+      document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate(`/${href}`);
+    }
+  };
 
   return (
     <header
@@ -48,41 +74,48 @@ export default function Navbar() {
         scrolled ? "glass py-3" : "bg-transparent py-5"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
-        <a href="#home" className="flex flex-col leading-none">
-          <span className="font-display text-xl font-bold tracking-tight text-white">
-            DESPU
+      <nav
+        aria-label="Primary"
+        className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10"
+      >
+        <Link to="/" className="flex items-center gap-3 leading-none">
+          <Logo size={34} className="rounded-lg" />
+          <span className="flex flex-col">
+            <span className="font-display text-xl font-bold tracking-tight text-white">
+              DESPU
+            </span>
+            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50">
+              National Entrepreneurship Challenge
+            </span>
           </span>
-          <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50">
-            National Entrepreneurship Challenge
-          </span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
-            <a
+            <button
               key={l.label}
-              href={l.href}
+              onClick={() => go(l.href)}
               className={`text-sm font-medium transition-colors ${
-                activeHash === l.href
+                onHome && activeHash === l.href
                   ? "text-white"
                   : "text-white/70 hover:text-white"
               }`}
             >
               {l.label}
-            </a>
+            </button>
           ))}
         </div>
 
-        <a
-          href="#team"
+        <button
+          onClick={() => go("#team")}
           className="hidden rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-white transition-all hover:border-accent-cyan/50 hover:bg-white/10 md:inline-flex"
         >
           Meet the Team →
-        </a>
+        </button>
 
         <button
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
           className="text-white md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
@@ -96,27 +129,25 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden md:hidden"
           >
             <div className="flex flex-col gap-1 border-t border-white/10 bg-base-950/95 px-6 py-4">
               {links.map((l) => (
-                <a
+                <button
                   key={l.label}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-lg px-3 py-3 text-sm font-medium text-white/80 hover:bg-white/5 hover:text-white"
+                  onClick={() => go(l.href)}
+                  className="rounded-lg px-3 py-3 text-left text-sm font-medium text-white/80 hover:bg-white/5 hover:text-white"
                 >
                   {l.label}
-                </a>
+                </button>
               ))}
-              <a
-                href="#team"
-                onClick={() => setOpen(false)}
+              <button
+                onClick={() => go("#team")}
                 className="mt-2 rounded-full bg-white/10 px-4 py-3 text-center text-sm font-medium text-white"
               >
                 Meet the Team →
-              </a>
+              </button>
             </div>
           </motion.div>
         )}

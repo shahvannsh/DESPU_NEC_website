@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { EASE } from "../lib/motion";
 
 const INSTAGRAM_URL = "https://instagram.com/ecell_despu";
 const LINKEDIN_URL = "https://www.linkedin.com/in/despu-ecell-22703b42a";
@@ -8,7 +9,7 @@ const QR_SRC = `https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=
 
 function InstagramGlyph() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
+    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
       <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" strokeWidth="1.8" />
       <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.8" />
       <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" />
@@ -18,7 +19,7 @@ function InstagramGlyph() {
 
 function LinkedinGlyph() {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden="true">
       <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM2.5 9.75h4.96V21.5H2.5V9.75Zm7.44 0h4.76v1.6h.07c.66-1.18 2.27-2.42 4.67-2.42 5 0 5.93 3.13 5.93 7.2v6.37h-4.96v-5.65c0-1.35-.03-3.08-1.9-3.08-1.9 0-2.19 1.44-2.19 2.98v5.75H9.94V9.75Z" />
     </svg>
   );
@@ -37,7 +38,7 @@ export default function Connect() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.69, ease: EASE }}
           className="mb-14 text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
@@ -58,7 +59,7 @@ export default function Connect() {
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55 }}
+            transition={{ duration: 0.63, ease: EASE }}
             className="glass relative flex flex-col items-center overflow-hidden rounded-3xl p-8 text-center"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#f9ce34]/10 via-[#ee2a7b]/10 to-[#6228d7]/10" />
@@ -109,7 +110,7 @@ export default function Connect() {
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, delay: 0.1 }}
+            transition={{ duration: 0.63, ease: EASE, delay: 0.1 }}
             className="glass relative flex flex-col items-center justify-center overflow-hidden rounded-3xl p-8 text-center"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#0a66c2]/15 via-accent-blue/5 to-transparent" />

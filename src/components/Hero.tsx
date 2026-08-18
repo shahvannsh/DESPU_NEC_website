@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { EASE } from "../lib/motion";
 
 export default function Hero() {
   const nodes = Array.from({ length: 26 }, (_, i) => ({
@@ -52,7 +53,7 @@ export default function Hero() {
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.69, ease: EASE }}
           className="mb-6 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-white/70"
         >
           National Entrepreneurship Challenge 2026
@@ -61,7 +62,7 @@ export default function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
           className="font-display text-6xl font-bold tracking-tight text-gradient sm:text-7xl md:text-8xl"
         >
           DESPU
@@ -70,7 +71,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
           className="mt-4 font-display text-xl font-medium text-white/85 sm:text-2xl"
         >
           Ideas. People. Impact.
@@ -79,7 +80,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
           className="mt-5 max-w-xl text-sm text-white/60 sm:text-base"
         >
           A team of young entrepreneurs participating in the National Entrepreneurship
@@ -89,7 +90,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
           className="mt-9 flex flex-wrap items-center justify-center gap-4"
         >
           <a

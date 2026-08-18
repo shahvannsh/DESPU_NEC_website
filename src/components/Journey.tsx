@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { EASE } from "../lib/motion";
 import { journey } from "../data/journey";
 
 export default function Journey() {
@@ -9,7 +10,7 @@ export default function Journey() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.69, ease: EASE }}
           className="mb-16 text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
@@ -29,7 +30,7 @@ export default function Journey() {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
+                transition={{ duration: 0.57, ease: EASE, delay: i * 0.05 }}
                 className="relative flex gap-6 pl-0"
               >
                 <div className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-accent-cyan/40 bg-base-900 text-xs font-semibold text-accent-cyan sm:h-10 sm:w-10">
