@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import CommandPalette from "./components/CommandPalette";
+import CustomCursor from "./components/CustomCursor";
 import Home from "./pages/Home";
 import TeamPage from "./pages/TeamPage";
 import NotFound from "./pages/NotFound";
@@ -47,6 +49,8 @@ export default function App() {
       </main>
       <Footer />
       <BackToTop />
+      <CommandPalette />
+      <CustomCursor />
     </div>
   );
 }

@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Target, Users2, GraduationCap, Network } from "lucide-react";
+import { Target, Users2, GraduationCap, Network, ArrowRight } from "lucide-react";
 import { EASE } from "../lib/motion";
 
 // DRAFT — grounded in what the team actually wrote in their member docs
 // (workshops, mentorship, IP/innovation support, beginner-friendly sessions,
 // data-driven event planning). Replace with your specific NEC pitch/product
-// details once you have them — see DOMAIN_TODO.md-style note below.
+// details once you have them — see CONTENT_TO_REVIEW.md.
 const pillars = [
   {
     icon: GraduationCap,
@@ -31,6 +32,15 @@ const pillars = [
     description:
       "Not a one-off event — a lasting system for surfacing problems, testing ideas, and turning DES Pune University students into founders, one cohort at a time.",
   },
+];
+
+// Mirrors the journey timeline's early stages — kept short and directional
+// rather than inventing a rigid process with fake dates or numbers.
+const steps = [
+  { label: "Discover", detail: "Surface real problems from campus and community" },
+  { label: "Mentor", detail: "Pair ideas with mentors and industry input" },
+  { label: "Build", detail: "Turn direction into something testable" },
+  { label: "Pitch", detail: "Take it to Eureka! and the E-Summit stage" },
 ];
 
 export default function WhatWereBuilding() {
@@ -85,6 +95,55 @@ export default function WhatWereBuilding() {
             );
           })}
         </div>
+
+        {/* How it works — lightweight process strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: EASE, delay: 0.15 }}
+          className="glass mt-6 rounded-2xl p-6 sm:p-8"
+        >
+          <h3 className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
+            How It Works
+          </h3>
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+            {steps.map((s, i) => (
+              <div key={s.label} className="relative flex flex-col gap-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-accent-cyan/40 text-[11px] font-semibold text-accent-cyan">
+                    {i + 1}
+                  </span>
+                  <span className="font-display text-sm font-semibold text-white">
+                    {s.label}
+                  </span>
+                </div>
+                <p className="pl-8 text-xs leading-relaxed text-white/50">{s.detail}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Partner / sponsor CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
+          className="mt-6 flex flex-col items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-center sm:flex-row sm:text-left"
+        >
+          <p className="text-sm text-white/60">
+            Mentoring, sponsoring, or partnering with DESPU? We're always looking to
+            connect with people who've built things before.
+          </p>
+          <Link
+            to="/#contact"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:border-accent-cyan/50"
+          >
+            Get in touch
+            <ArrowRight size={14} />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

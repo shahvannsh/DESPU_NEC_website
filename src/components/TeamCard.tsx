@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, User, ExternalLink } from "lucide-react";
 import { slugify, type TeamMember } from "../data/team";
+import ProgressiveImage from "./ProgressiveImage";
 
 interface Props {
   member: TeamMember;
@@ -35,11 +36,11 @@ export default function TeamCard({ member, onOpen }: Props) {
     >
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-base-800">
         {member.image ? (
-          <img
+          <ProgressiveImage
             src={member.image}
+            placeholder={member.imagePlaceholder}
             alt={`${member.name}, ${member.role}`}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-white/20">

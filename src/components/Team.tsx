@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import { Search, X as XIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { team, categories, type Category, type TeamMember } from "../data/team";
@@ -12,6 +13,7 @@ interface Point {
 
 export default function Team() {
   const [filter, setFilter] = useState<Category>("ALL");
+  const [query, setQuery] = useState("");
   const [active, setActive] = useState<TeamMember | null>(null);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [lines, setLines] = useState<{ from: Point; to: Point }[]>([]);
@@ -20,8 +22,15 @@ export default function Team() {
   const gridRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
-  const filtered =
-    filter === "ALL" ? team : team.filter((m) => m.category === filter);
+  const filtered = team.filter((m) => {
+    const matchesCategory = filter === "ALL" || m.category === filter;
+    const q = query.trim().toLowerCase();
+    const matchesQuery =
+      q === "" ||
+      m.name.toLowerCase().includes(q) ||
+      m.role.toLowerCase().includes(q);
+    return matchesCategory && matchesQuery;
+  });
 
   useEffect(() => {
     // disable the constellation effect on small screens to protect performance
@@ -91,6 +100,32 @@ export default function Team() {
           </h2>
         </motion.div>
 
+        <div className="mx-auto mb-6 max-w-xs">
+          <div className="relative">
+            <Search
+              size={15}
+              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-white/35"
+            />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search by name or role..."
+              aria-label="Search team members"
+              className="w-full rounded-full border border-white/10 bg-white/[0.03] py-2.5 pl-10 pr-9 text-sm text-white placeholder:text-white/35 focus:border-accent-cyan/50 focus:outline-none"
+            />
+            {query && (
+              <button
+                onClick={() => setQuery("")}
+                aria-label="Clear search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
+              >
+                <XIcon size={14} />
+              </button>
+            )}
+          </div>
+        </div>
+
         <div className="mb-10 flex flex-wrap items-center justify-center gap-2">
           {categories.map((c) => (
             <button
@@ -106,6 +141,12 @@ export default function Team() {
             </button>
           ))}
         </div>
+
+        {filtered.length === 0 && (
+          <p className="mb-10 text-center text-sm text-white/40">
+            No one matches "{query}" — try a different name or role.
+          </p>
+        )}
 
         <div ref={gridRef} className="relative">
           {enableConstellation && (

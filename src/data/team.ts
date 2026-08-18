@@ -12,6 +12,7 @@ import diya from "../assets/team/Diya.webp";
 import palak from "../assets/team/Palak.webp";
 import rudrani from "../assets/team/Rudrani_Harpale.webp";
 import tanishq from "../assets/team/Tanishq.webp";
+import { placeholders } from "./placeholders";
 
 export type Category =
   | "ALL"
@@ -28,6 +29,7 @@ export interface TeamMember {
   role: string;
   category: Category;
   image?: string;
+  imagePlaceholder?: string;
   tagline: string;
   motivation: string;
   expectations: string;
@@ -46,6 +48,7 @@ export const team: TeamMember[] = [
     role: "Campus Ambassador — AI Researcher",
     category: "LEADERSHIP",
     image: vannsh,
+    imagePlaceholder: placeholders["Vannsh_Shah"],
     tagline: "Turning our five-month NEC run into a launchpad, not a checklist.",
     motivation:
       "Vannsh sees the National Entrepreneurship Challenge as DESPU's ultimate launchpad — five months of tackling real problems, running workshops, and pushing toward national exposure through Eureka! and the Grand Finale at E-Summit, IIT Bombay.",
@@ -65,6 +68,7 @@ export const team: TeamMember[] = [
     role: "Full Stack Developer",
     category: "TECH",
     image: shravani,
+    imagePlaceholder: placeholders["Shravani_Kadam"],
     tagline: "Building the tech backbone that turns ideas into working products.",
     motivation:
       "Shravani joined E-Cell to develop an entrepreneurial mindset and explore how ideas become impactful solutions, bringing a Computer Science background focused on AI, technology, and innovation.",
@@ -84,6 +88,7 @@ export const team: TeamMember[] = [
     role: "Visual Designer",
     category: "DESIGN",
     image: namrata,
+    imagePlaceholder: placeholders["Namrata"],
     tagline: "Bringing DESPU's ideas to life, one visual at a time.",
     motivation:
       "Namrata joined E-Cell to learn, grow, and contribute to a community of passionate, innovative students — exploring new ideas and working with people who share her enthusiasm for creating impact.",
@@ -103,6 +108,7 @@ export const team: TeamMember[] = [
     role: "Data Analyst",
     category: "RESEARCH",
     image: radhika,
+    imagePlaceholder: placeholders["Radhika"],
     tagline: "Curious about how a simple idea grows into something that matters.",
     motivation:
       "A Computer Science student, Radhika is driven by curiosity about how startups are built and how technology and AI can turn ideas into products that solve real-world problems.",
@@ -122,6 +128,7 @@ export const team: TeamMember[] = [
     role: "Brand Voice & Community Manager",
     category: "MARKETING",
     image: sanskruti,
+    imagePlaceholder: placeholders["Sanskruti"],
     tagline: "Making E-Cell a space where everyone feels comfortable jumping in.",
     motivation:
       "Sanskruti was drawn to E-Cell by the energy of building something from an idea, wanting to meet people who think differently and learn skills beyond the classroom.",
@@ -141,6 +148,7 @@ export const team: TeamMember[] = [
     role: "Campus Ambassador — Events and PR",
     category: "LEADERSHIP",
     image: siya,
+    imagePlaceholder: placeholders["Siya_Alandkar"],
     tagline: "Merging analytical thinking with a creative, human voice.",
     motivation:
       "Siya is drawn to the mix of ideas, people, and problem-solving that entrepreneurship demands — pairing her interest in data analytics and AI with a love for writing and clear communication.",
@@ -160,6 +168,7 @@ export const team: TeamMember[] = [
     role: "UI/UX Designer & Developer",
     category: "DESIGN",
     image: saee,
+    imagePlaceholder: placeholders["Saee"],
     tagline: "Designing experiences while learning to lead real teams.",
     motivation:
       "As a Computer Engineering student, Saee believes entrepreneurship is about solving real problems and taking initiative — and joined NEC to learn from mentors and gain exposure to the startup ecosystem.",
@@ -179,6 +188,7 @@ export const team: TeamMember[] = [
     role: "Graphics Designer & Sponsorship / Industry Relations Head",
     category: "DESIGN",
     image: shantanu,
+    imagePlaceholder: placeholders["Shantanu_Ombhase"],
     tagline: "Creating content that carries E-Cell's vision further.",
     motivation:
       "Shantanu joined to connect with new people, sharpen his communication skills, and contribute fresh creative ideas that grow the reach and engagement of E-Cell's activities.",
@@ -198,6 +208,7 @@ export const team: TeamMember[] = [
     role: "Team Lead & Logistics Manager",
     category: "LEADERSHIP",
     image: mantsha,
+    imagePlaceholder: placeholders["Mantsha_Khan"],
     tagline: "Leading with open communication and mutual respect.",
     motivation:
       "Mantsha joined E-Cell for a platform that encourages innovation, leadership, and entrepreneurship — eager to learn from mentors and collaborate with a dedicated team.",
@@ -217,6 +228,7 @@ export const team: TeamMember[] = [
     role: "Event and Photography Lead",
     category: "BUSINESS",
     image: tanishq,
+    imagePlaceholder: placeholders["Tanishq"],
     tagline: "Bringing people together through events that leave a mark.",
     motivation:
       "Tanishq is driven by a passion for learning, leadership, and creating meaningful impact — enjoying teamwork, organizing events, and taking initiatives that bring people together.",
@@ -236,6 +248,7 @@ export const team: TeamMember[] = [
     role: "Campus Ambassador — Technical Coordinator",
     category: "TECH",
     image: mitali,
+    imagePlaceholder: placeholders["Mitali_Jadhav"],
     tagline: "Noticing the problems others overlook, then building for them.",
     motivation:
       "Mitali came to see entrepreneurship as more than starting a company — it's about noticing overlooked problems and having the courage to build solutions, which is what drew her to E-Cell.",
@@ -255,6 +268,7 @@ export const team: TeamMember[] = [
     role: "Content Creator & Graphics Designer",
     category: "MARKETING",
     image: diya,
+    imagePlaceholder: placeholders["Diya"],
     tagline: "Making entrepreneurship feel accessible, not intimidating.",
     motivation:
       "As part of DESPU's social media team, Diya wants to make entrepreneurship accessible and practical, simplifying startup concepts through relatable content and authentic student stories.",
@@ -274,6 +288,7 @@ export const team: TeamMember[] = [
     role: "Operations Lead",
     category: "BUSINESS",
     image: palak,
+    imagePlaceholder: placeholders["Palak"],
     tagline: "Driven to build high-impact solutions and lead as a founder.",
     motivation:
       "Palak is motivated by an intrinsic drive to build high-impact enterprise solutions, sustained through self-discipline, resilience, and complete ownership of every problem she takes on.",
@@ -293,6 +308,7 @@ export const team: TeamMember[] = [
     role: "Experience Designer",
     category: "DESIGN",
     image: rudrani,
+    imagePlaceholder: placeholders["Rudrani_Harpale"],
     tagline: "Turning ordinary workshops into memorable journeys.",
     motivation:
       "Rudrani blends creative attention to detail with high-impact execution, aiming to build immersive environments that transform DESPU's workshops into memorable experiences.",

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
+import Magnetic from "./Magnetic";
 
 export default function CTA() {
   return (
@@ -15,18 +16,22 @@ export default function CTA() {
           Want to Know the Minds Behind DESPU?
         </h2>
         <div className="flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="#team"
-            className="rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-7 py-3 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
-          >
-            Meet the Team →
-          </a>
-          <a
-            href="#journey"
-            className="rounded-full border border-white/15 px-7 py-3 text-sm font-medium text-white/80 transition-colors hover:border-white/30 hover:text-white"
-          >
-            Follow Our Journey
-          </a>
+          <Magnetic>
+            <a
+              href="#team"
+              className="rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-7 py-3 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
+            >
+              Meet the Team →
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="#journey"
+              className="rounded-full border border-white/15 px-7 py-3 text-sm font-medium text-white/80 transition-colors hover:border-white/30 hover:text-white"
+            >
+              Follow Our Journey
+            </a>
+          </Magnetic>
         </div>
       </motion.div>
     </section>

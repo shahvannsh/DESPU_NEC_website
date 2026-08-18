@@ -30,6 +30,30 @@ textarea:focus-visible {
   border-radius: 4px;
 }
 
+/*
+ * Light mode — implemented as a full-page CSS filter invert rather than a
+ * hand-designed light palette. Every component was built dark-first with
+ * hardcoded Tailwind colors (bg-base-950, text-white/70, etc.), so a true
+ * light redesign would mean touching every component individually. The
+ * invert trick gets a fully working, readable light theme instantly; images
+ * are re-inverted so photos still look correct.
+ */
+html.light {
+  filter: invert(1) hue-rotate(180deg);
+}
+html.light img,
+html.light video {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* custom animated cursor — hide the native cursor only when it's active
+   (desktop, no reduced-motion, no touch); everyone else keeps the normal
+   system cursor untouched */
+html.custom-cursor-active,
+html.custom-cursor-active * {
+  cursor: none !important;
+}
+
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #05070d; }
 ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 8px; }

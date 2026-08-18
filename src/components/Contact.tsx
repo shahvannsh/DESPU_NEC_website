@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Send } from "lucide-react";
+import { Mail, Send, Copy, Check } from "lucide-react";
 import { EASE } from "../lib/motion";
 
 const CONTACT_EMAIL = "ecell.despu@gmail.com";
@@ -18,6 +18,13 @@ export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    await navigator.clipboard.writeText(CONTACT_EMAIL);
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
 
   const mailtoHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
     `Message from ${name || "DESPU website"}`
@@ -114,15 +121,24 @@ export default function Contact() {
           </form>
 
           <div className="flex flex-col justify-center gap-5 border-t border-white/10 bg-white/[0.02] p-7 sm:border-l sm:border-t-0 sm:p-9">
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-white"
-            >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10">
-                <Mail size={16} />
-              </span>
-              {CONTACT_EMAIL}
-            </a>
+            <div className="flex items-center gap-3 text-sm text-white/70">
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="flex flex-1 items-center gap-3 transition-colors hover:text-white"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10">
+                  <Mail size={16} />
+                </span>
+                {CONTACT_EMAIL}
+              </a>
+              <button
+                onClick={handleCopyEmail}
+                aria-label="Copy email address"
+                className="shrink-0 text-white/40 transition-colors hover:text-white"
+              >
+                {emailCopied ? <Check size={15} className="text-accent-cyan" /> : <Copy size={15} />}
+              </button>
+            </div>
             <a
               href={WHATSAPP_URL}
               target="_blank"

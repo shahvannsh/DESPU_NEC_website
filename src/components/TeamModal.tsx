@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, User, Link2, Code2, AtSign, ArrowUpRight } from "lucide-react";
 import { slugify, type TeamMember } from "../data/team";
+import ProgressiveImage from "./ProgressiveImage";
 
 interface Props {
   member: TeamMember | null;
@@ -54,10 +55,10 @@ export default function TeamModal({ member, onClose }: Props) {
             <div className="grid gap-0 sm:grid-cols-[280px_1fr]">
               <div className="relative aspect-square w-full overflow-hidden bg-base-800 sm:aspect-auto sm:h-full">
                 {member.image ? (
-                  <img
+                  <ProgressiveImage
                     src={member.image}
+                    placeholder={member.imagePlaceholder}
                     alt={`${member.name}, ${member.role}`}
-                    className="h-full w-full object-cover"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-white/20">

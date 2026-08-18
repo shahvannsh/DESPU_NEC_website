@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -106,12 +107,23 @@ export default function Navbar() {
           ))}
         </div>
 
-        <button
-          onClick={() => go("#team")}
-          className="hidden rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-white transition-all hover:border-accent-cyan/50 hover:bg-white/10 md:inline-flex"
-        >
-          Meet the Team →
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => window.dispatchEvent(new Event("open-command-palette"))}
+            aria-label="Open quick search"
+            className="hidden items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/50 transition-colors hover:border-white/25 hover:text-white sm:flex"
+          >
+            <Search size={13} />
+            <kbd className="text-[10px]">⌘K</kbd>
+          </button>
+          <ThemeToggle />
+          <button
+            onClick={() => go("#team")}
+            className="hidden rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-white transition-all hover:border-accent-cyan/50 hover:bg-white/10 md:inline-flex"
+          >
+            Meet the Team →
+          </button>
+        </div>
 
         <button
           aria-label={open ? "Close menu" : "Open menu"}
