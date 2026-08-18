@@ -8,6 +8,7 @@ const links = [
   { label: "Team", href: "#team" },
   { label: "Journey", href: "#journey" },
   { label: "Vision", href: "#vision" },
+  { label: "Connect", href: "#connect" },
 ];
 
 export default function Navbar() {

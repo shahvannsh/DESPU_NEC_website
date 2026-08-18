@@ -7,6 +7,7 @@ import Journey from "./components/Journey";
 import Values from "./components/Values";
 import Vision from "./components/Vision";
 import CTA from "./components/CTA";
+import Connect from "./components/Connect";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 
@@ -23,6 +24,7 @@ export default function App() {
         <Values />
         <Vision />
         <CTA />
+        <Connect />
       </main>
       <Footer />
       <BackToTop />
