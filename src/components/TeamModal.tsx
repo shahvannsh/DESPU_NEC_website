@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, User, Link2, Code2, AtSign, ArrowUpRight } from "lucide-react";
@@ -22,11 +23,16 @@ export default function TeamModal({ member, onClose }: Props) {
     };
   }, [member, onClose]);
 
-  return (
+  // Rendered via portal directly under <body> — not nested inside
+  // #themed-content — so its own `position: fixed` stays correctly pinned
+  // to the viewport even in light mode (see index.css for why). The
+  // `theme-invert-self` class re-applies the same color inversion manually
+  // since it no longer inherits it from an ancestor.
+  return createPortal(
     <AnimatePresence>
       {member && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-end justify-center bg-base-950/80 backdrop-blur-sm sm:items-center sm:p-6"
+          className="theme-invert-self fixed inset-0 z-[100] flex items-end justify-center bg-base-950/80 backdrop-blur-sm sm:items-center sm:p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -159,6 +165,7 @@ export default function TeamModal({ member, onClose }: Props) {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

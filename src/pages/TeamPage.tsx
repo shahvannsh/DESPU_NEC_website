@@ -60,6 +60,16 @@ export default function TeamPage() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      // don't hijack arrow keys while the person is typing/editing text
+      // anywhere on the page (e.g. the command palette's search input)
+      const target = e.target as HTMLElement | null;
+      const isTyping =
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable);
+      if (isTyping) return;
+
       if (e.key === "ArrowRight") goTo(next);
       if (e.key === "ArrowLeft") goTo(prev);
     };

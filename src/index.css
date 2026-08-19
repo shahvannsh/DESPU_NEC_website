@@ -31,18 +31,37 @@ textarea:focus-visible {
 }
 
 /*
- * Light mode — implemented as a full-page CSS filter invert rather than a
+ * Light mode — implemented as a CSS filter invert rather than a
  * hand-designed light palette. Every component was built dark-first with
  * hardcoded Tailwind colors (bg-base-950, text-white/70, etc.), so a true
  * light redesign would mean touching every component individually. The
  * invert trick gets a fully working, readable light theme instantly; images
  * are re-inverted so photos still look correct.
+ *
+ * IMPORTANT: the filter is scoped to #themed-content (the normal-flow page
+ * content: navbar links, hero, sections, footer) rather than <html>. A CSS
+ * `filter` on any ancestor becomes the containing block for that ancestor's
+ * `position: fixed` descendants — so filtering <html> would break every
+ * fixed element on the page (navbar bar itself, modals, the command
+ * palette, back-to-top) by making them scroll away instead of staying
+ * pinned to the viewport. Those fixed "chrome" pieces are intentionally
+ * left outside #themed-content and stay dark-styled in both themes — the
+ * same pattern as a permanently-dark navbar on an otherwise light site.
  */
-html.light {
+html.light #themed-content {
   filter: invert(1) hue-rotate(180deg);
 }
-html.light img,
-html.light video {
+html.light #themed-content img,
+html.light #themed-content video {
+  filter: invert(1) hue-rotate(180deg);
+}
+/* portaled elements that need to match the theme despite living outside
+   #themed-content (see TeamModal, which portals to <body> to keep its own
+   position: fixed correct even in light mode) */
+html.light .theme-invert-self {
+  filter: invert(1) hue-rotate(180deg);
+}
+html.light .theme-invert-self img {
   filter: invert(1) hue-rotate(180deg);
 }
 

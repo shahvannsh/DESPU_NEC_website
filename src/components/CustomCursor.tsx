@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+
+interface Spark {
+  id: number;
+  x: number;
+  y: number;
+}
 
 const INTERACTIVE_SELECTOR =
   'a, button, input, textarea, [role="button"], .cursor-hover';
@@ -23,6 +29,9 @@ export default function CustomCursor() {
   const glowY = useSpring(y, { damping: 22, stiffness: 90, mass: 0.8 });
 
   const rafId = useRef<number | undefined>(undefined);
+  const [sparks, setSparks] = useState<Spark[]>([]);
+  const sparkId = useRef(0);
+  const lastSpark = useRef({ x: -100, y: -100, t: 0 });
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -36,6 +45,18 @@ export default function CustomCursor() {
       x.set(e.clientX);
       y.set(e.clientY);
       if (!visible) setVisible(true);
+
+      // spawn a sparkle only when moving fast enough, throttled
+      const now = performance.now();
+      const dist = Math.hypot(e.clientX - lastSpark.current.x, e.clientY - lastSpark.current.y);
+      if (dist > 55 && now - lastSpark.current.t > 45) {
+        lastSpark.current = { x: e.clientX, y: e.clientY, t: now };
+        const id = sparkId.current++;
+        setSparks((prev) => [...prev.slice(-11), { id, x: e.clientX, y: e.clientY }]);
+        setTimeout(() => {
+          setSparks((prev) => prev.filter((s) => s.id !== id));
+        }, 550);
+      }
 
       if (rafId.current) cancelAnimationFrame(rafId.current);
       rafId.current = requestAnimationFrame(() => {
@@ -72,6 +93,29 @@ export default function CustomCursor() {
       className="pointer-events-none fixed inset-0 z-[999]"
       style={{ opacity: visible ? 1 : 0, transition: "opacity 0.3s ease" }}
     >
+      {/* speed-triggered sparkle trail */}
+      <AnimatePresence>
+        {sparks.map((s) => (
+          <motion.div
+            key={s.id}
+            initial={{ opacity: 0.9, scale: 1 }}
+            animate={{ opacity: 0, scale: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+            className="absolute rounded-full bg-accent-cyan"
+            style={{
+              left: s.x,
+              top: s.y,
+              width: 4,
+              height: 4,
+              translateX: "-50%",
+              translateY: "-50%",
+              boxShadow: "0 0 6px 1px rgba(34,211,238,0.6)",
+            }}
+          />
+        ))}
+      </AnimatePresence>
+
       {/* ambient trailing glow */}
       <motion.div
         className="absolute rounded-full"

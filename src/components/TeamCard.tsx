@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, User, ExternalLink } from "lucide-react";
 import { slugify, type TeamMember } from "../data/team";
@@ -13,23 +13,54 @@ interface Props {
 export default function TeamCard({ member, onOpen }: Props) {
   const cardRef = useRef<HTMLButtonElement>(null);
 
+  // subtle 3D tilt toward the cursor
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springRotateX = useSpring(rotateX, { stiffness: 300, damping: 28 });
+  const springRotateY = useSpring(rotateY, { stiffness: 300, damping: 28 });
+
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     const card = cardRef.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
-    card.style.setProperty("--x", `${e.clientX - rect.left}px`);
-    card.style.setProperty("--y", `${e.clientY - rect.top}px`);
+    const px = e.clientX - rect.left;
+    const py = e.clientY - rect.top;
+    card.style.setProperty("--x", `${px}px`);
+    card.style.setProperty("--y", `${py}px`);
+
+    const midX = rect.width / 2;
+    const midY = rect.height / 2;
+    rotateY.set(((px - midX) / midX) * 5); // max ~5deg
+    rotateX.set(-((py - midY) / midY) * 5);
+  };
+
+  const handleMouseLeave = () => {
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
+  const handleClick = () => {
+    // reset tilt before the shared-layout transition to the modal starts —
+    // otherwise this card's rotateX/rotateY transform fights the automatic
+    // FLIP animation Framer runs on the shared layoutId, causing a jump
+    rotateX.set(0);
+    rotateY.set(0);
+    onOpen();
   };
 
   return (
     <motion.button
       ref={cardRef}
       layoutId={`card-${member.id}`}
-      onClick={onOpen}
+      onClick={handleClick}
       onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       style={{
         backgroundImage:
           "radial-gradient(320px circle at var(--x) var(--y), rgba(34,211,238,0.08), transparent 70%)",
+        rotateX: springRotateX,
+        rotateY: springRotateY,
+        transformPerspective: 800,
       }}
       className="group relative flex w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] text-left transition-colors hover:border-accent-cyan/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-cyan"
       aria-label={`Quick view of ${member.name}`}
