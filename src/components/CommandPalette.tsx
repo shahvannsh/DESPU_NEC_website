@@ -18,6 +18,7 @@ const sections = [
   { label: "About", href: "#about" },
   { label: "Team", href: "#team" },
   { label: "Journey", href: "#journey" },
+  { label: "Events", href: "#events" },
   { label: "Vision", href: "#vision" },
   { label: "Contact", href: "#contact" },
   { label: "Follow / Connect", href: "#connect" },

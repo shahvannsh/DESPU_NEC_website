@@ -45,54 +45,52 @@ export default function App() {
       <ScrollProgress />
       <Navbar />
       <ScrollToHash />
-      <div id="themed-content">
-        <main id="main-content">
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-              <Route
-                path="/"
-                element={
-                  <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ duration: 0.35, ease: EASE }}
-                  >
-                    <Home />
-                  </motion.div>
-                }
-              />
-              <Route
-                path="/team/:slug"
-                element={
-                  <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ duration: 0.35, ease: EASE }}
-                  >
-                    <TeamPage />
-                  </motion.div>
-                }
-              />
-              <Route
-                path="*"
-                element={
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3, ease: EASE }}
-                  >
-                    <NotFound />
-                  </motion.div>
-                }
-              />
-            </Routes>
-          </AnimatePresence>
-        </main>
-        <Footer />
-      </div>
+      <main id="main-content">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route
+              path="/"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: EASE }}
+                >
+                  <Home />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/team/:slug"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: EASE }}
+                >
+                  <TeamPage />
+                </motion.div>
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3, ease: EASE }}
+                >
+                  <NotFound />
+                </motion.div>
+              }
+            />
+          </Routes>
+        </AnimatePresence>
+      </main>
+      <Footer />
       <BackToTop />
       <CommandPalette />
       <CustomCursor />

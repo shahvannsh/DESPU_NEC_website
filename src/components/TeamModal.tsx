@@ -23,16 +23,14 @@ export default function TeamModal({ member, onClose }: Props) {
     };
   }, [member, onClose]);
 
-  // Rendered via portal directly under <body> — not nested inside
-  // #themed-content — so its own `position: fixed` stays correctly pinned
-  // to the viewport even in light mode (see index.css for why). The
-  // `theme-invert-self` class re-applies the same color inversion manually
-  // since it no longer inherits it from an ancestor.
+  // Rendered via portal directly under <body> so it always sits above
+  // everything else regardless of where TeamCard/Team happens to be in
+  // the DOM tree.
   return createPortal(
     <AnimatePresence>
       {member && (
         <motion.div
-          className="theme-invert-self fixed inset-0 z-[100] flex items-end justify-center bg-base-950/80 backdrop-blur-sm sm:items-center sm:p-6"
+          className="fixed inset-0 z-[100] flex items-end justify-center bg-base-950/80 backdrop-blur-sm sm:items-center sm:p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

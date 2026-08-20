@@ -3,6 +3,7 @@ import About from "../components/About";
 import WhatWereBuilding from "../components/WhatWereBuilding";
 import Team from "../components/Team";
 import Journey from "../components/Journey";
+import Events from "../components/Events";
 import Values from "../components/Values";
 import Testimonials from "../components/Testimonials";
 import Vision from "../components/Vision";
@@ -18,6 +19,7 @@ export default function Home() {
       <WhatWereBuilding />
       <Team />
       <Journey />
+      <Events />
       <Values />
       <Testimonials />
       <Vision />
