@@ -94,7 +94,7 @@ export default function Team() {
             Meet DESPU
           </span>
           <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
-            14 minds. Different strengths.
+            13 minds. Different strengths.
             <br />
             One shared ambition.
           </h2>

@@ -8,7 +8,6 @@ import saee from "../assets/team/Saee.webp";
 import shantanu from "../assets/team/Shantanu_Ombhase.webp";
 import mantsha from "../assets/team/Mantsha_Khan.webp";
 import mitali from "../assets/team/Mitali_Jadhav.webp";
-import diya from "../assets/team/Diya.webp";
 import palak from "../assets/team/Palak.webp";
 import rudrani from "../assets/team/Rudrani_Harpale.webp";
 import tanishq from "../assets/team/Tanishq.webp";
@@ -259,26 +258,6 @@ export const team: TeamMember[] = [
       "Coordinate technical execution across teams",
       "Support campus-wide E-Cell initiatives",
       "Organize workshops and startup discussions",
-    ],
-    funFact: "Information coming soon.",
-  },
-  {
-    id: 12,
-    name: "Diya Kadam",
-    role: "Content Creator & Graphics Designer",
-    category: "MARKETING",
-    image: diya,
-    imagePlaceholder: placeholders["Diya"],
-    tagline: "Making entrepreneurship feel accessible, not intimidating.",
-    motivation:
-      "As part of DESPU's social media team, Diya wants to make entrepreneurship accessible and practical, simplifying startup concepts through relatable content and authentic student stories.",
-    expectations:
-      "She hopes for a transparent, well-structured environment with creative freedom, mentorship, and industry exposure that helps the team build a lasting culture of innovation.",
-    skills: ["Content Creation", "Graphic Design", "Social Media"],
-    responsibilities: [
-      "Create content for DESPU's social channels",
-      "Design graphics for campaigns",
-      "Tell authentic student stories",
     ],
     funFact: "Information coming soon.",
   },

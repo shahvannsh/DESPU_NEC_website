@@ -9,7 +9,7 @@ export const journey: Milestone[] = [
     index: "01",
     title: "Team Formation",
     description:
-      "DESPU comes together — fourteen students from different branches, backgrounds, and skill sets, united around one goal.",
+      "DESPU comes together — thirteen students from different branches, backgrounds, and skill sets, united around one goal.",
   },
   {
     index: "02",

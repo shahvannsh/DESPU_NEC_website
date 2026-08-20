@@ -3,7 +3,7 @@ import { EASE } from "../lib/motion";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 14, suffix: "", label: "Team Members" },
+  { value: 13, suffix: "", label: "Team Members" },
   { value: 1, suffix: "", label: "Shared Vision" },
   { value: null, suffix: "∞", label: "Ideas" },
   { value: 1, suffix: "", label: "Entrepreneurial Journey" },
