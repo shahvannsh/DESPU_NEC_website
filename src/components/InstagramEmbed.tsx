@@ -49,8 +49,27 @@ export default function InstagramEmbed({ url }: Props) {
         className="instagram-media"
         data-instgrm-permalink={url}
         data-instgrm-version="14"
-        style={{ background: "#fff", margin: "0 auto", width: "100%" }}
-      />
+        style={{ background: "#fff", margin: "0 auto", width: "100%", minHeight: 200 }}
+      >
+        {/* Fallback shown until (or unless) the Instagram script processes this
+            embed — e.g. slow connection, blocked script, ad blocker. Without
+            this, a failed/slow load renders as a blank box. */}
+        <div style={{ padding: "16px", textAlign: "center" }}>
+          <a
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              fontSize: "13px",
+              fontWeight: 600,
+              color: "#0e7490",
+              textDecoration: "none",
+            }}
+          >
+            View this reel on Instagram →
+          </a>
+        </div>
+      </blockquote>
     </div>
   );
 }

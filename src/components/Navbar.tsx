@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search } from "lucide-react";
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -116,6 +117,7 @@ export default function Navbar() {
             <Search size={13} />
             <kbd className="text-[10px]">⌘K</kbd>
           </button>
+          <ThemeToggle />
           <button
             onClick={() => go("#team")}
             className="hidden rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-white transition-all hover:border-accent-cyan/50 hover:bg-white/10 md:inline-flex"

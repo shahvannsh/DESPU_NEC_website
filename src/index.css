@@ -31,12 +31,80 @@ textarea:focus-visible {
 }
 
 /*
- * Light mode was attempted via a full-page CSS filter invert, but it
- * proved unreliable under this site's animation load — it produced real
- * rendering glitches (broken photo colors, black rendering artifacts
- * around scroll-linked parallax) rather than just a cosmetic compromise,
- * so it's been removed. The site is intentionally dark-only.
+ * Light mode — implemented as real color overrides (not a filter/invert
+ * trick, which caused genuine rendering bugs and was removed). Every
+ * dark-mode utility class used across the site gets an explicit light
+ * equivalent below, scoped under html.light. Because this never touches
+ * <img> elements at all, photos are completely unaffected — they show
+ * their real, natural colors in both themes automatically.
  */
+html.light,
+html.light body,
+html.light #root {
+  background: #f6f7fb;
+}
+
+html.light .bg-base-950 { background-color: #f6f7fb; }
+html.light .bg-base-900 { background-color: #eef0f6; }
+html.light .bg-base-850 { background-color: #e9ebf2; }
+html.light .bg-base-800 { background-color: #e4e7ef; }
+
+html.light .text-white { color: #0a0e18; }
+html.light .text-white\/80 { color: rgba(10, 14, 24, 0.8); }
+html.light .text-white\/70 { color: rgba(10, 14, 24, 0.7); }
+html.light .text-white\/60 { color: rgba(10, 14, 24, 0.62); }
+html.light .text-white\/55 { color: rgba(10, 14, 24, 0.58); }
+html.light .text-white\/50 { color: rgba(10, 14, 24, 0.52); }
+html.light .text-white\/45 { color: rgba(10, 14, 24, 0.48); }
+html.light .text-white\/40 { color: rgba(10, 14, 24, 0.45); }
+html.light .text-white\/35 { color: rgba(10, 14, 24, 0.4); }
+html.light .text-white\/30 { color: rgba(10, 14, 24, 0.38); }
+html.light .text-white\/25 { color: rgba(10, 14, 24, 0.35); }
+html.light .text-white\/20 { color: rgba(10, 14, 24, 0.3); }
+
+html.light .border-white\/30 { border-color: rgba(10, 14, 24, 0.22); }
+html.light .border-white\/25 { border-color: rgba(10, 14, 24, 0.18); }
+html.light .border-white\/15 { border-color: rgba(10, 14, 24, 0.13); }
+html.light .border-white\/10 { border-color: rgba(10, 14, 24, 0.1); }
+
+html.light .bg-white\/10 { background-color: rgba(10, 14, 24, 0.06); }
+html.light .bg-white\/5 { background-color: rgba(10, 14, 24, 0.04); }
+html.light .bg-white\/\[0\.03\] { background-color: rgba(10, 14, 24, 0.03); }
+html.light .bg-white\/\[0\.02\] { background-color: rgba(10, 14, 24, 0.025); }
+
+html.light .glass {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(10, 14, 24, 0.08);
+}
+
+/* the light cyan accent reads fine on dark backgrounds but fails contrast
+   on a light page, so text uses a darker teal instead in light mode —
+   borders/fills stay the same since they don't need text-level contrast */
+html.light .text-accent-cyan,
+html.light .text-accent-cyan\/80,
+html.light .text-accent-cyan\/70 {
+  color: #0e7490;
+}
+html.light .text-accent-cyan\/40 {
+  color: rgba(14, 116, 144, 0.55);
+}
+
+html.light .text-gradient {
+  background: linear-gradient(90deg, #0a0e18 0%, #1d4ed8 50%, #0e7490 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+html.light .bg-grid {
+  background-image:
+    linear-gradient(rgba(10, 14, 24, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 14, 24, 0.06) 1px, transparent 1px);
+}
+
+html.light ::-webkit-scrollbar-track { background: #f6f7fb; }
+html.light ::-webkit-scrollbar-thumb { background: #d6dae4; }
+html.light ::-webkit-scrollbar-thumb:hover { background: #c2c8d6; }
 
 /* custom animated cursor — hide the native cursor only when it's active
    (desktop, no reduced-motion, no touch); everyone else keeps the normal

@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
-import { events } from "../data/events";
+import { events, type DespuEvent } from "../data/events";
 import { EASE } from "../lib/motion";
 import InstagramEmbed from "./InstagramEmbed";
+import EventModal from "./EventModal";
 
 function InstagramGlyph() {
   return (
@@ -20,9 +22,11 @@ function formatDate(iso: string): string {
 }
 
 export default function Events() {
+  const [active, setActive] = useState<DespuEvent | null>(null);
+
   return (
     <section id="events" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,18 +60,37 @@ export default function Events() {
             </p>
           </motion.div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-col gap-10">
             {events.map((event, i) => (
               <motion.div
                 key={event.id}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.55, ease: EASE, delay: (i % 6) * 0.06 }}
-                className="glass flex flex-col overflow-hidden rounded-2xl"
+                transition={{ duration: 0.55, ease: EASE, delay: (i % 4) * 0.08 }}
+                className="glass grid grid-cols-1 gap-0 overflow-hidden rounded-2xl lg:grid-cols-[340px_1fr]"
               >
-                <div className="flex flex-col gap-2 p-5 pb-3">
-                  <div className="flex items-center justify-between gap-2">
+                {/* poster */}
+                {event.image && (
+                  <button
+                    onClick={() => setActive(event)}
+                    className="group relative block aspect-[3/4] w-full overflow-hidden bg-base-800 lg:aspect-auto lg:h-full"
+                    aria-label={`View full details for ${event.title}`}
+                  >
+                    <img
+                      src={event.image}
+                      alt={`${event.title} poster`}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 flex items-end bg-gradient-to-t from-base-950/90 via-transparent to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100">
+                      <span className="text-xs font-medium text-white">Tap for full details</span>
+                    </div>
+                  </button>
+                )}
+
+                <div className="flex flex-col gap-4 p-6 sm:p-7">
+                  <div className="flex flex-wrap items-center gap-3">
                     <span
                       className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${
                         event.status === "upcoming"
@@ -81,36 +104,54 @@ export default function Events() {
                       <Calendar size={12} />
                       {formatDate(event.date)}
                     </span>
+                    {event.location && (
+                      <span className="flex items-center gap-1 text-xs text-white/40">
+                        <MapPin size={12} />
+                        {event.location}
+                      </span>
+                    )}
                   </div>
-                  <h3 className="font-display text-base font-semibold text-white">
-                    {event.title}
-                  </h3>
-                  {event.location && (
-                    <span className="flex items-center gap-1 text-xs text-white/45">
-                      <MapPin size={12} />
-                      {event.location}
-                    </span>
-                  )}
-                  <p className="mt-1 text-sm leading-relaxed text-white/60">
-                    {event.description}
-                  </p>
-                </div>
 
-                <div className="mt-auto p-5 pt-2">
-                  {event.reelUrl ? (
-                    <InstagramEmbed url={event.reelUrl} />
-                  ) : (
-                    <div className="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-white/10 bg-white/[0.02] py-8 text-center text-white/25">
-                      <InstagramGlyph />
-                      <span className="text-xs text-white/35">Reel coming soon</span>
-                    </div>
-                  )}
+                  <div>
+                    <h3 className="font-display text-lg font-semibold text-white sm:text-xl">
+                      {event.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-white/60">
+                      {event.description}
+                    </p>
+                    <button
+                      onClick={() => setActive(event)}
+                      className="mt-2 text-xs font-medium text-accent-cyan hover:text-accent-cyan/80"
+                    >
+                      Read full details →
+                    </button>
+                  </div>
+
+                  {/* reels — horizontal scrollable row */}
+                  <div className="mt-1">
+                    {event.reelUrls.length === 0 ? (
+                      <div className="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-white/10 bg-white/[0.02] py-8 text-center text-white/25">
+                        <InstagramGlyph />
+                        <span className="text-xs text-white/35">Reels coming soon</span>
+                      </div>
+                    ) : (
+                      <div className="flex gap-4 overflow-x-auto pb-2 [scrollbar-width:thin]">
+                        {event.reelUrls.map((url) => (
+                          <div key={url} className="w-[240px] shrink-0 sm:w-[280px]">
+                            <InstagramEmbed url={url} />
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
         )}
       </div>
+
+      <EventModal event={active} onClose={() => setActive(null)} />
     </section>
   );
 }
