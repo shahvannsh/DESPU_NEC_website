@@ -80,7 +80,10 @@ Vannsh Shah – 86689 95892
     registerUrl:
       "https://docs.google.com/forms/d/1CXoe_BTgxd3AcZszuJosSvTQDqrVJtUPJZnY0A0vUhw/edit?ts=6a79fc7a",
     reelUrls: [
+      "https://www.instagram.com/reel/DcOgIamCkH-/",
       "https://www.instagram.com/reel/DcLg1TyCVE_/",
+      "https://www.instagram.com/reel/DcEg_LBiDTQ/",
+      "https://www.instagram.com/reel/Db791MWik2T/",
       "https://www.instagram.com/p/Dbd1CMqTmmw/",
       "https://www.instagram.com/reel/DcENFGJieSU/",
     ],

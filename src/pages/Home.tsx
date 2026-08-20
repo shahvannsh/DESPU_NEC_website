@@ -4,6 +4,7 @@ import WhatWereBuilding from "../components/WhatWereBuilding";
 import Team from "../components/Team";
 import Journey from "../components/Journey";
 import Events from "../components/Events";
+import Reels from "../components/Reels";
 import Values from "../components/Values";
 import Testimonials from "../components/Testimonials";
 import Vision from "../components/Vision";
@@ -20,6 +21,7 @@ export default function Home() {
       <Team />
       <Journey />
       <Events />
+      <Reels />
       <Values />
       <Testimonials />
       <Vision />

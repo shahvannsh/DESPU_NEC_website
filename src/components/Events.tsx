@@ -3,18 +3,7 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
 import { events, type DespuEvent } from "../data/events";
 import { EASE } from "../lib/motion";
-import InstagramEmbed from "./InstagramEmbed";
 import EventModal from "./EventModal";
-
-function InstagramGlyph() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px]" aria-hidden="true">
-      <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" strokeWidth="1.8" />
-      <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.8" />
-      <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" />
-    </svg>
-  );
-}
 
 function formatDate(iso: string): string {
   const d = new Date(iso + "T00:00:00");
@@ -125,24 +114,6 @@ export default function Events() {
                     >
                       Read full details →
                     </button>
-                  </div>
-
-                  {/* reels — horizontal scrollable row */}
-                  <div className="mt-1">
-                    {event.reelUrls.length === 0 ? (
-                      <div className="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-white/10 bg-white/[0.02] py-8 text-center text-white/25">
-                        <InstagramGlyph />
-                        <span className="text-xs text-white/35">Reels coming soon</span>
-                      </div>
-                    ) : (
-                      <div className="flex gap-4 overflow-x-auto pb-2 [scrollbar-width:thin]">
-                        {event.reelUrls.map((url) => (
-                          <div key={url} className="w-[240px] shrink-0 sm:w-[280px]">
-                            <InstagramEmbed url={url} />
-                          </div>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 </div>
               </motion.div>

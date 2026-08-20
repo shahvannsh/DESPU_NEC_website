@@ -11,6 +11,7 @@ const links = [
   { label: "Team", href: "#team" },
   { label: "Journey", href: "#journey" },
   { label: "Events", href: "#events" },
+  { label: "Reels", href: "#reels" },
   { label: "Vision", href: "#vision" },
   { label: "Contact", href: "#contact" },
 ];
