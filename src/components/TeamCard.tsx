@@ -16,8 +16,8 @@ export default function TeamCard({ member, onOpen }: Props) {
   // subtle 3D tilt toward the cursor
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
-  const springRotateX = useSpring(rotateX, { stiffness: 300, damping: 28 });
-  const springRotateY = useSpring(rotateY, { stiffness: 300, damping: 28 });
+  const springRotateX = useSpring(rotateX, { stiffness: 220, damping: 30, mass: 0.6 });
+  const springRotateY = useSpring(rotateY, { stiffness: 220, damping: 30, mass: 0.6 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     const card = cardRef.current;

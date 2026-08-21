@@ -44,7 +44,7 @@ export default function EventModal({ event, onClose }: Props) {
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 40, opacity: 0 }}
-            transition={{ type: "spring", damping: 26, stiffness: 240, mass: 0.9 }}
+            transition={{ type: "spring", damping: 28, stiffness: 200, mass: 0.85 }}
             className="glass relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-3xl sm:rounded-3xl"
           >
             <button

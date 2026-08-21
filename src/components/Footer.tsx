@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
+import ecellLogo from "../assets/brand/ecell-logo.png";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -96,8 +97,13 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-center text-xs text-white/40">
-        © 2026 DESPU. Built with curiosity, collaboration & ambition.
+      <div className="mx-auto mt-10 flex max-w-7xl flex-col items-center gap-4 border-t border-white/10 pt-8">
+        <div className="flex items-center gap-3 opacity-90">
+          <img src={ecellLogo} alt="E-Cell, DES Pune University" className="h-12 w-auto" />
+        </div>
+        <p className="text-center text-xs text-white/40">
+          © 2026 DESPU. Built with curiosity, collaboration & ambition.
+        </p>
       </div>
     </footer>
   );
