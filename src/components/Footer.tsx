@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Logo from "./Logo";
 import ecellLogo from "../assets/brand/ecell-logo.png";
+import { SOCIAL_LINKS } from "../data/social";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -43,7 +43,7 @@ export default function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <Link to="/" className="flex items-center gap-2.5">
-            <Logo size={28} className="rounded-md" />
+            <img src={ecellLogo} alt="E-Cell, DES Pune University" className="h-10 w-auto" />
             <span className="font-display text-lg font-bold text-white">DESPU</span>
           </Link>
           <p className="mt-2 text-sm text-white/50">
@@ -68,7 +68,7 @@ export default function Footer() {
 
         <div className="flex gap-4">
           <a
-            href="https://instagram.com/ecell_despu"
+            href={SOCIAL_LINKS.instagram}
             target="_blank"
             rel="noreferrer"
             aria-label="Instagram"
@@ -77,7 +77,7 @@ export default function Footer() {
             <InstagramGlyph />
           </a>
           <a
-            href="https://www.linkedin.com/in/despu-ecell-22703b42a"
+            href={SOCIAL_LINKS.linkedin}
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
@@ -86,7 +86,7 @@ export default function Footer() {
             <LinkedinGlyph />
           </a>
           <a
-            href="https://chat.whatsapp.com/despu-ecell-community"
+            href={SOCIAL_LINKS.whatsapp}
             target="_blank"
             rel="noreferrer"
             aria-label="WhatsApp community"
@@ -97,11 +97,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 flex max-w-7xl flex-col items-center gap-4 border-t border-white/10 pt-8">
-        <div className="flex items-center gap-3 opacity-90">
-          <img src={ecellLogo} alt="E-Cell, DES Pune University" className="h-12 w-auto" />
-        </div>
-        <p className="text-center text-xs text-white/40">
+      <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-8 text-center">
+        <p className="text-xs text-white/40">
           © 2026 DESPU. Built with curiosity, collaboration & ambition.
         </p>
       </div>

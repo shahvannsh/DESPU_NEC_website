@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Logo from "./Logo";
+import ecellLogo from "../assets/brand/ecell-logo.png";
 
 const SESSION_KEY = "despu-splash-shown";
 
@@ -35,7 +35,7 @@ export default function Splash() {
               animate={{ scale: [1, 1.06, 1] }}
               transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <Logo size={64} className="rounded-2xl" />
+              <img src={ecellLogo} alt="E-Cell, DES Pune University" className="h-16 w-auto" />
             </motion.div>
             <motion.span
               initial={{ opacity: 0 }}

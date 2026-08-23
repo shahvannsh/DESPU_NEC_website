@@ -2,9 +2,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Send, Copy, Check } from "lucide-react";
 import { EASE } from "../lib/motion";
+import { SOCIAL_LINKS } from "../data/social";
+import { trackEvent } from "../lib/analytics";
 
-const CONTACT_EMAIL = "ecell.despu@gmail.com";
-const WHATSAPP_URL = "https://chat.whatsapp.com/despu-ecell-community";
+const CONTACT_EMAIL = SOCIAL_LINKS.email;
+const WHATSAPP_URL = SOCIAL_LINKS.whatsapp;
 
 function WhatsAppGlyph() {
   return (
@@ -110,6 +112,7 @@ export default function Contact() {
 
             <a
               href={mailtoHref}
+              onClick={() => trackEvent("contact_submit")}
               className="mt-1 inline-flex items-center justify-center gap-2 self-start rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-6 py-2.5 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
             >
               <Send size={15} />
@@ -143,6 +146,7 @@ export default function Contact() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackEvent("whatsapp_click")}
               className="flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-white"
             >
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 text-[#25D366]">

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
 import { events, type DespuEvent } from "../data/events";
 import { EASE } from "../lib/motion";
+import { trackEvent } from "../lib/analytics";
 import EventModal from "./EventModal";
 
 function formatDate(iso: string): string {
@@ -12,6 +13,22 @@ function formatDate(iso: string): string {
 
 export default function Events() {
   const [active, setActive] = useState<DespuEvent | null>(null);
+
+  // Deep-link support: a URL like /#event-eureka-2026 (used by the
+  // announcement bar and can be shared directly) scrolls to that event's
+  // card and opens its detail modal automatically on load.
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash.startsWith("event-")) return;
+    const id = hash.replace("event-", "");
+    const match = events.find((e) => e.id === id);
+    if (match) {
+      requestAnimationFrame(() => {
+        document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "center" });
+        setActive(match);
+      });
+    }
+  }, []);
 
   return (
     <section id="events" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
@@ -53,6 +70,7 @@ export default function Events() {
             {events.map((event, i) => (
               <motion.div
                 key={event.id}
+                id={`event-${event.id}`}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -62,7 +80,7 @@ export default function Events() {
                 {/* poster */}
                 {event.image && (
                   <button
-                    onClick={() => setActive(event)}
+                    onClick={() => { trackEvent("event_open", { title: event.title }); setActive(event); }}
                     className="group relative block aspect-[3/4] w-full overflow-hidden bg-base-800 lg:aspect-auto lg:h-full"
                     aria-label={`View full details for ${event.title}`}
                   >
@@ -109,7 +127,7 @@ export default function Events() {
                       {event.description}
                     </p>
                     <button
-                      onClick={() => setActive(event)}
+                      onClick={() => { trackEvent("event_open", { title: event.title }); setActive(event); }}
                       className="mt-2 text-xs font-medium text-accent-cyan hover:text-accent-cyan/80"
                     >
                       Read full details →

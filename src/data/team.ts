@@ -34,7 +34,8 @@ export interface TeamMember {
   expectations: string;
   skills: string[];
   responsibilities: string[];
-  funFact: string;
+  /** only set once you have a real one — leave the field out otherwise */
+  funFact?: string;
   linkedin?: string;
   github?: string;
   instagram?: string;
@@ -59,7 +60,6 @@ export const team: TeamMember[] = [
       "Drive campus-wide entrepreneurial initiatives",
       "Coordinate national exposure opportunities",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 2,
@@ -79,7 +79,6 @@ export const team: TeamMember[] = [
       "Support technology-driven initiatives",
       "Mentor peers on development practices",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 3,
@@ -99,7 +98,6 @@ export const team: TeamMember[] = [
       "Maintain DESPU's visual identity",
       "Collaborate on creative campus initiatives",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 4,
@@ -119,7 +117,6 @@ export const team: TeamMember[] = [
       "Support decision-making with insights",
       "Help design beginner-friendly sessions",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 5,
@@ -139,7 +136,6 @@ export const team: TeamMember[] = [
       "Run interactive engagement sessions",
       "Highlight student stories and milestones",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 6,
@@ -159,7 +155,6 @@ export const team: TeamMember[] = [
       "Bring analytics into event planning",
       "Craft DESPU's written communication",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 7,
@@ -179,7 +174,6 @@ export const team: TeamMember[] = [
       "Prototype and test user experiences",
       "Collaborate across design and tech",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 8,
@@ -199,7 +193,6 @@ export const team: TeamMember[] = [
       "Manage sponsorship and industry relationships",
       "Keep social platforms active and on-brand",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 9,
@@ -219,7 +212,6 @@ export const team: TeamMember[] = [
       "Manage logistics for events and initiatives",
       "Foster a collaborative team culture",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 10,
@@ -239,7 +231,6 @@ export const team: TeamMember[] = [
       "Lead photography and visual documentation",
       "Coordinate logistics for campus initiatives",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 11,
@@ -259,7 +250,6 @@ export const team: TeamMember[] = [
       "Support campus-wide E-Cell initiatives",
       "Organize workshops and startup discussions",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 13,
@@ -279,7 +269,6 @@ export const team: TeamMember[] = [
       "Guide structured IP and innovation support",
       "Drive strategy and events execution",
     ],
-    funFact: "Information coming soon.",
   },
   {
     id: 14,
@@ -299,7 +288,6 @@ export const team: TeamMember[] = [
       "Craft engaging event pathways",
       "Bring a polished aesthetic to DESPU initiatives",
     ],
-    funFact: "Information coming soon.",
   },
 ];
 

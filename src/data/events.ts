@@ -4,6 +4,8 @@ export interface DespuEvent {
   /** ISO date string, e.g. "2026-08-27" */
   date: string;
   location?: string;
+  /** e.g. "Pitching Competition", "Workshop", "Bootcamp" */
+  type?: string;
   /** short blurb shown on the card */
   description: string;
   /** full poster message shown when the poster is clicked */
@@ -13,6 +15,18 @@ export interface DespuEvent {
   image?: string;
   /** external registration link, if still open */
   registerUrl?: string;
+  /** key takeaways/highlights — mainly for completed events */
+  highlights?: string[];
+  /**
+   * What actually resulted from this event — ranking, award, milestone.
+   * Only fill in once it's real; leave undefined until then.
+   */
+  outcome?: string;
+  /**
+   * Photos from the event. Leave empty until you have them — the gallery
+   * is hidden entirely rather than shown empty.
+   */
+  gallery?: string[];
   /**
    * Instagram Reel/Post URLs. Add as many as you have — they render as a
    * horizontal, side-by-side scrollable row of real embeds. Leave empty

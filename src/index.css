@@ -6,6 +6,8 @@
 
 html, body, #root { background: #05070d; }
 
+html { --announcement-h: 0px; }
+
 body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;

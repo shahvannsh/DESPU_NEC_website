@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
 import Magnetic from "./Magnetic";
+import { SOCIAL_LINKS } from "../data/social";
 
 export default function CTA() {
   return (
@@ -13,23 +14,33 @@ export default function CTA() {
         className="glass mx-auto flex max-w-4xl flex-col items-center gap-6 rounded-3xl px-8 py-16 text-center"
       >
         <h2 className="font-display text-2xl font-semibold text-white sm:text-3xl">
-          Want to Know the Minds Behind DESPU?
+          Interested In What We're Building?
         </h2>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Magnetic>
             <a
-              href="#team"
+              href="#journey"
               className="rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-7 py-3 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
             >
-              Meet the Team →
+              Follow Our Journey →
             </a>
           </Magnetic>
           <Magnetic>
             <a
-              href="#journey"
+              href="#team"
               className="rounded-full border border-white/15 px-7 py-3 text-sm font-medium text-white/80 transition-colors hover:border-white/30 hover:text-white"
             >
-              Follow Our Journey
+              Connect With The Team
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href={SOCIAL_LINKS.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-white/15 px-7 py-3 text-sm font-medium text-white/80 transition-colors hover:border-white/30 hover:text-white"
+            >
+              Join Our Community
             </a>
           </Magnetic>
         </div>

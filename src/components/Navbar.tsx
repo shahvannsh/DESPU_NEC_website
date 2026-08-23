@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search } from "lucide-react";
-import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
+import ecellLogo from "../assets/brand/ecell-logo.png";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -73,7 +73,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      style={{ top: "var(--announcement-h, 0px)" }}
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? "glass py-3" : "bg-base-950/40 py-5 backdrop-blur-sm"
       }`}
     >
@@ -82,7 +83,7 @@ export default function Navbar() {
         className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10"
       >
         <Link to="/" className="flex items-center gap-3 leading-none">
-          <Logo size={34} className="rounded-lg" />
+          <img src={ecellLogo} alt="E-Cell, DES Pune University" className="h-10 w-auto" />
           <span className="flex flex-col">
             <span className="font-display text-xl font-bold tracking-tight text-white">
               DESPU

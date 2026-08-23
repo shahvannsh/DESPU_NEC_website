@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
@@ -32,8 +32,29 @@ interface Props {
 
 export default function InstagramEmbed({ url }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [nearViewport, setNearViewport] = useState(false);
+
+  // Defer loading Instagram's embed script (a sizeable third-party bundle)
+  // until this specific embed is actually about to scroll into view,
+  // instead of every embed on the page firing it off immediately on mount.
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setNearViewport(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "400px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
+    if (!nearViewport) return;
     let cancelled = false;
     loadInstagramScript().then(() => {
       if (!cancelled) window.instgrm?.Embeds.process();
@@ -41,7 +62,7 @@ export default function InstagramEmbed({ url }: Props) {
     return () => {
       cancelled = true;
     };
-  }, [url]);
+  }, [url, nearViewport]);
 
   return (
     <div ref={containerRef} className="mx-auto w-full max-w-[360px] overflow-hidden rounded-xl">

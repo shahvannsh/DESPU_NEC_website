@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, MapPin, Calendar, ExternalLink } from "lucide-react";
+import { X, MapPin, Calendar, ExternalLink, CheckCircle2 } from "lucide-react";
 import type { DespuEvent } from "../data/events";
 
 interface Props {
@@ -15,16 +15,23 @@ function formatDate(iso: string): string {
 }
 
 export default function EventModal({ event, onClose }: Props) {
+  const [lightbox, setLightbox] = useState<string | null>(null);
+
   useEffect(() => {
     if (!event) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (lightbox) setLightbox(null);
+        else onClose();
+      }
+    };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [event, onClose]);
+  }, [event, onClose, lightbox]);
 
   return createPortal(
     <AnimatePresence>
@@ -86,6 +93,56 @@ export default function EventModal({ event, onClose }: Props) {
                 {event.fullMessage || event.description}
               </p>
 
+              {event.outcome && (
+                <div className="rounded-xl border border-accent-cyan/20 bg-accent-cyan/5 p-4">
+                  <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent-cyan">
+                    Outcome
+                  </h4>
+                  <p className="text-sm text-white/80">{event.outcome}</p>
+                </div>
+              )}
+
+              {event.highlights && event.highlights.length > 0 && (
+                <div>
+                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-white/40">
+                    Highlights
+                  </h4>
+                  <ul className="space-y-1.5">
+                    {event.highlights.map((h) => (
+                      <li key={h} className="flex items-start gap-2 text-sm text-white/70">
+                        <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-accent-cyan" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {event.gallery && event.gallery.length > 0 && (
+                <div>
+                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-white/40">
+                    Photos
+                  </h4>
+                  <div className="grid grid-cols-3 gap-2">
+                    {event.gallery.map((src, i) => (
+                      <button
+                        key={src}
+                        onClick={() => setLightbox(src)}
+                        className="aspect-square overflow-hidden rounded-lg bg-base-800 transition-opacity hover:opacity-80"
+                        aria-label={`View photo ${i + 1} from ${event.title}`}
+                      >
+                        <img
+                          src={src}
+                          alt={`${event.title} photo ${i + 1}`}
+                          loading="lazy"
+                          className="h-full w-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {event.registerUrl && (
                 <a
                   href={event.registerUrl}
@@ -99,6 +156,35 @@ export default function EventModal({ event, onClose }: Props) {
               )}
             </div>
           </motion.div>
+
+          {/* photo lightbox */}
+          <AnimatePresence>
+            {lightbox && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[110] flex items-center justify-center bg-black/95 p-6"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightbox(null);
+                }}
+              >
+                <button
+                  onClick={() => setLightbox(null)}
+                  aria-label="Close photo"
+                  className="absolute right-4 top-4 z-10 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
+                >
+                  <X size={20} />
+                </button>
+                <img
+                  src={lightbox}
+                  alt=""
+                  className="max-h-full max-w-full rounded-lg object-contain"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       )}
     </AnimatePresence>,

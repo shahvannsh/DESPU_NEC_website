@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, User, ExternalLink } from "lucide-react";
 import { slugify, type TeamMember } from "../data/team";
+import { trackEvent } from "../lib/analytics";
 import ProgressiveImage from "./ProgressiveImage";
 
 interface Props {
@@ -45,6 +46,7 @@ export default function TeamCard({ member, onOpen }: Props) {
     // FLIP animation Framer runs on the shared layoutId, causing a jump
     rotateX.set(0);
     rotateY.set(0);
+    trackEvent("team_member_open", { name: member.name });
     onOpen();
   };
 

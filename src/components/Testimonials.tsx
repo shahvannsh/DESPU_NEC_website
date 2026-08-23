@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
+import { Quote, Link2 } from "lucide-react";
 import { EASE } from "../lib/motion";
-
-const placeholders = [1, 2, 3];
+import { testimonials } from "../data/testimonials";
 
 export default function Testimonials() {
+  // Hidden entirely until real testimonials exist — no placeholder cards.
+  if (testimonials.length === 0) return null;
+
   return (
     <section className="relative bg-base-950 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-6xl">
@@ -24,25 +26,47 @@ export default function Testimonials() {
         </motion.div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-          {placeholders.map((p, i) => (
+          {testimonials.map((t, i) => (
             <motion.div
-              key={p}
+              key={t.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, ease: EASE, delay: i * 0.08 }}
-              className="glass flex flex-col gap-4 rounded-2xl border-dashed p-6"
+              className="glass flex flex-col gap-4 rounded-2xl p-6"
             >
               <Quote className="text-accent-cyan/40" size={22} />
-              <p className="text-sm italic leading-relaxed text-white/40">
-                Testimonial coming soon — mentor and judge feedback from NEC 2026 will
-                appear here.
-              </p>
+              <p className="text-sm leading-relaxed text-white/70">"{t.quote}"</p>
               <div className="mt-auto flex items-center gap-3 border-t border-white/10 pt-4">
-                <div className="h-9 w-9 rounded-full border border-white/10 bg-white/5" />
-                <div>
-                  <div className="h-2.5 w-24 rounded bg-white/10" />
-                  <div className="mt-1.5 h-2 w-16 rounded bg-white/5" />
+                {t.image ? (
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    className="h-9 w-9 rounded-full object-cover"
+                  />
+                ) : (
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-xs font-semibold text-white/50">
+                    {t.name.charAt(0)}
+                  </div>
+                )}
+                <div className="flex-1">
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-sm font-medium text-white">{t.name}</p>
+                    {t.linkedin && (
+                      <a
+                        href={t.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${t.name} on LinkedIn`}
+                        className="text-white/40 hover:text-white"
+                      >
+                        <Link2 size={13} />
+                      </a>
+                    )}
+                  </div>
+                  <p className="text-xs text-white/45">
+                    {t.designation}, {t.organization}
+                  </p>
                 </div>
               </div>
             </motion.div>

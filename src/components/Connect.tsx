@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
+import { SOCIAL_LINKS } from "../data/social";
 
-const INSTAGRAM_URL = "https://instagram.com/ecell_despu";
-const LINKEDIN_URL = "https://www.linkedin.com/in/despu-ecell-22703b42a";
+const INSTAGRAM_URL = SOCIAL_LINKS.instagram;
+const LINKEDIN_URL = SOCIAL_LINKS.linkedin;
 const QR_SRC = `https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=10&data=${encodeURIComponent(
   INSTAGRAM_URL
 )}`;

@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "./lib/motion";
 import Navbar from "./components/Navbar";
+import AnnouncementBar from "./components/AnnouncementBar";
 import ScrollProgress from "./components/ScrollProgress";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
@@ -11,8 +12,20 @@ import CustomCursor from "./components/CustomCursor";
 import Splash from "./components/Splash";
 import EasterEgg from "./components/EasterEgg";
 import Home from "./pages/Home";
-import TeamPage from "./pages/TeamPage";
-import NotFound from "./pages/NotFound";
+
+// Code-split routes people don't land on immediately — the home page
+// (and everything the navbar links to) loads eagerly since it's what
+// nearly every visitor sees first; these load on demand instead.
+const TeamPage = lazy(() => import("./pages/TeamPage"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+function RouteFallback() {
+  return (
+    <div className="flex min-h-[60vh] w-full items-center justify-center">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/15 border-t-accent-cyan" />
+    </div>
+  );
+}
 
 function ScrollToHash() {
   const { hash, pathname } = useLocation();
@@ -43,8 +56,10 @@ export default function App() {
         Skip to content
       </a>
       <ScrollProgress />
+      <AnnouncementBar />
       <Navbar />
       <ScrollToHash />
+      <div style={{ height: "var(--announcement-h, 0px)" }} aria-hidden="true" />
       <main id="main-content">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
@@ -70,7 +85,9 @@ export default function App() {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.35, ease: EASE }}
                 >
-                  <TeamPage />
+                  <Suspense fallback={<RouteFallback />}>
+                    <TeamPage />
+                  </Suspense>
                 </motion.div>
               }
             />
@@ -83,7 +100,9 @@ export default function App() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3, ease: EASE }}
                 >
-                  <NotFound />
+                  <Suspense fallback={<RouteFallback />}>
+                    <NotFound />
+                  </Suspense>
                 </motion.div>
               }
             />

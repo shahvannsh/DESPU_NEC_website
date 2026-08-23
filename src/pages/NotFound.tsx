@@ -19,18 +19,18 @@ export default function NotFound() {
           404
         </span>
         <h1 className="mt-4 font-display text-xl font-semibold text-white sm:text-2xl">
-          This page hasn't been built yet.
+          Looks like this idea doesn't exist yet.
         </h1>
         <p className="mt-3 max-w-sm text-sm text-white/55">
-          The page you're looking for doesn't exist, or the link might be
-          outdated. Let's get you back on track.
+          Let's build the next one. The page you're looking for doesn't exist, or the
+          link might be outdated.
         </p>
         <Link
           to="/"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-6 py-2.5 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
         >
           <ArrowLeft size={15} />
-          Back to Home
+          Back to DESPU
         </Link>
       </motion.div>
     </div>

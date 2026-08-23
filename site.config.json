@@ -1,0 +1,4 @@
+{
+  "siteUrl": "https://despu-nec.vercel.app",
+  "_note": "PLACEHOLDER — replace with the real domain once you have one, then run `npm run generate:seo` (or just `npm run build`, which runs it automatically) to regenerate sitemap.xml, robots.txt, and the canonical/OG URLs in index.html."
+}

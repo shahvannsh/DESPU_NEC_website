@@ -123,12 +123,14 @@ export default function TeamModal({ member, onClose }: Props) {
                   </ul>
                 </div>
 
-                <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40">
-                    Fun Fact
-                  </h4>
-                  <p className="mt-2 text-sm text-white/70">{member.funFact}</p>
-                </div>
+                {member.funFact && (
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40">
+                      Fun Fact
+                    </h4>
+                    <p className="mt-2 text-sm text-white/70">{member.funFact}</p>
+                  </div>
+                )}
 
                 {(member.linkedin || member.github || member.instagram) && (
                   <div className="flex gap-4 border-t border-white/10 pt-5">
