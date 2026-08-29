@@ -1,0 +1,14 @@
+.text-block {
+  display: block;
+}
+
+.text-block p {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.text-block .char {
+  will-change: transform;
+  display: inline-block;
+}

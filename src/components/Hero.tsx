@@ -2,6 +2,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { EASE } from "../lib/motion";
 import Magnetic from "./Magnetic";
+import ShinyText from "./reactbits/ShinyText";
+import BlurText from "./reactbits/BlurText";
+import TextCursor from "./reactbits/TextCursor";
 
 const TAGLINE_WORDS = ["Ideas.", "People.", "Impact."];
 
@@ -65,6 +68,10 @@ export default function Hero() {
         ))}
       </svg>
 
+      <div className="pointer-events-auto absolute inset-x-0 top-0 z-20 hidden h-1/2 lg:block">
+        <TextCursor text="✦" spacing={140} maxPoints={4} exitDuration={0.4} />
+      </div>
+
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-6 text-center"
@@ -75,7 +82,7 @@ export default function Hero() {
           transition={{ duration: 0.69, ease: EASE }}
           className="mb-6 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-white/70"
         >
-          National Entrepreneurship Challenge 2026
+          <ShinyText text="National Entrepreneurship Challenge 2026" speed={2.4} color="rgba(255,255,255,0.55)" />
         </motion.span>
 
         <motion.h1
@@ -111,15 +118,20 @@ export default function Hero() {
           ))}
         </motion.p>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
           className="mt-5 max-w-xl text-sm text-white/60 sm:text-base"
         >
-          A team of young entrepreneurs participating in the National Entrepreneurship
-          Challenge, transforming ideas into meaningful solutions.
-        </motion.p>
+          <BlurText
+            text="A team of young entrepreneurs participating in the National Entrepreneurship Challenge, transforming ideas into meaningful solutions."
+            animateBy="words"
+            direction="top"
+            delay={22}
+            className="justify-center text-sm text-white/60 sm:text-base"
+          />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}

@@ -11,6 +11,7 @@ import CommandPalette from "./components/CommandPalette";
 import CustomCursor from "./components/CustomCursor";
 import Splash from "./components/Splash";
 import EasterEgg from "./components/EasterEgg";
+import ClickSpark from "./components/reactbits/ClickSpark";
 import Home from "./pages/Home";
 
 // Code-split routes people don't land on immediately — the home page
@@ -48,6 +49,7 @@ function ScrollToHash() {
 export default function App() {
   const location = useLocation();
   return (
+    <ClickSpark sparkColor="#22d3ee" sparkSize={8} sparkRadius={18} sparkCount={6} duration={420}>
     <div className="min-h-screen bg-base-950 font-body">
       <a
         href="#main-content"
@@ -116,5 +118,6 @@ export default function App() {
       <Splash />
       <EasterEgg />
     </div>
+    </ClickSpark>
   );
 }

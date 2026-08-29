@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
 import Magnetic from "./Magnetic";
 import { SOCIAL_LINKS } from "../data/social";
+import WarpText from "./reactbits/WarpText";
 
 export default function CTA() {
   return (
@@ -13,9 +14,18 @@ export default function CTA() {
         transition={{ duration: 0.69, ease: EASE }}
         className="glass mx-auto flex max-w-4xl flex-col items-center gap-6 rounded-3xl px-8 py-16 text-center"
       >
-        <h2 className="font-display text-2xl font-semibold text-white sm:text-3xl">
-          Interested In What We're Building?
-        </h2>
+        <h2 className="sr-only">Interested In What We're Building?</h2>
+        <div className="w-full" style={{ height: 90 }} aria-hidden="true">
+          <WarpText
+            text="Interested In What We're Building?"
+            color="#ffffff"
+            fontSize="clamp(1.3rem, 3.2vw, 1.9rem)"
+            fontWeight={600}
+            warpStrength={0.05}
+            pointerStrength={0.25}
+            style={{ minHeight: 0, height: "100%" }}
+          />
+        </div>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Magnetic>
             <a

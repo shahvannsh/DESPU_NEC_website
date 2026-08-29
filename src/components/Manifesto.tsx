@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { manifesto } from "../data/manifesto";
+import ScrambledText from "./reactbits/ScrambledText";
 
 export default function Manifesto() {
   if (manifesto.length === 0) return null;
@@ -22,7 +23,7 @@ export default function Manifesto() {
 
         <div className="mt-8 flex flex-col gap-4">
           {manifesto.map((line, i) => (
-            <motion.p
+            <motion.div
               key={line.text}
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -30,8 +31,10 @@ export default function Manifesto() {
               transition={{ duration: 0.5, ease: EASE, delay: i * 0.07 }}
               className="font-display text-xl font-medium text-white/85 sm:text-2xl"
             >
-              {line.text}
-            </motion.p>
+              <ScrambledText radius={90} duration={1} speed={0.6}>
+                {line.text}
+              </ScrambledText>
+            </motion.div>
           ))}
         </div>
       </div>

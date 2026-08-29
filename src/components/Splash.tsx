@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ecellLogo from "../assets/brand/ecell-logo.png";
+import SplitFlapText from "./reactbits/SplitFlapText";
 
 const SESSION_KEY = "despu-splash-shown";
 
@@ -43,7 +44,16 @@ export default function Splash() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-white/50"
             >
-              DESPU
+              <SplitFlapText
+                words={["DESPU"]}
+                loop={false}
+                padTo={5}
+                fontSize={14}
+                tileColor="#0a0a0f"
+                textColor="rgba(255,255,255,0.6)"
+                gap={2}
+                tileRadius={3}
+              />
             </motion.span>
           </motion.div>
         </motion.div>

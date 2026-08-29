@@ -1,6 +1,7 @@
 import { motion, useInView, animate } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { useEffect, useRef, useState } from "react";
+import DecryptedText from "./reactbits/DecryptedText";
 
 const stats = [
   { value: 13, suffix: "", label: "Team Members" },
@@ -39,7 +40,7 @@ export default function About() {
             transition={{ duration: 0.69, ease: EASE }}
           >
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
-              About DESPU
+              <DecryptedText text="About DESPU" animateOn="view" speed={35} maxIterations={12} />
             </span>
             <h2 className="mt-4 font-display text-3xl font-semibold leading-tight text-white sm:text-4xl">
               More Than a Team.

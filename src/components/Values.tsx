@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { values } from "../data/values";
+import DecryptedText from "./reactbits/DecryptedText";
 
 export default function Values() {
   return (
@@ -14,7 +15,7 @@ export default function Values() {
           className="mb-14 text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
-            What Drives Us
+            <DecryptedText text="What Drives Us" animateOn="view" speed={35} maxIterations={12} />
           </span>
           <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             Our Values

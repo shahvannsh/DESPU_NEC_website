@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { EASE } from "../lib/motion";
+import ParticleText from "../components/reactbits/ParticleText";
 
 export default function NotFound() {
   return (
@@ -15,9 +16,17 @@ export default function NotFound() {
         transition={{ duration: 0.6, ease: EASE }}
         className="relative z-10 flex flex-col items-center text-center"
       >
-        <span className="font-display text-8xl font-bold text-gradient sm:text-9xl">
-          404
-        </span>
+        <div className="h-40 w-full max-w-md sm:h-48">
+          <ParticleText
+            text="404"
+            color="#ffffff"
+            highlightColor="#22d3ee"
+            fontSize="clamp(4rem, 18vw, 7rem)"
+            fontWeight={800}
+            trigger="mount"
+            glow
+          />
+        </div>
         <h1 className="mt-4 font-display text-xl font-semibold text-white sm:text-2xl">
           Looks like this idea doesn't exist yet.
         </h1>

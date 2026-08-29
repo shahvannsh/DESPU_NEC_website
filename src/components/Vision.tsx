@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
+import Aurora from "./reactbits/Aurora";
 
 export default function Vision() {
   return (
@@ -8,6 +9,9 @@ export default function Vision() {
       style={{ scrollMarginTop: "6rem" }}
       className="relative flex min-h-[70vh] items-center overflow-hidden bg-base-950 px-6 py-28 lg:px-10"
     >
+      <div className="absolute inset-0 opacity-70">
+        <Aurora colorStops={["#22d3ee", "#8b5cf6", "#3b82f6"]} amplitude={0.8} blend={0.55} speed={0.4} />
+      </div>
       <div className="absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-accent-violet/15 via-accent-blue/10 to-transparent blur-3xl" />
       <div className="absolute inset-0 bg-grid bg-[size:64px_64px] opacity-20 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black,transparent)]" />
 

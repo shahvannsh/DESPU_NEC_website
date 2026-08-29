@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { story } from "../data/story";
+import DecryptedText from "./reactbits/DecryptedText";
 
 export default function Story() {
   if (story.length === 0) return null;
@@ -16,7 +17,7 @@ export default function Story() {
           className="mb-14 text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
-            The DESPU Story
+            <DecryptedText text="The DESPU Story" animateOn="view" speed={35} maxIterations={12} />
           </span>
           <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             How We Got Here
