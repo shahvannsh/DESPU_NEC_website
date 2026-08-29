@@ -15,6 +15,7 @@ interface ScrambledTextProps {
   className?: string;
   style?: React.CSSProperties;
   children: ReactNode;
+  autoPlayOnView?: boolean;
 }
 
 const ScrambledText = ({
@@ -25,6 +26,7 @@ const ScrambledText = ({
   className = '',
   style = {},
   children,
+  autoPlayOnView = false,
 }: ScrambledTextProps) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const charsRef = useRef<Element[]>([]);
@@ -48,6 +50,35 @@ const ScrambledText = ({
       });
     });
 
+    const scrambleOne = (c: Element, dur: number) => {
+      gsap.to(c, {
+        overwrite: true,
+        duration: dur,
+        scrambleText: {
+          text: (c as HTMLElement).dataset.content || '',
+          chars: scrambleChars,
+          speed,
+        },
+        ease: 'none',
+      });
+    };
+
+    let io: IntersectionObserver | undefined;
+    if (autoPlayOnView) {
+      io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            charsRef.current.forEach((c, i) => {
+              gsap.delayedCall((i / charsRef.current.length) * 0.5, () => scrambleOne(c, duration));
+            });
+            io?.disconnect();
+          }
+        },
+        { threshold: 0.4 }
+      );
+      io.observe(rootRef.current);
+    }
+
     const handleMove = (e: PointerEvent) => {
       charsRef.current.forEach((c) => {
         const { left, top, width, height } = c.getBoundingClientRect();
@@ -56,16 +87,7 @@ const ScrambledText = ({
         const dist = Math.hypot(dx, dy);
 
         if (dist < radius) {
-          gsap.to(c, {
-            overwrite: true,
-            duration: duration * (1 - dist / radius),
-            scrambleText: {
-              text: (c as HTMLElement).dataset.content || '',
-              chars: scrambleChars,
-              speed,
-            },
-            ease: 'none',
-          });
+          scrambleOne(c, duration * (1 - dist / radius));
         }
       });
     };
@@ -74,10 +96,11 @@ const ScrambledText = ({
     el.addEventListener('pointermove', handleMove);
 
     return () => {
+      io?.disconnect();
       el.removeEventListener('pointermove', handleMove);
       split.revert();
     };
-  }, [radius, duration, speed, scrambleChars]);
+  }, [radius, duration, speed, scrambleChars, autoPlayOnView]);
 
   return (
     <div ref={rootRef} className={`text-block ${className}`} style={style}>

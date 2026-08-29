@@ -2,6 +2,8 @@ import { motion, useInView, animate } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { useEffect, useRef, useState } from "react";
 import DecryptedText from "./reactbits/DecryptedText";
+import MaskedHeading from "./reactbits/MaskedHeading";
+import eurekaImg from "../assets/events/eureka-2026.webp";
 
 const stats = [
   { value: 13, suffix: "", label: "Team Members" },
@@ -42,9 +44,17 @@ export default function About() {
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
               <DecryptedText text="About DESPU" animateOn="view" speed={35} maxIterations={12} />
             </span>
-            <h2 className="mt-4 font-display text-3xl font-semibold leading-tight text-white sm:text-4xl">
-              More Than a Team.
-              <br />A Movement.
+            <h2 className="mt-4">
+              <MaskedHeading
+                text="More Than a Team. A Movement."
+                src={eurekaImg}
+                tag="span"
+                align="left"
+                textScale={0.058}
+                weight={600}
+                className="font-display leading-tight sm:text-4xl"
+                style={{ display: "inline-block" }}
+              />
             </h2>
             <p className="mt-6 text-sm leading-relaxed text-white/60 sm:text-base">
               DESPU brings together students who believe entrepreneurship isn't reserved

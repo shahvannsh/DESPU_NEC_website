@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { story } from "../data/story";
 import DecryptedText from "./reactbits/DecryptedText";
+import MaskedHeading from "./reactbits/MaskedHeading";
+import eurekaImg from "../assets/events/eureka-2026.webp";
 
 export default function Story() {
   if (story.length === 0) return null;
@@ -19,8 +21,15 @@ export default function Story() {
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
             <DecryptedText text="The DESPU Story" animateOn="view" speed={35} maxIterations={12} />
           </span>
-          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
-            How We Got Here
+          <h2 className="mt-4">
+            <MaskedHeading
+              text="How We Got Here"
+              src={eurekaImg}
+              tag="span"
+              textScale={0.09}
+              className="font-display text-3xl font-semibold sm:text-4xl"
+              style={{ display: "inline-block" }}
+            />
           </h2>
         </motion.div>
 

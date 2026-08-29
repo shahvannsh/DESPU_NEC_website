@@ -1,6 +1,8 @@
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Story from "../components/Story";
+import ScrollExpand from "../components/reactbits/ScrollExpand";
+import eurekaImg from "../assets/events/eureka-2026.webp";
 import WhatWereBuilding from "../components/WhatWereBuilding";
 import ProblemSolutionImpact from "../components/ProblemSolutionImpact";
 import WhyDespu from "../components/WhyDespu";
@@ -27,6 +29,24 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <section className="relative bg-base-950 px-6 py-12 lg:px-10">
+        <div className="mx-auto h-[70vh] max-w-6xl overflow-hidden rounded-3xl" style={{ height: "70vh" }}>
+          <ScrollExpand
+            src={eurekaImg}
+            alt="DESPU at Eureka 2026"
+            title="Built on the ground"
+            scrollHint="Scroll inside"
+            useWindowScroll={false}
+          >
+            <h3 className="font-display text-2xl font-semibold text-white sm:text-3xl">
+              Every session, every pitch, every late night.
+            </h3>
+            <p className="mt-3 max-w-md text-sm text-white/70">
+              This is DESPU in motion — building toward the National Entrepreneurship Challenge.
+            </p>
+          </ScrollExpand>
+        </div>
+      </section>
       <About />
       <Story />
       <WhatWereBuilding />

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import ImageTrail from "./reactbits/ImageTrail";
+import { team } from "../data/team";
 
 const KONAMI = [
   "ArrowUp",
@@ -83,6 +85,12 @@ export default function EasterEgg() {
     <AnimatePresence>
       {triggered && (
         <div className="pointer-events-none fixed inset-0 z-[300] overflow-hidden">
+          <div className="pointer-events-auto absolute inset-0">
+            <ImageTrail
+              items={team.slice(0, 8).map((m) => m.image).filter(Boolean) as string[]}
+              variant={1}
+            />
+          </div>
           {pieces.map((p) => (
             <motion.div
               key={p.id}

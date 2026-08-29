@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { getMemberBySlug, team, slugify } from "../data/team";
 import { EASE } from "../lib/motion";
-import ProgressiveImage from "../components/ProgressiveImage";
+import RippleDistortion from "../components/reactbits/RippleDistortion";
 
 export default function TeamPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -140,10 +140,14 @@ export default function TeamPage() {
           <div className="grid gap-0 sm:grid-cols-[320px_1fr]">
             <div className="relative aspect-square w-full overflow-hidden bg-base-800 sm:aspect-auto sm:h-full sm:min-h-[420px]">
               {member.image ? (
-                <ProgressiveImage
+                <RippleDistortion
                   src={member.image}
-                  placeholder={member.imagePlaceholder}
-                  alt={`${member.name}, ${member.role}`}
+                  grayscale={false}
+                  strength={0.12}
+                  rings={3}
+                  trigger="hover"
+                  quality="medium"
+                  tintAmount={0}
                 />
               ) : (
                 <div className="flex h-full w-full items-center justify-center text-white/20">

@@ -31,7 +31,7 @@ export default function Manifesto() {
               transition={{ duration: 0.5, ease: EASE, delay: i * 0.07 }}
               className="font-display text-xl font-medium text-white/85 sm:text-2xl"
             >
-              <ScrambledText radius={90} duration={1} speed={0.6}>
+              <ScrambledText radius={90} duration={1} speed={0.6} autoPlayOnView>
                 {line.text}
               </ScrambledText>
             </motion.div>
