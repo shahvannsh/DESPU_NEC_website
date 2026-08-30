@@ -186,6 +186,18 @@ export default function EventModal({ event, onClose }: Props) {
                   <ExternalLink size={14} />
                 </a>
               )}
+
+              {event.participationUrl && (
+                <a
+                  href={event.participationUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white/85 transition-colors hover:border-accent-cyan/50 hover:text-accent-cyan"
+                >
+                  Participant resources
+                  <ExternalLink size={14} />
+                </a>
+              )}
             </div>
           </motion.div>
 

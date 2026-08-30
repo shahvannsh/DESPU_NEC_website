@@ -15,6 +15,8 @@ export interface DespuEvent {
   image?: string;
   /** external registration link, if still open */
   registerUrl?: string;
+  /** shared folder for participant-facing event material */
+  participationUrl?: string;
   /** key takeaways/highlights — mainly for completed events */
   highlights?: string[];
   /**
@@ -140,6 +142,8 @@ Vannsh Shah – 86689 95892
 🚀 Pitch it. Get noticed. Take it to the national stage.`,
     registerUrl:
       "https://docs.google.com/forms/d/1CXoe_BTgxd3AcZszuJosSvTQDqrVJtUPJZnY0A0vUhw/edit?ts=6a79fc7a",
+    participationUrl:
+      "https://drive.google.com/drive/folders/1b-o177eWwxIfuZn-RuIQ6hHgxZ2Dw4yp",
     videoGallery: [
   { src: "/videos/eureka-2026/clip-01.mp4", poster: eurekaClip01Poster },
   { src: "/videos/eureka-2026/clip-02.mp4", poster: eurekaClip02Poster },

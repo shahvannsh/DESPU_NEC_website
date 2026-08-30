@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Film } from "lucide-react";
+import { Calendar, MapPin, Film, ExternalLink } from "lucide-react";
 import { events, type DespuEvent } from "../data/events";
 import { EASE } from "../lib/motion";
 import { trackEvent } from "../lib/analytics";
@@ -138,6 +138,17 @@ export default function Events() {
                     >
                       Read full details →
                     </button>
+                    {event.participationUrl && (
+                      <a
+                        href={event.participationUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-white/75 transition-colors hover:text-accent-cyan"
+                      >
+                        Participant resources
+                        <ExternalLink size={12} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
