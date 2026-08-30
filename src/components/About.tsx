@@ -44,6 +44,7 @@ export default function About() {
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
               <DecryptedText text="About DESPU" animateOn="view" speed={35} maxIterations={12} />
             </span>
+            <div className="mt-3 h-px w-10 bg-gradient-to-r from-accent-cyan/60 to-transparent" />
             <h2 className="mt-4">
               <MaskedHeading
                 text="More Than a Team. A Movement."

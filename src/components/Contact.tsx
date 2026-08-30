@@ -35,7 +35,7 @@ export default function Contact() {
   )}`;
 
   return (
-    <section id="contact" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
+    <section id="contact" className="relative scroll-mt-24 bg-base-900 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -113,7 +113,7 @@ export default function Contact() {
             <a
               href={mailtoHref}
               onClick={() => trackEvent("contact_submit")}
-              className="mt-1 inline-flex items-center justify-center gap-2 self-start rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-6 py-2.5 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
+              className="mt-1 inline-flex items-center justify-center gap-2 self-start btn-primary-glow rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-6 py-2.5 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
             >
               <Send size={15} />
               Send Message

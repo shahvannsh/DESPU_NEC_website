@@ -14,7 +14,7 @@ export default function ProblemSolutionImpact() {
   ];
 
   return (
-    <section className="relative bg-base-950 px-6 py-28 lg:px-10">
+    <section className="relative bg-base-900 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

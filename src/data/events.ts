@@ -28,6 +28,12 @@ export interface DespuEvent {
    */
   gallery?: string[];
   /**
+   * Short video clips from the event (local files, not Instagram). Each
+   * entry needs a `src` (served from /public/videos/...) and a `poster`
+   * thumbnail (an imported image) shown before playback.
+   */
+  videoGallery?: { src: string; poster: string }[];
+  /**
    * Instagram Reel/Post URLs. Add as many as you have — they render as a
    * horizontal, side-by-side scrollable row of real embeds. Leave empty
    * until reels are posted; the card will show a placeholder instead.
@@ -44,6 +50,26 @@ export interface DespuEvent {
  * 4. Add reel URLs to reelUrls as they get posted — no limit, they scroll.
  */
 import eurekaPoster from "../assets/events/eureka-2026.webp";
+import eurekaClip01Poster from "../assets/events/eureka-clips/clip-01.webp";
+import eurekaClip02Poster from "../assets/events/eureka-clips/clip-02.webp";
+import eurekaClip03Poster from "../assets/events/eureka-clips/clip-03.webp";
+import eurekaClip04Poster from "../assets/events/eureka-clips/clip-04.webp";
+import eurekaClip05Poster from "../assets/events/eureka-clips/clip-05.webp";
+import eurekaClip06Poster from "../assets/events/eureka-clips/clip-06.webp";
+import eurekaClip07Poster from "../assets/events/eureka-clips/clip-07.webp";
+import eurekaClip08Poster from "../assets/events/eureka-clips/clip-08.webp";
+import eurekaClip09Poster from "../assets/events/eureka-clips/clip-09.webp";
+import eurekaClip10Poster from "../assets/events/eureka-clips/clip-10.webp";
+import eurekaClip11Poster from "../assets/events/eureka-clips/clip-11.webp";
+import eurekaClip12Poster from "../assets/events/eureka-clips/clip-12.webp";
+import eurekaClip13Poster from "../assets/events/eureka-clips/clip-13.webp";
+import eurekaClip14Poster from "../assets/events/eureka-clips/clip-14.webp";
+import eurekaClip15Poster from "../assets/events/eureka-clips/clip-15.webp";
+import eurekaClip16Poster from "../assets/events/eureka-clips/clip-16.webp";
+import eurekaClip17Poster from "../assets/events/eureka-clips/clip-17.webp";
+import eurekaClip18Poster from "../assets/events/eureka-clips/clip-18.webp";
+import eurekaClip19Poster from "../assets/events/eureka-clips/clip-19.webp";
+import eurekaClip20Poster from "../assets/events/eureka-clips/clip-20.webp";
 
 export const events: DespuEvent[] = [
   {
@@ -51,7 +77,7 @@ export const events: DespuEvent[] = [
     title: "EUREKA! — Pitching Competition",
     date: "2026-08-27",
     location: "L-107, Lohia Complex, DES Pune University, Deccan Gymkhana, Pune",
-    status: "upcoming",
+    status: "completed",
     image: eurekaPoster,
     description:
       "Asia's largest business model competition. Pitch your idea, get expert feedback, and take it to the national stage.",
@@ -93,6 +119,28 @@ Vannsh Shah – 86689 95892
 🚀 Pitch it. Get noticed. Take it to the national stage.`,
     registerUrl:
       "https://docs.google.com/forms/d/1CXoe_BTgxd3AcZszuJosSvTQDqrVJtUPJZnY0A0vUhw/edit?ts=6a79fc7a",
+    videoGallery: [
+  { src: "/videos/eureka-2026/clip-01.mp4", poster: eurekaClip01Poster },
+  { src: "/videos/eureka-2026/clip-02.mp4", poster: eurekaClip02Poster },
+  { src: "/videos/eureka-2026/clip-03.mp4", poster: eurekaClip03Poster },
+  { src: "/videos/eureka-2026/clip-04.mp4", poster: eurekaClip04Poster },
+  { src: "/videos/eureka-2026/clip-05.mp4", poster: eurekaClip05Poster },
+  { src: "/videos/eureka-2026/clip-06.mp4", poster: eurekaClip06Poster },
+  { src: "/videos/eureka-2026/clip-07.mp4", poster: eurekaClip07Poster },
+  { src: "/videos/eureka-2026/clip-08.mp4", poster: eurekaClip08Poster },
+  { src: "/videos/eureka-2026/clip-09.mp4", poster: eurekaClip09Poster },
+  { src: "/videos/eureka-2026/clip-10.mp4", poster: eurekaClip10Poster },
+  { src: "/videos/eureka-2026/clip-11.mp4", poster: eurekaClip11Poster },
+  { src: "/videos/eureka-2026/clip-12.mp4", poster: eurekaClip12Poster },
+  { src: "/videos/eureka-2026/clip-13.mp4", poster: eurekaClip13Poster },
+  { src: "/videos/eureka-2026/clip-14.mp4", poster: eurekaClip14Poster },
+  { src: "/videos/eureka-2026/clip-15.mp4", poster: eurekaClip15Poster },
+  { src: "/videos/eureka-2026/clip-16.mp4", poster: eurekaClip16Poster },
+  { src: "/videos/eureka-2026/clip-17.mp4", poster: eurekaClip17Poster },
+  { src: "/videos/eureka-2026/clip-18.mp4", poster: eurekaClip18Poster },
+  { src: "/videos/eureka-2026/clip-19.mp4", poster: eurekaClip19Poster },
+  { src: "/videos/eureka-2026/clip-20.mp4", poster: eurekaClip20Poster },
+    ],
     reelUrls: [
       "https://www.instagram.com/reel/DcOgIamCkH-/",
       "https://www.instagram.com/reel/DcLg1TyCVE_/",

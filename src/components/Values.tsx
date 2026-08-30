@@ -17,6 +17,7 @@ export default function Values() {
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
             <DecryptedText text="What Drives Us" animateOn="view" speed={35} maxIterations={12} />
           </span>
+          <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
           <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             Our Values
           </h2>
@@ -32,9 +33,9 @@ export default function Values() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.57, ease: EASE, delay: i * 0.08 }}
-                className="glass group rounded-2xl p-6 transition-colors hover:border-accent-cyan/30"
+                className="card-hover glass group rounded-2xl p-6"
               >
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-accent-cyan transition-colors group-hover:bg-accent-cyan/10">
+                <div className="card-hover-icon mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-accent-cyan group-hover:bg-accent-cyan/10">
                   <Icon size={20} />
                 </div>
                 <h3 className="font-display text-base font-semibold text-white">

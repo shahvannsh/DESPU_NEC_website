@@ -33,8 +33,10 @@ const pillars = [
 
 export default function WhyDespu() {
   return (
-    <section className="relative bg-base-950 px-6 py-28 lg:px-10">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative overflow-hidden bg-base-950 px-6 py-28 lg:px-10">
+      <div className="absolute -right-40 top-10 h-96 w-96 rounded-full bg-accent-violet/10 blur-[110px]" />
+      <div className="absolute -left-40 bottom-0 h-80 w-80 rounded-full bg-accent-blue/10 blur-[100px]" />
+      <div className="relative mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,6 +47,7 @@ export default function WhyDespu() {
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
             <DecryptedText text="Why DESPU" animateOn="view" speed={35} maxIterations={12} />
           </span>
+          <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
           <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             How We Work
           </h2>
@@ -60,9 +63,9 @@ export default function WhyDespu() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, ease: EASE, delay: i * 0.07 }}
-                className="glass flex flex-col gap-3 rounded-2xl p-6"
+                className="card-hover glass flex flex-col gap-3 rounded-2xl p-6"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-accent-cyan">
+                <div className="card-hover-icon flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-accent-cyan">
                   <Icon size={18} />
                 </div>
                 <h3 className="font-display text-sm font-semibold text-white">{p.title}</h3>

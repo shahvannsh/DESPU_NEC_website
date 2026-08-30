@@ -21,7 +21,7 @@ export default function Reels() {
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
 
   return (
-    <section id="reels" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
+    <section id="reels" className="relative scroll-mt-24 bg-base-900 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

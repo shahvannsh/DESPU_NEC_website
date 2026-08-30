@@ -30,7 +30,7 @@ export default function CTA() {
           <Magnetic>
             <a
               href="#journey"
-              className="rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-7 py-3 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
+              className="btn-primary-glow rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-7 py-3 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
             >
               Follow Our Journey →
             </a>

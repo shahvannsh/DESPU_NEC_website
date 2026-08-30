@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin, Film } from "lucide-react";
 import { events, type DespuEvent } from "../data/events";
 import { EASE } from "../lib/motion";
 import { trackEvent } from "../lib/analytics";
@@ -31,7 +31,7 @@ export default function Events() {
   }, []);
 
   return (
-    <section id="events" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
+    <section id="events" className="relative scroll-mt-24 bg-base-900 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -115,6 +115,12 @@ export default function Events() {
                       <span className="flex items-center gap-1 text-xs text-white/40">
                         <MapPin size={12} />
                         {event.location}
+                      </span>
+                    )}
+                    {event.videoGallery && event.videoGallery.length > 0 && (
+                      <span className="flex items-center gap-1 text-xs text-accent-cyan/80">
+                        <Film size={12} />
+                        {event.videoGallery.length} clips
                       </span>
                     )}
                   </div>

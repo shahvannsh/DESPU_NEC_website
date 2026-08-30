@@ -48,28 +48,51 @@ export default function Home() {
         </div>
       </section>
       <About />
+      <div className="section-divider" />
       <Story />
+      <div className="section-divider" />
       <WhatWereBuilding />
+      <div className="section-divider" />
       <ProblemSolutionImpact />
+      <div className="section-divider" />
       <WhyDespu />
+      <div className="section-divider" />
       <Manifesto />
+      <div className="section-divider" />
       <Values />
+      <div className="section-divider" />
       <Journey />
+      <div className="section-divider" />
       <Team />
+      <div className="section-divider" />
       <TeamCapabilities />
+      <div className="section-divider" />
       <MemberVoices />
+      <div className="section-divider" />
       <Events />
+      <div className="section-divider" />
       <BehindTheBuild />
+      <div className="section-divider" />
       <Reels />
+      <div className="section-divider" />
       <LearningLog />
+      <div className="section-divider" />
       <Testimonials />
+      <div className="section-divider" />
       <Outcomes />
+      <div className="section-divider" />
       <Sponsors />
+      <div className="section-divider" />
       <Resources />
+      <div className="section-divider" />
       <Vision />
+      <div className="section-divider" />
       <CTA />
+      <div className="section-divider" />
       <Contact />
+      <div className="section-divider" />
       <Connect />
+      <div className="section-divider" />
     </>
   );
 }

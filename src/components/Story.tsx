@@ -9,7 +9,7 @@ export default function Story() {
   if (story.length === 0) return null;
 
   return (
-    <section className="relative bg-base-950 px-6 py-28 lg:px-10">
+    <section className="relative bg-base-900 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,6 +21,7 @@ export default function Story() {
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
             <DecryptedText text="The DESPU Story" animateOn="view" speed={35} maxIterations={12} />
           </span>
+          <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
           <h2 className="mt-4">
             <MaskedHeading
               text="How We Got Here"

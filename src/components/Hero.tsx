@@ -142,7 +142,7 @@ export default function Hero() {
           <Magnetic>
             <a
               href="#team"
-              className="rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-7 py-3 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
+              className="btn-primary-glow rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-7 py-3 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
             >
               Meet Our Team
             </a>

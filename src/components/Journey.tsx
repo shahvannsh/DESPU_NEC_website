@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, Circle, CircleDot } from "lucide-react";
 import { EASE } from "../lib/motion";
 import { journey, type Milestone } from "../data/journey";
+import DecryptedText from "./reactbits/DecryptedText";
 
 const STATUS_STYLES: Record<
   Milestone["status"],
@@ -42,8 +43,9 @@ export default function Journey() {
           className="mb-16 text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
-            The Path
+            <DecryptedText text="The Path" animateOn="view" speed={35} maxIterations={12} />
           </span>
+          <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
           <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             Our Journey
           </h2>

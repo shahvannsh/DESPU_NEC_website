@@ -3,6 +3,7 @@ import { Search, X as XIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { team, categories, type Category, type TeamMember } from "../data/team";
+import DecryptedText from "./reactbits/DecryptedText";
 import TeamCard from "./TeamCard";
 import TeamModal from "./TeamModal";
 
@@ -91,8 +92,9 @@ export default function Team() {
           className="mb-10 text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
-            Meet DESPU
+            <DecryptedText text="Meet DESPU" animateOn="view" speed={35} maxIterations={12} />
           </span>
+          <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
           <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             13 minds. Different strengths.
             <br />
