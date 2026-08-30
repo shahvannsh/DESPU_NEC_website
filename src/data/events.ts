@@ -90,6 +90,7 @@ import eurekaClip37Poster from "../assets/events/eureka-clips/clip-37.webp";
 import eurekaClip38Poster from "../assets/events/eureka-clips/clip-38.webp";
 import eurekaClip39Poster from "../assets/events/eureka-clips/clip-39.webp";
 import eurekaClip40Poster from "../assets/events/eureka-clips/clip-40.webp";
+import eurekaClip41Poster from "../assets/events/eureka-clips/clip-41.webp";
 
 export const events: DespuEvent[] = [
   {
@@ -180,6 +181,7 @@ Vannsh Shah – 86689 95892
       { src: "/videos/eureka-2026/clip-38.mp4", poster: eurekaClip38Poster },
       { src: "/videos/eureka-2026/clip-39.mp4", poster: eurekaClip39Poster },
       { src: "/videos/eureka-2026/clip-40.mp4", poster: eurekaClip40Poster },
+      { src: "/videos/eureka-2026/clip-41.mp4", poster: eurekaClip41Poster },
     ],
     reelUrls: [
       "https://www.instagram.com/reel/DcOgIamCkH-/",
