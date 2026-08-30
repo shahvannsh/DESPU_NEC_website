@@ -2,14 +2,12 @@ import { motion, useInView, animate } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { useEffect, useRef, useState } from "react";
 import DecryptedText from "./reactbits/DecryptedText";
-import MaskedHeading from "./reactbits/MaskedHeading";
-import eurekaImg from "../assets/events/eureka-2026.webp";
 
 const stats = [
   { value: 13, suffix: "", label: "Team Members" },
-  { value: 1, suffix: "", label: "Shared Vision" },
   { value: null, suffix: "∞", label: "Ideas" },
-  { value: 1, suffix: "", label: "Entrepreneurial Journey" },
+  { value: 40, suffix: "+", label: "Moments Captured" },
+  { value: null, suffix: "2026", label: "National Challenge" },
 ];
 
 function Counter({ to }: { to: number }) {
@@ -45,17 +43,10 @@ export default function About() {
               <DecryptedText text="About DESPU" animateOn="view" speed={35} maxIterations={12} />
             </span>
             <div className="mt-3 h-px w-10 bg-gradient-to-r from-accent-cyan/60 to-transparent" />
-            <h2 className="mt-4">
-              <MaskedHeading
-                text="More Than a Team. A Movement."
-                src={eurekaImg}
-                tag="span"
-                align="left"
-                textScale={0.058}
-                weight={600}
-                className="font-display leading-tight sm:text-4xl"
-                style={{ display: "inline-block" }}
-              />
+            <h2 className="mt-4 font-display text-3xl font-semibold leading-tight text-white sm:text-4xl">
+              More Than a Team.
+              <br />
+              <span className="text-gradient">A Movement.</span>
             </h2>
             <p className="mt-6 text-sm leading-relaxed text-white/60 sm:text-base">
               DESPU brings together students who believe entrepreneurship isn't reserved
@@ -80,7 +71,14 @@ export default function About() {
                 className="glass rounded-2xl px-6 py-8 text-center"
               >
                 <div className="font-display text-4xl font-bold text-gradient sm:text-5xl">
-                  {s.value !== null ? <Counter to={s.value} /> : s.suffix}
+                  {s.value !== null ? (
+                    <>
+                      <Counter to={s.value} />
+                      {s.suffix}
+                    </>
+                  ) : (
+                    s.suffix
+                  )}
                 </div>
                 <div className="mt-2 text-xs font-medium uppercase tracking-wide text-white/50">
                   {s.label}

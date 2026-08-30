@@ -70,6 +70,26 @@ import eurekaClip17Poster from "../assets/events/eureka-clips/clip-17.webp";
 import eurekaClip18Poster from "../assets/events/eureka-clips/clip-18.webp";
 import eurekaClip19Poster from "../assets/events/eureka-clips/clip-19.webp";
 import eurekaClip20Poster from "../assets/events/eureka-clips/clip-20.webp";
+import eurekaClip21Poster from "../assets/events/eureka-clips/clip-21.webp";
+import eurekaClip22Poster from "../assets/events/eureka-clips/clip-22.webp";
+import eurekaClip23Poster from "../assets/events/eureka-clips/clip-23.webp";
+import eurekaClip24Poster from "../assets/events/eureka-clips/clip-24.webp";
+import eurekaClip25Poster from "../assets/events/eureka-clips/clip-25.webp";
+import eurekaClip26Poster from "../assets/events/eureka-clips/clip-26.webp";
+import eurekaClip27Poster from "../assets/events/eureka-clips/clip-27.webp";
+import eurekaClip28Poster from "../assets/events/eureka-clips/clip-28.webp";
+import eurekaClip29Poster from "../assets/events/eureka-clips/clip-29.webp";
+import eurekaClip30Poster from "../assets/events/eureka-clips/clip-30.webp";
+import eurekaClip31Poster from "../assets/events/eureka-clips/clip-31.webp";
+import eurekaClip32Poster from "../assets/events/eureka-clips/clip-32.webp";
+import eurekaClip33Poster from "../assets/events/eureka-clips/clip-33.webp";
+import eurekaClip34Poster from "../assets/events/eureka-clips/clip-34.webp";
+import eurekaClip35Poster from "../assets/events/eureka-clips/clip-35.webp";
+import eurekaClip36Poster from "../assets/events/eureka-clips/clip-36.webp";
+import eurekaClip37Poster from "../assets/events/eureka-clips/clip-37.webp";
+import eurekaClip38Poster from "../assets/events/eureka-clips/clip-38.webp";
+import eurekaClip39Poster from "../assets/events/eureka-clips/clip-39.webp";
+import eurekaClip40Poster from "../assets/events/eureka-clips/clip-40.webp";
 
 export const events: DespuEvent[] = [
   {
@@ -140,6 +160,26 @@ Vannsh Shah – 86689 95892
   { src: "/videos/eureka-2026/clip-18.mp4", poster: eurekaClip18Poster },
   { src: "/videos/eureka-2026/clip-19.mp4", poster: eurekaClip19Poster },
   { src: "/videos/eureka-2026/clip-20.mp4", poster: eurekaClip20Poster },
+      { src: "/videos/eureka-2026/clip-21.mp4", poster: eurekaClip21Poster },
+      { src: "/videos/eureka-2026/clip-22.mp4", poster: eurekaClip22Poster },
+      { src: "/videos/eureka-2026/clip-23.mp4", poster: eurekaClip23Poster },
+      { src: "/videos/eureka-2026/clip-24.mp4", poster: eurekaClip24Poster },
+      { src: "/videos/eureka-2026/clip-25.mp4", poster: eurekaClip25Poster },
+      { src: "/videos/eureka-2026/clip-26.mp4", poster: eurekaClip26Poster },
+      { src: "/videos/eureka-2026/clip-27.mp4", poster: eurekaClip27Poster },
+      { src: "/videos/eureka-2026/clip-28.mp4", poster: eurekaClip28Poster },
+      { src: "/videos/eureka-2026/clip-29.mp4", poster: eurekaClip29Poster },
+      { src: "/videos/eureka-2026/clip-30.mp4", poster: eurekaClip30Poster },
+      { src: "/videos/eureka-2026/clip-31.mp4", poster: eurekaClip31Poster },
+      { src: "/videos/eureka-2026/clip-32.mp4", poster: eurekaClip32Poster },
+      { src: "/videos/eureka-2026/clip-33.mp4", poster: eurekaClip33Poster },
+      { src: "/videos/eureka-2026/clip-34.mp4", poster: eurekaClip34Poster },
+      { src: "/videos/eureka-2026/clip-35.mp4", poster: eurekaClip35Poster },
+      { src: "/videos/eureka-2026/clip-36.mp4", poster: eurekaClip36Poster },
+      { src: "/videos/eureka-2026/clip-37.mp4", poster: eurekaClip37Poster },
+      { src: "/videos/eureka-2026/clip-38.mp4", poster: eurekaClip38Poster },
+      { src: "/videos/eureka-2026/clip-39.mp4", poster: eurekaClip39Poster },
+      { src: "/videos/eureka-2026/clip-40.mp4", poster: eurekaClip40Poster },
     ],
     reelUrls: [
       "https://www.instagram.com/reel/DcOgIamCkH-/",
@@ -151,3 +191,5 @@ Vannsh Shah – 86689 95892
     ],
   },
 ];
+
+export const eurekaEvent = events.find((e) => e.id === "eureka-2026");

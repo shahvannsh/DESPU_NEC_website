@@ -70,12 +70,28 @@ export default function InstagramEmbed({ url }: Props) {
         className="instagram-media"
         data-instgrm-permalink={url}
         data-instgrm-version="14"
-        style={{ background: "#fff", margin: "0 auto", width: "100%", minHeight: 200 }}
+        style={{ background: "#0d1220", margin: "0 auto", width: "100%", minHeight: 200 }}
       >
         {/* Fallback shown until (or unless) the Instagram script processes this
             embed — e.g. slow connection, blocked script, ad blocker. Without
-            this, a failed/slow load renders as a blank box. */}
-        <div style={{ padding: "16px", textAlign: "center" }}>
+            this, a failed/slow load renders as a blank box. Styled to match
+            the site's dark theme instead of Instagram's default white card,
+            so a failed load doesn't look like a broken flash of white. */}
+        <div
+          style={{
+            padding: "32px 20px",
+            textAlign: "center",
+            minHeight: 200,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 12,
+          }}
+        >
+          <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)" }}>
+            Loading reel…
+          </span>
           <a
             href={url}
             target="_blank"
@@ -83,7 +99,7 @@ export default function InstagramEmbed({ url }: Props) {
             style={{
               fontSize: "13px",
               fontWeight: 600,
-              color: "#0e7490",
+              color: "#22d3ee",
               textDecoration: "none",
             }}
           >

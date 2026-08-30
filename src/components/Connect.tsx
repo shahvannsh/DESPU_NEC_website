@@ -1,12 +1,10 @@
 import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { SOCIAL_LINKS } from "../data/social";
+import instagramQr from "../assets/brand/instagram-qr.png";
 
 const INSTAGRAM_URL = SOCIAL_LINKS.instagram;
 const LINKEDIN_URL = SOCIAL_LINKS.linkedin;
-const QR_SRC = `https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=10&data=${encodeURIComponent(
-  INSTAGRAM_URL
-)}`;
 
 function InstagramGlyph() {
   return (
@@ -78,7 +76,7 @@ export default function Connect() {
                 aria-label="Open DESPU E-Cell on Instagram"
               >
                 <img
-                  src={QR_SRC}
+                  src={instagramQr}
                   alt="QR code linking to DESPU E-Cell's Instagram profile"
                   width={200}
                   height={200}

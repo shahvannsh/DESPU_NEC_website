@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { manifesto } from "../data/manifesto";
-import DecryptedText from "./reactbits/DecryptedText";
+import BlurText from "./reactbits/BlurText";
 
 export default function Manifesto() {
   if (manifesto.length === 0) return null;
@@ -28,17 +28,15 @@ export default function Manifesto() {
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, ease: EASE, delay: i * 0.07 }}
+              transition={{ duration: 0.5, ease: EASE, delay: i * 0.12 }}
               className="font-display text-xl font-medium text-white sm:text-2xl"
             >
-              <DecryptedText
+              <BlurText
                 text={line.text}
-                animateOn="view"
-                sequential
-                revealDirection="start"
-                speed={28}
-                className="text-white"
-                encryptedClassName="text-accent-cyan/70"
+                animateBy="words"
+                direction="top"
+                delay={40}
+                className="justify-center"
               />
             </motion.div>
           ))}

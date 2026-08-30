@@ -75,7 +75,9 @@ export default function Navbar() {
     <header
       style={{ top: "var(--announcement-h, 0px)" }}
       className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass py-3" : "bg-base-950/40 py-5 backdrop-blur-sm"
+        scrolled
+          ? "border-b border-white/10 bg-base-950/90 py-3 shadow-lg shadow-black/20 backdrop-blur-xl"
+          : "bg-base-950/70 py-5 backdrop-blur-md"
       }`}
     >
       <nav
