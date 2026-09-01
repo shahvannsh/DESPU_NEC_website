@@ -13,6 +13,7 @@ const links = [
   { label: "Events", href: "#events" },
   { label: "Reels", href: "#reels" },
   { label: "Vision", href: "#vision" },
+  { label: "Blog", href: "/blog", isRoute: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -33,6 +34,7 @@ export default function Navbar() {
   useEffect(() => {
     if (!onHome) return;
     const sections = links
+      .filter((l) => !l.isRoute)
       .map((l) => document.querySelector(l.href))
       .filter((el): el is Element => !!el);
 
@@ -62,8 +64,12 @@ export default function Navbar() {
     };
   }, [open]);
 
-  const go = (href: string) => {
+  const go = (href: string, isRoute?: boolean) => {
     setOpen(false);
+    if (isRoute) {
+      navigate(href);
+      return;
+    }
     if (onHome) {
       document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" });
     } else {
@@ -100,9 +106,10 @@ export default function Navbar() {
           {links.map((l) => (
             <button
               key={l.label}
-              onClick={() => go(l.href)}
+              onClick={() => go(l.href, l.isRoute)}
               className={`text-sm font-medium transition-colors ${
-                onHome && activeHash === l.href
+                (l.isRoute && location.pathname.startsWith(l.href)) ||
+                (onHome && !l.isRoute && activeHash === l.href)
                   ? "text-white"
                   : "text-white/70 hover:text-white"
               }`}
@@ -153,7 +160,7 @@ export default function Navbar() {
               {links.map((l) => (
                 <button
                   key={l.label}
-                  onClick={() => go(l.href)}
+                  onClick={() => go(l.href, l.isRoute)}
                   className="rounded-lg px-3 py-3 text-left text-sm font-medium text-white/80 hover:bg-white/5 hover:text-white"
                 >
                   {l.label}

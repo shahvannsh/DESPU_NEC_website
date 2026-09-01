@@ -92,18 +92,18 @@ export default function TeamCard({ member, onOpen }: Props) {
         </Link>
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-display text-base font-semibold text-white transition-transform group-hover:translate-x-0.5">
+      <div className="flex flex-1 flex-col p-4">
+        <h3 className="font-display text-sm font-semibold text-white transition-transform group-hover:translate-x-0.5">
           {member.name}
         </h3>
-        <p className="mt-1 text-xs font-medium text-accent-cyan/80">{member.role}</p>
-        <p className="mt-3 line-clamp-2 text-xs leading-relaxed text-white/50">
+        <p className="mt-1 text-[11px] font-medium text-accent-cyan/80">{member.role}</p>
+        <p className="mt-2.5 line-clamp-2 text-[11px] leading-relaxed text-white/50">
           {member.tagline}
         </p>
-        <div className="mt-4 flex items-center gap-1.5 text-xs font-medium text-white/70">
+        <div className="mt-3 flex items-center gap-1.5 text-[11px] font-medium text-white/70">
           View Profile
           <ArrowUpRight
-            size={14}
+            size={12}
             className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
           />
         </div>

@@ -2,6 +2,7 @@ import { useEffect, Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "./lib/motion";
+import { AuthProvider } from "./lib/auth";
 import Navbar from "./components/Navbar";
 import AnnouncementBar from "./components/AnnouncementBar";
 import ScrollProgress from "./components/ScrollProgress";
@@ -13,17 +14,22 @@ import Splash from "./components/Splash";
 import EasterEgg from "./components/EasterEgg";
 import ClickSpark from "./components/reactbits/ClickSpark";
 import Home from "./pages/Home";
+import Loader from "./components/Loader";
 
 // Code-split routes people don't land on immediately — the home page
 // (and everything the navbar links to) loads eagerly since it's what
 // nearly every visitor sees first; these load on demand instead.
 const TeamPage = lazy(() => import("./pages/TeamPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const BlogEditor = lazy(() => import("./pages/BlogEditor"));
+const BlogLogin = lazy(() => import("./pages/BlogLogin"));
 
 function RouteFallback() {
   return (
     <div className="flex min-h-[60vh] w-full items-center justify-center">
-      <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/15 border-t-accent-cyan" />
+      <Loader />
     </div>
   );
 }
@@ -49,6 +55,7 @@ function ScrollToHash() {
 export default function App() {
   const location = useLocation();
   return (
+    <AuthProvider>
     <ClickSpark sparkColor="#22d3ee" sparkSize={8} sparkRadius={18} sparkCount={6} duration={420}>
     <div className="min-h-screen bg-base-950 font-body">
       <a
@@ -94,6 +101,81 @@ export default function App() {
               }
             />
             <Route
+              path="/blog"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: EASE }}
+                >
+                  <Suspense fallback={<RouteFallback />}>
+                    <Blog />
+                  </Suspense>
+                </motion.div>
+              }
+            />
+            <Route
+              path="/blog/login"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: EASE }}
+                >
+                  <Suspense fallback={<RouteFallback />}>
+                    <BlogLogin />
+                  </Suspense>
+                </motion.div>
+              }
+            />
+            <Route
+              path="/blog/new"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: EASE }}
+                >
+                  <Suspense fallback={<RouteFallback />}>
+                    <BlogEditor />
+                  </Suspense>
+                </motion.div>
+              }
+            />
+            <Route
+              path="/blog/:slug/edit"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: EASE }}
+                >
+                  <Suspense fallback={<RouteFallback />}>
+                    <BlogEditor />
+                  </Suspense>
+                </motion.div>
+              }
+            />
+            <Route
+              path="/blog/:slug"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: EASE }}
+                >
+                  <Suspense fallback={<RouteFallback />}>
+                    <BlogPost />
+                  </Suspense>
+                </motion.div>
+              }
+            />
+            <Route
               path="*"
               element={
                 <motion.div
@@ -119,5 +201,6 @@ export default function App() {
       <EasterEgg />
     </div>
     </ClickSpark>
+    </AuthProvider>
   );
 }

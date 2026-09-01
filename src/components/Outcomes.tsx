@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Trophy } from "lucide-react";
 import { EASE } from "../lib/motion";
 import { outcomes } from "../data/results";
+import DecryptedText from "./reactbits/DecryptedText";
 
 export default function Outcomes() {
   // Hidden entirely until there's a real result to show.
@@ -18,8 +19,9 @@ export default function Outcomes() {
           className="mb-14 text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
-            Results
+            <DecryptedText text="Results" animateOn="view" speed={35} maxIterations={12} />
           </span>
+          <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
           <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             What We've Achieved
           </h2>

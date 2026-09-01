@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { EASE } from "../lib/motion";
 import { team } from "../data/team";
+import DecryptedText from "./reactbits/DecryptedText";
 
 export default function TeamCapabilities() {
   // Counts are derived directly from each member's real `skills` array —
@@ -28,8 +29,9 @@ export default function TeamCapabilities() {
           className="mb-14 text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
-            Collective Skillset
+            <DecryptedText text="Collective Skillset" animateOn="view" speed={35} maxIterations={12} />
           </span>
+          <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
           <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             What We Bring Together
           </h2>

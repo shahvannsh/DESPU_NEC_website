@@ -11,6 +11,16 @@ import mitali from "../assets/team/Mitali_Jadhav.webp";
 import palak from "../assets/team/Palak.webp";
 import rudrani from "../assets/team/Rudrani_Harpale.webp";
 import tanishq from "../assets/team/Tanishq.webp";
+import saishPagar from "../assets/team/Saish_Pagar.webp";
+import priyaSaraf from "../assets/team/Priya_Saraf.webp";
+import rahulChidrawar from "../assets/team/Rahul_Chidrawar.webp";
+import rishitSinkar from "../assets/team/Rishit_Sinkar.webp";
+import pranavDeshmane from "../assets/team/Pranav_Deshmane.webp";
+import diyaShah from "../assets/team/Diya_Shah.webp";
+import riyaKothari from "../assets/team/Riya_Kothari.webp";
+import tusharRathod from "../assets/team/Tushar_Rathod.webp";
+import swaraKasurkar from "../assets/team/Swara_Kasurkar.webp";
+import yuktiNahar from "../assets/team/Yukti_Nahar.webp";
 import { placeholders } from "./placeholders";
 
 export type Category =
@@ -287,6 +297,196 @@ export const team: TeamMember[] = [
       "Design the end-to-end attendee experience",
       "Craft engaging event pathways",
       "Bring a polished aesthetic to DESPU initiatives",
+    ],
+  },
+  {
+    id: 15,
+    name: "Saish Pagar",
+    role: "President",
+    category: "LEADERSHIP",
+    image: saishPagar,
+    imagePlaceholder: placeholders["Saish_Pagar"],
+    tagline: "Setting the strategic roadmap and leading DESPU's executive direction.",
+    motivation:
+      "Saish leads DESPU as President, chosen for his strong leadership drive, strategic vision, public speaking, and networking capabilities.",
+    expectations:
+      "As President, he owns DESPU's strategic roadmap and overall vision, represents the team to institutional and external stakeholders, and directs executive decision-making.",
+    skills: ["Strategic Leadership", "Public Speaking", "Networking"],
+    responsibilities: [
+      "Set the strategic roadmap and overall vision",
+      "Lead institutional and external stakeholder relationships",
+      "Direct executive decision-making",
+    ],
+  },
+  {
+    id: 16,
+    name: "Priya Saraf",
+    role: "Vice President",
+    category: "LEADERSHIP",
+    image: priyaSaraf,
+    imagePlaceholder: placeholders["Priya_Saraf"],
+    tagline: "Keeping every team in sync and every NEC deadline on track.",
+    motivation:
+      "Priya serves as Vice President, bringing high execution efficiency, organizational acumen, and project tracking to how DESPU runs day to day.",
+    expectations:
+      "She oversees operations and cross-team synergy across DESPU, and tracks compliance with NEC tasks and deadlines.",
+    skills: ["Operations", "Project Tracking", "Organization"],
+    responsibilities: [
+      "Oversee operations and cross-team synergy",
+      "Track NEC task compliance and deadlines",
+    ],
+  },
+  {
+    id: 17,
+    name: "Rahul Chidrawar",
+    role: "Secretary",
+    category: "LEADERSHIP",
+    image: rahulChidrawar,
+    imagePlaceholder: placeholders["Rahul_Chidrawar"],
+    tagline: "Running the meetings, the timelines, and the events team behind them.",
+    motivation:
+      "Rahul takes on the Secretary role with strong experience in event management, structured task management, and the ability to perform under pressure.",
+    expectations:
+      "He manages meetings, directly supervises the Event Head, and plans resources and timelines for DESPU's initiatives.",
+    skills: ["Event Management", "Task Management", "Resource Planning"],
+    responsibilities: [
+      "Manage meetings and documentation",
+      "Supervise the Event Head",
+      "Plan resources and hold timelines to schedule",
+    ],
+  },
+  {
+    id: 18,
+    name: "Rishit Sinkar",
+    role: "Joint Secretary",
+    category: "LEADERSHIP",
+    image: rishitSinkar,
+    imagePlaceholder: placeholders["Rishit_Sinkar"],
+    tagline: "Keeping the record straight and the brand voice consistent.",
+    motivation:
+      "Rishit serves as Joint Secretary, drawing on strategic communication, team delegation, brand management, and documentation skills.",
+    expectations:
+      "He documents meetings, oversees the Social Media and Marketing Heads, and keeps DESPU's brand messaging consistent across channels.",
+    skills: ["Strategic Communication", "Brand Management", "Documentation"],
+    responsibilities: [
+      "Document meetings (minutes of meeting)",
+      "Oversee Social Media and Marketing Heads",
+      "Maintain brand message consistency",
+    ],
+  },
+  {
+    id: 19,
+    name: "Pranav Deshmane",
+    role: "Treasurer",
+    category: "BUSINESS",
+    image: pranavDeshmane,
+    imagePlaceholder: placeholders["Pranav_Deshmane"],
+    tagline: "Making sure every rupee DESPU spends is tracked and accounted for.",
+    motivation:
+      "Pranav manages DESPU's finances as Treasurer, bringing high numerical literacy, proficiency with financial tools, and a detail-oriented mindset.",
+    expectations:
+      "He allocates budgets, tracks expenses, and drafts financial reports and audits for DESPU.",
+    skills: ["Budgeting", "Financial Reporting", "Excel"],
+    responsibilities: [
+      "Allocate budgets and track expenses",
+      "Draft financial reports and audits",
+    ],
+  },
+  {
+    id: 20,
+    name: "Tushar Rathod",
+    role: "Social Media Head",
+    category: "MARKETING",
+    image: tusharRathod,
+    imagePlaceholder: placeholders["Tushar_Rathod"],
+    tagline: "Turning DESPU's work into content people actually stop to read.",
+    motivation:
+      "Tushar leads social media for DESPU, chosen for his understanding of platform algorithms, content design, and engaging digital copywriting.",
+    expectations:
+      "He plans the content calendar, writes captions and copy, and tracks analytics and audience engagement across DESPU's channels.",
+    skills: ["Content Strategy", "Copywriting", "Analytics"],
+    responsibilities: [
+      "Plan the social media content calendar",
+      "Write copy, captions, and track trends",
+      "Track analytics and audience engagement",
+    ],
+  },
+  {
+    id: 21,
+    name: "Yukti Nahar",
+    role: "Marketing Head",
+    category: "MARKETING",
+    image: yuktiNahar,
+    imagePlaceholder: placeholders["Yukti_Nahar"],
+    tagline: "Taking DESPU off-screen and onto campus, one outreach drive at a time.",
+    motivation:
+      "Yukti leads marketing for DESPU, bringing persuasive communication, negotiation skills, offline marketing experience, and high energy to the role.",
+    expectations:
+      "She drives on-ground student outreach, manages sponsorship funds, generates footfall for events, and builds cross-college promotional partnerships.",
+    skills: ["Persuasive Communication", "Negotiation", "Offline Marketing"],
+    responsibilities: [
+      "Run on-ground student outreach drives",
+      "Manage sponsorship funds",
+      "Generate footfall and execute campaigns",
+      "Build cross-college promotional partnerships",
+    ],
+  },
+  {
+    id: 22,
+    name: "Swara Kasurkar",
+    role: "Event Head",
+    category: "BUSINESS",
+    image: swaraKasurkar,
+    imagePlaceholder: placeholders["Swara_Kasurkar"],
+    tagline: "The person on the ground keeping every event on schedule.",
+    motivation:
+      "Swara leads event execution for DESPU, chosen for her adaptability, crisis management, logistics coordination, and ability to command a team on-site.",
+    expectations:
+      "She plans and schedules events end to end, sets up venues and technical requirements, coordinates the speaker desk and logistics, and troubleshoots in real time during events.",
+    skills: ["Event Planning", "Crisis Management", "Logistics"],
+    responsibilities: [
+      "Plan and schedule events overall",
+      "Set up venue and technical requirements on-ground",
+      "Coordinate the speaker desk and logistics",
+      "Troubleshoot issues in real time during events",
+    ],
+  },
+  {
+    id: 23,
+    name: "Riya Kothari",
+    role: "Creatives Head",
+    category: "DESIGN",
+    image: riyaKothari,
+    imagePlaceholder: placeholders["Riya_Kothari"],
+    tagline: "Giving DESPU's ideas a visual identity worth remembering.",
+    motivation:
+      "Riya leads creative design for DESPU, bringing proficiency in tools like Canva, Photoshop, and Figma along with a strong aesthetic sense.",
+    expectations:
+      "She designs visual branding, banners, posters, and decks, edits creative for digital campaigns, and shapes the UI/UX aesthetics of DESPU's collateral.",
+    skills: ["Graphic Design", "Visual Branding", "UI/UX"],
+    responsibilities: [
+      "Design visual branding, banners, posters, and decks",
+      "Edit creative for digital campaigns",
+      "Shape UI/UX aesthetics for club collateral",
+    ],
+  },
+  {
+    id: 24,
+    name: "Diya Shah",
+    role: "HR Head",
+    category: "BUSINESS",
+    image: diyaShah,
+    imagePlaceholder: placeholders["Diya_Shah"],
+    tagline: "Keeping the team connected, heard, and working well together.",
+    motivation:
+      "Diya leads HR for DESPU, bringing empathy, strong interpersonal skills, and a focus on conflict resolution and internal organization.",
+    expectations:
+      "She manages internal team communication and culture, tracks attendance, and handles member feedback and conflict resolution.",
+    skills: ["Internal Communication", "Conflict Resolution", "Team Culture"],
+    responsibilities: [
+      "Manage internal team communication and culture",
+      "Track attendance",
+      "Handle member feedback and conflict resolution",
     ],
   },
 ];

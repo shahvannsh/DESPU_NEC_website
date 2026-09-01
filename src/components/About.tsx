@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import DecryptedText from "./reactbits/DecryptedText";
 
 const stats = [
-  { value: 13, suffix: "", label: "Team Members" },
+  { value: 23, suffix: "", label: "Team Members" },
   { value: null, suffix: "∞", label: "Ideas" },
   { value: 40, suffix: "+", label: "Moments Captured" },
   { value: null, suffix: "2026", label: "National Challenge" },

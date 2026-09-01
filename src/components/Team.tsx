@@ -96,7 +96,7 @@ export default function Team() {
           </span>
           <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
           <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
-            13 minds. Different strengths.
+            23 minds. Different strengths.
             <br />
             One shared ambition.
           </h2>
@@ -178,7 +178,7 @@ export default function Team() {
 
           <motion.div
             layout
-            className="relative z-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+            className="relative z-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7"
           >
             <AnimatePresence mode="popLayout">
               {filtered.map((m, i) => (
