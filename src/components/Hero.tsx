@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Hls from "hls.js";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -11,6 +11,24 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoSrc =
     "https://stream.mux.com/T6oQJQ02cQ6N01TR6iHwZkKFkbepS34dkkIc9iukgy400g.m3u8";
+
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(
+        document.documentElement.classList.contains("dark") ||
+          !document.documentElement.classList.contains("light")
+      );
+    };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -47,11 +65,11 @@ export default function Hero() {
       />
 
       {/* VIDEO OVERLAY */}
-      <div className="absolute inset-0 bg-white/70 dark:bg-black/60 backdrop-blur-[2px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-white/70 dark:bg-black/65 backdrop-blur-[2px] pointer-events-none z-0" />
 
       {/* DECORATIVE GRADIENTS */}
-      <div className="absolute top-[-20%] left-[20%] w-[600px] h-[600px] rounded-full bg-blue-200/30 dark:bg-blue-900/20 blur-[120px] mix-blend-screen pointer-events-none z-0" />
-      <div className="absolute bottom-[-10%] right-[20%] w-[500px] h-[500px] rounded-full bg-indigo-200/30 dark:bg-indigo-900/20 blur-[120px] mix-blend-screen pointer-events-none z-0" />
+      <div className="absolute top-[-20%] left-[20%] w-[600px] h-[600px] rounded-full bg-blue-200/30 dark:bg-blue-900/25 blur-[120px] mix-blend-screen pointer-events-none z-0" />
+      <div className="absolute bottom-[-10%] right-[20%] w-[500px] h-[500px] rounded-full bg-indigo-200/30 dark:bg-indigo-900/25 blur-[120px] mix-blend-screen pointer-events-none z-0" />
 
       {/* REACT BITS: Floating Text Cursor */}
       <div className="pointer-events-auto absolute inset-x-0 top-0 z-20 hidden h-1/2 lg:block opacity-40">
@@ -65,20 +83,20 @@ export default function Hero() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="rounded-full border border-black/15 dark:border-white/20 bg-black/5 dark:bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-[0.18em] uppercase backdrop-blur-md"
+          className="rounded-full border border-black/20 dark:border-white/30 bg-black/5 dark:bg-white/10 px-4 py-1.5 text-xs font-bold tracking-[0.18em] uppercase backdrop-blur-md shadow-sm"
         >
           <ShinyText
             text="NATIONAL ENTREPRENEURSHIP CHALLENGE 2026"
             speed={2.5}
-            color="#3054ff"
-            shineColor="#ffffff"
+            color={isDark ? "#ffffff" : "#1e293b"}
+            shineColor={isDark ? "#93c5fd" : "#3054ff"}
           />
         </motion.div>
 
         {/* 1. Pre-headline (BlurText) */}
         <BlurText
           text="Ideas. People. Impact."
-          className="font-serif text-3xl sm:text-5xl lg:text-[48px] leading-[1.1] text-black dark:text-white justify-center tracking-tight"
+          className="font-serif text-3xl sm:text-5xl lg:text-[48px] leading-[1.1] text-black dark:text-white justify-center tracking-tight font-normal"
           delay={150}
           animateBy="words"
           direction="top"
@@ -89,7 +107,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="font-sans font-semibold text-6xl sm:text-8xl lg:text-[136px] leading-[0.9] tracking-tighter bg-gradient-to-b from-neutral-900 via-neutral-900 to-[#3054ff] dark:from-white dark:via-white dark:to-[#b4c0ff] bg-clip-text text-transparent"
+          className="font-sans font-semibold text-6xl sm:text-8xl lg:text-[136px] leading-[0.9] tracking-tighter bg-gradient-to-b from-neutral-900 via-neutral-900 to-[#3054ff] dark:from-white dark:via-neutral-100 dark:to-[#b4c0ff] bg-clip-text text-transparent"
         >
           DESPU NEC
         </motion.h1>
@@ -97,15 +115,15 @@ export default function Hero() {
         {/* 3. Subheadline */}
         <motion.p
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.9 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="font-sans text-lg sm:text-[20px] leading-[1.65] text-black/80 dark:text-neutral-300 max-w-xl font-normal"
+          className="font-sans text-lg sm:text-[20px] leading-[1.65] text-neutral-800 dark:text-neutral-200 max-w-xl font-normal"
         >
           A team of young entrepreneurs representing DES Pune University in the
           National Entrepreneurship Challenge, transforming ideas into high-impact ventures.
         </motion.p>
 
-        {/* 4. CTA buttons with React Bits / Magnetic attraction */}
+        {/* 4. CTA buttons with React Bits / Magnetic attraction & Crisp High-Contrast Styling */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -116,9 +134,9 @@ export default function Hero() {
           <Magnetic>
             <a
               href="#team"
-              className="pl-6 pr-2 py-2 rounded-full bg-black dark:bg-white flex items-center gap-3 transition-all duration-300 hover:shadow-[0_0_24px_rgba(48,84,255,0.4)] hover:scale-105 group cursor-pointer shadow-md"
+              className="pl-6 pr-2 py-2 rounded-full bg-black dark:bg-white flex items-center gap-3 transition-all duration-300 hover:shadow-[0_0_24px_rgba(48,84,255,0.4)] hover:scale-105 group cursor-pointer shadow-lg border border-black/10 dark:border-white/20"
             >
-              <span className="font-sans font-semibold text-lg text-white dark:text-black">
+              <span className="font-sans font-bold text-lg text-white dark:!text-black">
                 Meet Our Team
               </span>
               <div className="w-[40px] h-[40px] rounded-full bg-[#3054ff] hover:bg-[#2040e0] flex items-center justify-center transition-colors shrink-0">
@@ -131,7 +149,7 @@ export default function Hero() {
           <Magnetic>
             <a
               href="#journey"
-              className="text-black/80 hover:text-black dark:text-white/80 dark:hover:text-white backdrop-blur-sm hover:bg-black/5 dark:hover:bg-white/10 px-5 py-2.5 rounded-lg flex items-center font-sans font-semibold transition-all group cursor-pointer border border-black/10 dark:border-white/10"
+              className="text-neutral-900 hover:text-black dark:text-white dark:hover:text-white backdrop-blur-md hover:bg-black/5 dark:hover:bg-white/15 px-5 py-2.5 rounded-lg flex items-center font-sans font-bold transition-all group cursor-pointer border border-black/20 dark:border-white/20 shadow-sm"
             >
               Our Journey
               <ArrowRight className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
