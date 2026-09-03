@@ -1,178 +1,117 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown } from "lucide-react";
-import { EASE } from "../lib/motion";
-import Magnetic from "./Magnetic";
-import ShinyText from "./reactbits/ShinyText";
+import { useEffect, useRef } from "react";
+import Hls from "hls.js";
+import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 import BlurText from "./reactbits/BlurText";
-import TextCursor from "./reactbits/TextCursor";
-
-const TAGLINE_WORDS = ["Ideas.", "People.", "Impact."];
 
 export default function Hero() {
-  const nodes = Array.from({ length: 26 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    delay: Math.random() * 4,
-    dur: 6 + Math.random() * 6,
-  }));
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoSrc =
+    "https://stream.mux.com/T6oQJQ02cQ6N01TR6iHwZkKFkbepS34dkkIc9iukgy400g.m3u8";
 
-  const { scrollY } = useScroll();
-  const orbY = useTransform(scrollY, [0, 800], [0, 160]);
-  const gridY = useTransform(scrollY, [0, 800], [0, 60]);
-  const contentY = useTransform(scrollY, [0, 800], [0, 40]);
-  const contentOpacity = useTransform(scrollY, [0, 500], [1, 0.2]);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(videoSrc);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play().catch((e) => console.log("Auto-play prevented:", e));
+      });
+      return () => {
+        hls.destroy();
+      };
+    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      video.src = videoSrc;
+      video.addEventListener("loadedmetadata", () => {
+        video.play().catch((e) => console.log("Auto-play prevented:", e));
+      });
+    }
+  }, []);
 
   return (
-    <section
-      id="home"
-      className="relative flex min-h-screen w-full items-center overflow-hidden bg-base-950 pt-24"
-    >
-      {/* grid backdrop */}
-      <motion.div
-        style={{ y: gridY }}
-        className="absolute inset-0 bg-grid bg-[size:56px_56px] opacity-40 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,black,transparent)]"
+    <section className="relative w-full min-h-screen bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden flex flex-col justify-center items-center pt-20 pb-16">
+      {/* BACKGROUND VIDEO LAYER */}
+      <video
+        ref={videoRef}
+        muted
+        loop
+        playsInline
+        poster="https://images.unsplash.com/photo-1647356191320-d7a1f80ca777?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRhcmslMjB0ZWNobm9sb2d5JTIwbmV1cmFsJTIwbmV0d29ya3xlbnwxfHx8fDE3Njg5NzIyNTV8MA&ixlib=rb-4.1.0&q=80&w=1080"
+        className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none z-0"
       />
 
-      {/* gradient orb */}
-      <motion.div
-        style={{ y: orbY }}
-        className="absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-accent-blue/25 via-accent-violet/10 to-transparent blur-3xl"
-      />
+      {/* VIDEO OVERLAY */}
+      <div className="absolute inset-0 bg-white/70 dark:bg-black/60 backdrop-blur-[2px] pointer-events-none z-0" />
 
-      {/* floating network nodes */}
-      <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-60">
-        {nodes.map((n, i) =>
-          i > 0 ? (
-            <line
-              key={`l-${n.id}`}
-              x1={`${nodes[i - 1].x}%`}
-              y1={`${nodes[i - 1].y}%`}
-              x2={`${n.x}%`}
-              y2={`${n.y}%`}
-              stroke="rgba(96,165,250,0.08)"
-              strokeWidth="1"
-            />
-          ) : null
-        )}
-        {nodes.map((n) => (
-          <motion.circle
-            key={n.id}
-            cx={`${n.x}%`}
-            cy={`${n.y}%`}
-            r={2}
-            fill="rgba(34,211,238,0.5)"
-            animate={{ opacity: [0.2, 0.8, 0.2] }}
-            transition={{ duration: n.dur, delay: n.delay, repeat: Infinity }}
-          />
-        ))}
-      </svg>
+      {/* DECORATIVE GRADIENTS */}
+      <div className="absolute top-[-20%] left-[20%] w-[600px] h-[600px] rounded-full bg-blue-200/30 dark:bg-blue-900/20 blur-[120px] mix-blend-screen pointer-events-none z-0" />
+      <div className="absolute bottom-[-10%] right-[20%] w-[500px] h-[500px] rounded-full bg-indigo-200/30 dark:bg-indigo-900/20 blur-[120px] mix-blend-screen pointer-events-none z-0" />
 
-      <div className="pointer-events-auto absolute inset-x-0 top-0 z-20 hidden h-1/2 lg:block">
-        <TextCursor text="✦" spacing={140} maxPoints={4} exitDuration={0.4} />
-      </div>
+      {/* CONTENT CONTAINER */}
+      <div className="max-w-5xl mx-auto flex flex-col items-center text-center z-10 mt-20 space-y-12 px-4">
+        {/* 1. Pre-headline */}
+        <BlurText
+          text="Design at the speed of thought"
+          className="font-serif text-3xl sm:text-5xl lg:text-[48px] leading-[1.1] text-black dark:text-white justify-center"
+          delay={150}
+          animateBy="words"
+          direction="top"
+        />
 
-      <motion.div
-        style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-6 text-center"
-      >
-        <motion.span
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.69, ease: EASE }}
-          className="mb-6 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-white/70"
-        >
-          <ShinyText text="National Entrepreneurship Challenge 2026" speed={2.4} color="rgba(255,255,255,0.55)" />
-        </motion.span>
-
+        {/* 2. Main headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
-          className="font-display text-6xl font-bold tracking-tight text-gradient sm:text-7xl md:text-8xl"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="font-sans font-semibold text-6xl sm:text-8xl lg:text-[136px] leading-[0.9] tracking-tighter bg-gradient-to-b from-neutral-900 via-neutral-900 to-[#3054ff] dark:from-white dark:via-white dark:to-[#b4c0ff] bg-clip-text text-transparent"
         >
-          DESPU
+          Build Faster
         </motion.h1>
 
+        {/* 3. Subheadline */}
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
-          className="mt-4 font-display text-xl font-medium sm:text-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.7 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="font-sans text-lg sm:text-[20px] leading-[1.65] text-black/70 dark:text-white max-w-xl"
         >
-          {TAGLINE_WORDS.map((word, i) => (
-            <motion.span
-              key={word}
-              className="mx-1 inline-block"
-              animate={{ color: ["rgba(255,255,255,0.85)", "#22d3ee", "rgba(255,255,255,0.85)"] }}
-              transition={{
-                duration: 3.6,
-                repeat: Infinity,
-                repeatDelay: (TAGLINE_WORDS.length - 1) * 1.2,
-                delay: 1 + i * 1.2,
-                ease: "easeInOut",
-              }}
-            >
-              {word}
-            </motion.span>
-          ))}
+          Create fully functional, SEO-optimized websites in seconds with our
+          advanced AI engine.
         </motion.p>
 
+        {/* 4. CTA buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
-          className="mt-5 max-w-xl text-sm text-white/60 sm:text-base"
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="flex flex-col sm:flex-row gap-6 items-center"
         >
-          <BlurText
-            text="A team of young entrepreneurs participating in the National Entrepreneurship Challenge, transforming ideas into meaningful solutions."
-            animateBy="words"
-            direction="top"
-            delay={22}
-            className="justify-center text-sm text-white/60 sm:text-base"
-          />
-        </motion.div>
+          {/* Primary Button */}
+          <a
+            href="#start"
+            className="pl-6 pr-2 py-2 rounded-full bg-black dark:bg-white flex items-center gap-3 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 group cursor-pointer"
+          >
+            <span className="font-sans font-medium text-lg text-white dark:text-[#0a0400]">
+              Start Building Free
+            </span>
+            <div className="w-[40px] h-[40px] rounded-full bg-[#3054ff] hover:bg-[#2040e0] flex items-center justify-center transition-colors shrink-0">
+              <ArrowRight className="w-5 h-5 text-white" />
+            </div>
+          </a>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
-          className="mt-9 flex flex-wrap items-center justify-center gap-4"
-        >
-          <Magnetic>
-            <a
-              href="#team"
-              className="btn-primary-glow rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-7 py-3 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
-            >
-              Meet Our Team
-            </a>
-          </Magnetic>
-          <Magnetic>
-            <a
-              href="#journey"
-              className="rounded-full border border-white/15 px-7 py-3 text-sm font-medium text-white/80 transition-colors hover:border-white/30 hover:text-white"
-            >
-              Our Journey
-            </a>
-          </Magnetic>
+          {/* Secondary Button */}
+          <a
+            href="#examples"
+            className="text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white backdrop-blur-sm hover:bg-black/5 dark:hover:bg-white/5 px-4 py-2 rounded-lg flex items-center font-sans font-medium transition-all group cursor-pointer"
+          >
+            See Examples
+            <ArrowRight className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
+          </a>
         </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-1.5 text-white/35"
-        >
-          <span className="text-[10px] font-medium uppercase tracking-[0.2em]">Scroll</span>
-          <ChevronDown size={16} />
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

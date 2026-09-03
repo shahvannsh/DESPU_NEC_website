@@ -1,15 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * { scroll-behavior: smooth; }
 
-html, body, #root { background: #05070d; }
+html, body, #root { background: #000; }
 
 html { --announcement-h: 0px; }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 

@@ -2,30 +2,42 @@ import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
 export default function ThemeToggle() {
-  const [light, setLight] = useState(false);
+  const [isDark, setIsDark] = useState<boolean>(true);
 
   useEffect(() => {
-    const stored = localStorage.getItem("despu-theme");
+    const stored = localStorage.getItem("theme");
     if (stored === "light") {
-      setLight(true);
+      setIsDark(false);
+      document.documentElement.classList.remove("dark");
       document.documentElement.classList.add("light");
+    } else {
+      setIsDark(true);
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
     }
   }, []);
 
-  const toggle = () => {
-    const next = !light;
-    setLight(next);
-    document.documentElement.classList.toggle("light", next);
-    localStorage.setItem("despu-theme", next ? "light" : "dark");
+  const toggleTheme = () => {
+    const nextDark = !isDark;
+    setIsDark(nextDark);
+    if (nextDark) {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
+      localStorage.setItem("theme", "light");
+    }
   };
 
   return (
     <button
-      onClick={toggle}
-      aria-label={light ? "Switch to dark mode" : "Switch to light mode"}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/70 transition-colors hover:border-white/25 hover:text-white"
+      onClick={toggleTheme}
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      className="p-2 text-black/80 hover:text-black dark:text-white/80 dark:hover:text-white transition-colors cursor-pointer rounded-full hover:bg-black/5 dark:hover:bg-white/10 flex items-center justify-center"
     >
-      {light ? <Moon size={15} /> : <Sun size={15} />}
+      {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
     </button>
   );
 }

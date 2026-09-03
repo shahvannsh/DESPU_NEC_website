@@ -2,6 +2,7 @@
 import typography from '@tailwindcss/typography';
 
 export default {
+  darkMode: 'class',
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -19,8 +20,10 @@ export default {
         },
       },
       fontFamily: {
+        sans: ['"Instrument Sans"', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'serif'],
         display: ['"Space Grotesk"', 'sans-serif'],
-        body: ['"Inter"', 'sans-serif'],
+        body: ['"Instrument Sans"', 'sans-serif'],
       },
       backgroundImage: {
         'grid': "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",

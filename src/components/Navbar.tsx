@@ -1,181 +1,87 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Search } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
-import ecellLogo from "../assets/brand/ecell-logo.png";
-
-const links = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Team", href: "#team" },
-  { label: "Journey", href: "#journey" },
-  { label: "Events", href: "#events" },
-  { label: "Reels", href: "#reels" },
-  { label: "Vision", href: "#vision" },
-  { label: "Blog", href: "/blog", isRoute: true },
-  { label: "Contact", href: "#contact" },
-];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [activeHash, setActiveHash] = useState("#home");
-  const location = useLocation();
-  const navigate = useNavigate();
-  const onHome = location.pathname === "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    if (!onHome) return;
-    const sections = links
-      .filter((l) => !l.isRoute)
-      .map((l) => document.querySelector(l.href))
-      .filter((el): el is Element => !!el);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveHash(`#${entry.target.id}`);
-          }
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-    );
-
-    sections.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [onHome]);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
-  const go = (href: string, isRoute?: boolean) => {
-    setOpen(false);
-    if (isRoute) {
-      navigate(href);
-      return;
-    }
-    if (onHome) {
-      document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      navigate(`/${href}`);
-    }
-  };
-
   return (
     <header
-      style={{ top: "var(--announcement-h, 0px)" }}
-      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between w-full transition-all duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-base-950/90 py-3 shadow-lg shadow-black/20 backdrop-blur-xl"
-          : "bg-base-950/70 py-5 backdrop-blur-md"
+          ? "bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-black/5 dark:border-white/10"
+          : "bg-transparent"
       }`}
     >
-      <nav
-        aria-label="Primary"
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10"
-      >
-        <Link to="/" className="flex items-center gap-3 leading-none">
-          <img src={ecellLogo} alt="E-Cell, DES Pune University" className="h-10 w-auto" />
-          <span className="flex flex-col">
-            <span className="font-display text-xl font-bold tracking-tight text-white">
-              DESPU
-            </span>
-            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50">
-              National Entrepreneurship Challenge
-            </span>
-          </span>
-        </Link>
-
-        <div className="hidden items-center gap-8 md:flex">
-          {links.map((l) => (
-            <button
-              key={l.label}
-              onClick={() => go(l.href, l.isRoute)}
-              className={`text-sm font-medium transition-colors ${
-                (l.isRoute && location.pathname.startsWith(l.href)) ||
-                (onHome && !l.isRoute && activeHash === l.href)
-                  ? "text-white"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              {l.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => window.dispatchEvent(new Event("open-command-palette"))}
-            aria-label="Open quick search"
-            className="hidden items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/50 transition-colors hover:border-white/25 hover:text-white sm:flex"
+      {/* Left: 24x24px sunburst SVG icon */}
+      <div className="flex items-center">
+        <a href="#" aria-label="Home" className="flex items-center">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-6 h-6 text-black dark:text-white transition-colors"
+            aria-hidden="true"
           >
-            <Search size={13} />
-            <kbd className="text-[10px]">⌘K</kbd>
-          </button>
-          <ThemeToggle />
-          <button
-            onClick={() => go("#team")}
-            className="hidden rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-white transition-all hover:border-accent-cyan/50 hover:bg-white/10 md:inline-flex"
-          >
-            Meet the Team →
-          </button>
-        </div>
+            <path d="M12 0L14 8.5L22.5 6L16.5 12L22.5 18L14 15.5L12 24L10 15.5L1.5 18L7.5 12L1.5 6L10 8.5L12 0Z" />
+          </svg>
+        </a>
+      </div>
 
-        <button
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          className="text-white md:hidden"
-          onClick={() => setOpen((v) => !v)}
+      {/* Center: nav links (hidden on mobile, md:flex, gap-8) */}
+      <nav className="hidden md:flex items-center gap-8 font-sans">
+        <a
+          href="#products"
+          className="inline-flex items-center text-sm font-medium text-black/80 hover:text-black dark:text-white/80 dark:hover:text-white transition-colors"
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          Products
+          <ChevronDown className="w-4 h-4 ml-1" />
+        </a>
+        <a
+          href="#stories"
+          className="text-sm font-medium text-black/80 hover:text-black dark:text-white/80 dark:hover:text-white transition-colors"
+        >
+          Customer Stories
+        </a>
+        <a
+          href="#resources"
+          className="text-sm font-medium text-black/80 hover:text-black dark:text-white/80 dark:hover:text-white transition-colors"
+        >
+          Resources
+        </a>
+        <a
+          href="#pricing"
+          className="text-sm font-medium text-black/80 hover:text-black dark:text-white/80 dark:hover:text-white transition-colors"
+        >
+          Pricing
+        </a>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden md:hidden"
-          >
-            <div className="flex flex-col gap-1 border-t border-white/10 bg-base-950/95 px-6 py-4">
-              {links.map((l) => (
-                <button
-                  key={l.label}
-                  onClick={() => go(l.href, l.isRoute)}
-                  className="rounded-lg px-3 py-3 text-left text-sm font-medium text-white/80 hover:bg-white/5 hover:text-white"
-                >
-                  {l.label}
-                </button>
-              ))}
-              <button
-                onClick={() => go("#team")}
-                className="mt-2 rounded-full bg-white/10 px-4 py-3 text-center text-sm font-medium text-white"
-              >
-                Meet the Team →
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Right: Book A Demo, Theme Toggle, Get Started */}
+      <div className="flex items-center gap-4">
+        <a
+          href="#demo"
+          className="hidden sm:inline-block text-sm font-medium text-black/80 hover:text-black dark:text-white/80 dark:hover:text-white transition-colors"
+        >
+          Book A Demo
+        </a>
+        <ThemeToggle />
+        <a
+          href="#get-started"
+          className="bg-black text-white dark:bg-white dark:text-black rounded-full px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-all inline-block font-sans"
+        >
+          Get Started
+        </a>
+      </div>
     </header>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect, useState, Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "./lib/motion";
@@ -54,10 +54,22 @@ function ScrollToHash() {
 
 export default function App() {
   const location = useLocation();
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains("dark") || !document.documentElement.classList.contains("light"));
+    };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <AuthProvider>
-    <ClickSpark sparkColor="#22d3ee" sparkSize={8} sparkRadius={18} sparkCount={6} duration={420}>
-    <div className="min-h-screen bg-base-950 font-body">
+    <ClickSpark sparkColor={isDark ? "#ffffff" : "#3054ff"} sparkSize={8} sparkRadius={16} sparkCount={6} duration={400}>
+    <div className="min-h-screen bg-white dark:bg-black text-neutral-900 dark:text-white font-sans transition-colors duration-300">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-base-950"
