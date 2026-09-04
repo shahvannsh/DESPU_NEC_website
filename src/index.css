@@ -6,46 +6,19 @@
 
 * { scroll-behavior: smooth; }
 
-html, body, #root { background: #000; }
-
-html { --announcement-h: 0px; }
-
-body {
-  font-family: 'Instrument Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
+html, body, #root { 
+  background-color: #000000; 
+  color: #ffffff;
 }
 
-/* smoother default easing for Tailwind's transition-* utilities */
-.transition-colors,
-.transition-transform,
-.transition-all,
-.transition-opacity {
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  transition-duration: 300ms;
+html.dark, html.dark body, html.dark #root {
+  background-color: #000000;
+  color: #ffffff;
 }
 
-/* consistent, visible focus ring for keyboard navigation */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid #22d3ee;
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-/*
- * Light mode — implemented as real color overrides (not a filter/invert
- * trick, which caused genuine rendering bugs and was removed). Every
- * dark-mode utility class used across the site gets an explicit light
- * equivalent below, scoped under html.light. Because this never touches
- * <img> elements at all, photos are completely unaffected — they show
- * their real, natural colors in both themes automatically.
- */
-html.light,
-html.light body,
-html.light #root {
-  background: #f6f7fb;
+html.light, html.light body, html.light #root {
+  background-color: #f6f7fb;
+  color: #0a0e18;
 }
 
 html.light .bg-base-950 { background-color: #f6f7fb; }

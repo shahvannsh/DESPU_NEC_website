@@ -19,7 +19,7 @@ export default function TeamCapabilities() {
   const max = entries[0][1];
 
   return (
-    <section className="relative bg-base-900 px-6 py-28 lg:px-10">
+    <section className="relative bg-white text-neutral-900 dark:bg-base-900 dark:text-white px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,10 +32,10 @@ export default function TeamCapabilities() {
             <DecryptedText text="Collective Skillset" animateOn="view" speed={35} maxIterations={12} />
           </span>
           <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
-          <h2 className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-bold text-neutral-900 dark:text-white sm:text-4xl">
             What We Bring Together
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-sm sm:text-base text-white/80">
+          <p className="mx-auto mt-4 max-w-lg text-sm sm:text-base text-neutral-700 dark:text-white/80">
             Drawn directly from each team member's actual skills — no estimates.
           </p>
         </motion.div>

@@ -10,17 +10,17 @@ const STATUS_STYLES: Record<
 > = {
   completed: {
     dot: "border-accent-cyan bg-accent-cyan/15 text-accent-cyan",
-    text: "text-white font-bold",
+    text: "text-neutral-900 dark:text-white font-bold",
     label: "Completed",
   },
   current: {
     dot: "border-accent-cyan bg-accent-cyan text-base-950 font-bold",
-    text: "text-white font-bold",
+    text: "text-neutral-900 dark:text-white font-bold",
     label: "In Progress",
   },
   upcoming: {
-    dot: "border-white/25 bg-base-900 text-white/70",
-    text: "text-white/90 font-semibold",
+    dot: "border-neutral-300 dark:border-white/25 bg-neutral-100 dark:bg-base-900 text-neutral-600 dark:text-white/70",
+    text: "text-neutral-700 dark:text-white/90 font-semibold",
     label: "Upcoming",
   },
 };
@@ -33,7 +33,7 @@ const STATUS_ICON: Record<Milestone["status"], typeof CheckCircle2> = {
 
 export default function Journey() {
   return (
-    <section id="journey" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
+    <section id="journey" className="relative scroll-mt-24 bg-white text-neutral-900 dark:bg-base-950 dark:text-white px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,13 +46,13 @@ export default function Journey() {
             <DecryptedText text="The Path" animateOn="view" speed={35} maxIterations={12} />
           </span>
           <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
-          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-bold text-neutral-900 dark:text-white sm:text-4xl">
             Our Journey
           </h2>
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-[15px] top-2 bottom-2 w-px bg-white/20 sm:left-[19px]" />
+          <div className="absolute left-[15px] top-2 bottom-2 w-px bg-neutral-200 dark:bg-white/20 sm:left-[19px]" />
           <div className="flex flex-col gap-10">
             {journey.map((m, i) => {
               const style = STATUS_STYLES[m.status];
@@ -79,14 +79,14 @@ export default function Journey() {
                       <span
                         className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${
                           m.status === "upcoming"
-                            ? "bg-white/10 text-white/80"
+                            ? "bg-neutral-100 text-neutral-700 dark:bg-white/10 dark:text-white/80"
                             : "bg-accent-cyan/15 text-accent-cyan"
                         }`}
                       >
                         {style.label}
                       </span>
                     </div>
-                    <p className="mt-1.5 max-w-xl text-sm sm:text-base leading-relaxed text-white/80">
+                    <p className="mt-1.5 max-w-xl text-sm sm:text-base leading-relaxed text-neutral-700 dark:text-white/80">
                       {m.description}
                     </p>
                     {m.highlights && m.highlights.length > 0 && (
@@ -94,7 +94,7 @@ export default function Journey() {
                         {m.highlights.map((h) => (
                           <li
                             key={h}
-                            className="flex items-start gap-2 text-xs sm:text-sm text-white/70"
+                            className="flex items-start gap-2 text-xs sm:text-sm text-neutral-600 dark:text-white/70"
                           >
                             <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-cyan" />
                             {h}

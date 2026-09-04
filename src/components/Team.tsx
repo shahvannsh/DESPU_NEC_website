@@ -82,7 +82,7 @@ export default function Team() {
   );
 
   return (
-    <section id="team" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
+    <section id="team" className="relative scroll-mt-24 bg-white text-neutral-900 dark:bg-base-950 dark:text-white px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -95,7 +95,7 @@ export default function Team() {
             <DecryptedText text="Meet DESPU" animateOn="view" speed={35} maxIterations={12} />
           </span>
           <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
-          <h2 className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-bold text-neutral-900 dark:text-white sm:text-4xl">
             23 minds. Different strengths.
             <br />
             One shared ambition.
