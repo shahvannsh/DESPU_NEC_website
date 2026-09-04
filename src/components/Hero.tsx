@@ -130,13 +130,13 @@ export default function Hero() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="flex flex-col sm:flex-row gap-6 items-center pt-2"
         >
-          {/* Primary Button wrapped in Magnetic */}
+          {/* Primary Button: White Pill with High-Contrast Dark Text & Blue Arrow */}
           <Magnetic>
             <a
               href="#team"
-              className="pl-6 pr-2 py-2 rounded-full bg-black dark:bg-white flex items-center gap-3 transition-all duration-300 hover:shadow-[0_0_24px_rgba(48,84,255,0.4)] hover:scale-105 group cursor-pointer shadow-lg border border-black/10 dark:border-white/20"
+              className="pl-6 pr-2 py-2 rounded-full bg-white dark:bg-white flex items-center gap-3 transition-all duration-300 hover:shadow-[0_0_24px_rgba(48,84,255,0.4)] hover:scale-105 group cursor-pointer shadow-lg border border-neutral-200 dark:border-white/20"
             >
-              <span className="font-sans font-bold text-lg text-white dark:!text-black">
+              <span className="font-sans font-bold text-lg text-black dark:text-black">
                 Meet Our Team
               </span>
               <div className="w-[40px] h-[40px] rounded-full bg-[#3054ff] hover:bg-[#2040e0] flex items-center justify-center transition-colors shrink-0">
@@ -145,14 +145,14 @@ export default function Hero() {
             </a>
           </Magnetic>
 
-          {/* Secondary Button wrapped in Magnetic */}
+          {/* Secondary Button: High-Contrast Dark Button with Crisp White Text */}
           <Magnetic>
             <a
               href="#journey"
-              className="text-neutral-900 hover:text-black dark:text-white dark:hover:text-white backdrop-blur-md hover:bg-black/5 dark:hover:bg-white/15 px-5 py-2.5 rounded-lg flex items-center font-sans font-bold transition-all group cursor-pointer border border-black/20 dark:border-white/20 shadow-sm"
+              className="bg-black text-white hover:bg-neutral-800 dark:bg-black dark:text-white dark:hover:bg-neutral-900 backdrop-blur-md px-6 py-3 rounded-full flex items-center font-sans font-bold transition-all group cursor-pointer border border-neutral-800 dark:border-white/20 shadow-md"
             >
-              Our Journey
-              <ArrowRight className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
+              <span className="text-white">Our Journey</span>
+              <ArrowRight className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform text-white" />
             </a>
           </Magnetic>
         </motion.div>

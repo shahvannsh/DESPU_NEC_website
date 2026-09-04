@@ -78,6 +78,12 @@ export default function Navbar() {
         >
           Vision
         </a>
+        <a
+          href="#faq"
+          className="text-sm font-semibold text-black/80 hover:text-black dark:text-white/90 dark:hover:text-white transition-colors"
+        >
+          FAQ
+        </a>
       </nav>
 
       {/* Right: Contact link, Theme Toggle, High-Contrast Meet Team Button */}
@@ -91,7 +97,7 @@ export default function Navbar() {
         <ThemeToggle />
         <a
           href="#team"
-          className="bg-black text-white dark:bg-white dark:!text-black rounded-full px-5 py-2.5 text-sm font-bold hover:opacity-90 transition-all inline-block font-sans shadow-md"
+          className="bg-black text-white dark:bg-white dark:text-black rounded-full px-5 py-2.5 text-sm font-bold hover:opacity-90 transition-all inline-block font-sans shadow-md"
         >
           Meet Team
         </a>

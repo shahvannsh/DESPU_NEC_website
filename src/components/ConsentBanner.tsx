@@ -62,13 +62,13 @@ export const ConsentBanner: React.FC = () => {
             <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={() => handleAccept('all')}
-                className="flex-1 bg-white text-black dark:bg-white dark:!text-black font-sans font-semibold text-xs py-2.5 px-4 rounded-full hover:bg-neutral-200 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-accent-cyan min-h-[44px]"
+                className="flex-1 bg-white text-black dark:bg-white dark:text-black font-sans font-bold text-xs py-2.5 px-4 rounded-full hover:bg-neutral-200 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-accent-cyan min-h-[44px]"
               >
                 Accept All
               </button>
               <button
                 onClick={() => handleAccept('essential')}
-                className="flex-1 bg-white/10 text-white hover:bg-white/15 font-sans font-medium text-xs py-2.5 px-4 rounded-full border border-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-cyan min-h-[44px]"
+                className="flex-1 bg-neutral-900 text-white dark:bg-white/10 dark:text-white font-sans font-semibold text-xs py-2.5 px-4 rounded-full border border-neutral-700 dark:border-white/15 transition-colors hover:bg-black dark:hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-accent-cyan min-h-[44px]"
               >
                 Essential Only
               </button>

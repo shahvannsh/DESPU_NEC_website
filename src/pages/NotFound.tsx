@@ -59,9 +59,9 @@ export default function NotFound() {
         >
           <Link
             to="/"
-            className="pl-6 pr-2 py-2 rounded-full bg-black text-white dark:bg-white dark:!text-black flex items-center gap-3 transition-all duration-300 hover:scale-105 group cursor-pointer shadow-lg"
+            className="pl-6 pr-2 py-2 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center gap-3 transition-all duration-300 hover:scale-105 group cursor-pointer shadow-lg"
           >
-            <span className="font-sans font-bold text-base text-white dark:!text-black">
+            <span className="font-sans font-bold text-base text-white dark:text-black">
               Back to Home
             </span>
             <div className="w-[36px] h-[36px] rounded-full bg-[#3054ff] hover:bg-[#2040e0] flex items-center justify-center transition-colors shrink-0">
@@ -71,7 +71,7 @@ export default function NotFound() {
 
           <a
             href="/#contact"
-            className="text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white backdrop-blur-sm hover:bg-black/5 dark:hover:bg-white/10 px-5 py-2.5 rounded-full flex items-center font-sans font-semibold transition-all border border-black/10 dark:border-white/10"
+            className="text-neutral-900 dark:text-white backdrop-blur-sm hover:bg-black/5 dark:hover:bg-white/10 px-5 py-2.5 rounded-full flex items-center font-sans font-bold transition-all border border-neutral-300 dark:border-white/20"
           >
             <Mail className="w-4 h-4 mr-2" />
             Contact Support

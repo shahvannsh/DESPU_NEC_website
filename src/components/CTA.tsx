@@ -30,7 +30,7 @@ export default function CTA() {
           <Magnetic>
             <a
               href="#journey"
-              className="btn-primary-glow rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-7 py-3 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
+              className="btn-primary-glow rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-7 py-3 text-sm font-bold text-black shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
             >
               Follow Our Journey →
             </a>
@@ -38,7 +38,7 @@ export default function CTA() {
           <Magnetic>
             <a
               href="#team"
-              className="rounded-full border border-white/15 px-7 py-3 text-sm font-medium text-white/80 transition-colors hover:border-white/30 hover:text-white"
+              className="rounded-full bg-neutral-900 text-white dark:bg-white/10 dark:text-white border border-neutral-700 dark:border-white/20 px-7 py-3 text-sm font-medium transition-colors hover:bg-black dark:hover:bg-white/20"
             >
               Connect With The Team
             </a>
@@ -48,7 +48,7 @@ export default function CTA() {
               href={SOCIAL_LINKS.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-white/15 px-7 py-3 text-sm font-medium text-white/80 transition-colors hover:border-white/30 hover:text-white"
+              className="rounded-full bg-neutral-900 text-white dark:bg-white/10 dark:text-white border border-neutral-700 dark:border-white/20 px-7 py-3 text-sm font-medium transition-colors hover:bg-black dark:hover:bg-white/20"
             >
               Join Our Community
             </a>

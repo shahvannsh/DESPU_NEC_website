@@ -66,7 +66,7 @@ export default function Blog() {
           {isTeamMember && (
             <Link
               to="/blog/new"
-              className="btn-primary-glow inline-flex shrink-0 items-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-5 py-2.5 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
+              className="btn-primary-glow inline-flex shrink-0 items-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-5 py-2.5 text-sm font-bold text-black shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
             >
               <PenSquare size={16} />
               Write a post
