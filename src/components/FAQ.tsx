@@ -31,14 +31,14 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative scroll-mt-24 bg-base-950 px-6 py-24 lg:px-10">
+    <section id="faq" className="relative scroll-mt-24 bg-white text-neutral-900 dark:bg-base-950 dark:text-white px-6 py-24 lg:px-10">
       <div className="mx-auto max-w-4xl">
         {/* Section Header matching site pattern */}
         <motion.div {...fadeUpSm} className="mb-10 text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#3054ff] dark:text-accent-cyan">
             Knowledge Base
           </span>
-          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold text-neutral-900 dark:text-white sm:text-4xl">
             Questions? Answered.
           </h2>
         </motion.div>
@@ -48,7 +48,7 @@ export default function FAQ() {
           <div className="relative">
             <Search
               size={15}
-              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-white/35"
+              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500 dark:text-white/35"
             />
             <input
               type="text"
@@ -56,13 +56,13 @@ export default function FAQ() {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search questions or keywords..."
               aria-label="Search questions"
-              className="w-full rounded-full border border-white/10 bg-white/[0.03] py-2.5 pl-10 pr-9 text-sm text-white placeholder:text-white/35 focus:border-accent-cyan/50 focus:outline-none"
+              className="w-full rounded-full border border-neutral-300 dark:border-white/10 bg-neutral-100 dark:bg-white/[0.03] py-2.5 pl-10 pr-9 text-sm text-neutral-900 dark:text-white placeholder:text-neutral-500 dark:placeholder:text-white/35 focus:border-accent-cyan/50 focus:outline-none"
             />
             {query && (
               <button
                 onClick={() => setQuery("")}
                 aria-label="Clear search"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 dark:text-white/40 hover:text-neutral-900 dark:hover:text-white"
               >
                 <XIcon size={14} />
               </button>
@@ -78,8 +78,8 @@ export default function FAQ() {
               onClick={() => setCategory(c)}
               className={`rounded-full px-4 py-2 text-xs font-medium uppercase tracking-wide transition-colors ${
                 category === c
-                  ? "bg-white text-base-950 font-bold"
-                  : "border border-white/10 text-white/60 hover:border-white/25 hover:text-white"
+                  ? "bg-black text-white dark:bg-white dark:text-base-950 font-bold"
+                  : "border border-neutral-300 dark:border-white/10 text-neutral-700 dark:text-white/60 hover:border-neutral-400 dark:hover:border-white/25 hover:text-neutral-900 dark:hover:text-white"
               }`}
             >
               {c === "all" ? "All" : c}
@@ -89,7 +89,7 @@ export default function FAQ() {
 
         {/* Empty State matching site search pattern */}
         {filtered.length === 0 && (
-          <p className="mb-10 text-center text-sm text-white/40">
+          <p className="mb-10 text-center text-sm text-neutral-500 dark:text-white/40">
             No matching questions — try a different search.
           </p>
         )}
@@ -105,22 +105,22 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={stagger(i, 0.05, 0.1)}
-                className="glass card-hover overflow-hidden rounded-2xl border border-white/10"
+                className="glass card-hover overflow-hidden rounded-2xl border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/5"
               >
                 <button
                   type="button"
                   onClick={() => toggleItem(item.id)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${item.id}`}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-white/[0.02]"
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-neutral-100/50 dark:hover:bg-white/[0.02]"
                 >
-                  <span className="font-display text-base font-medium text-white sm:text-lg">
+                  <span className="font-display text-base font-medium text-neutral-900 dark:text-white sm:text-lg">
                     {item.question}
                   </span>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3, ease: EASE }}
-                    className="shrink-0 text-white/40"
+                    className="shrink-0 text-neutral-500 dark:text-white/40"
                   >
                     <ChevronDown size={18} />
                   </motion.div>
@@ -136,7 +136,7 @@ export default function FAQ() {
                       transition={{ duration: 0.35, ease: EASE }}
                       className="overflow-hidden"
                     >
-                      <div className="border-t border-white/10 px-6 pb-6 pt-4 text-sm leading-relaxed text-white/70">
+                      <div className="border-t border-neutral-200 dark:border-white/10 px-6 pb-6 pt-4 text-sm leading-relaxed text-neutral-700 dark:text-white/70">
                         {item.answer}
                       </div>
                     </motion.div>

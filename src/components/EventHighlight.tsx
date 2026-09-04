@@ -14,7 +14,7 @@ export default function EventHighlight() {
   if (clips.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden bg-base-950 px-6 py-20 lg:px-10">
+    <section className="relative overflow-hidden bg-white text-neutral-900 dark:bg-base-950 dark:text-white px-6 py-20 lg:px-10">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -23,14 +23,14 @@ export default function EventHighlight() {
           transition={{ duration: 0.6, ease: EASE }}
           className="mb-8 text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#3054ff] dark:text-accent-cyan">
             Straight From Eureka! 2026
           </span>
           <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
-          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold text-neutral-900 dark:text-white sm:text-4xl">
             Built on the ground
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-white/60">
+          <p className="mx-auto mt-3 max-w-xl text-sm text-neutral-600 dark:text-white/60">
             Every session, every pitch, every late night — this is DESPU in motion.
           </p>
         </motion.div>

@@ -21,7 +21,7 @@ export default function Reels() {
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
 
   return (
-    <section id="reels" className="relative scroll-mt-24 bg-base-900 px-6 py-28 lg:px-10">
+    <section id="reels" className="relative scroll-mt-24 bg-white text-neutral-900 dark:bg-base-900 dark:text-white px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -30,13 +30,13 @@ export default function Reels() {
           transition={{ duration: 0.6, ease: EASE }}
           className="mb-14 text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#3054ff] dark:text-accent-cyan">
             From The Feed
           </span>
-          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold text-neutral-900 dark:text-white sm:text-4xl">
             Reels
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/55 sm:text-base">
+          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-neutral-600 dark:text-white/55 sm:text-base">
             Behind-the-scenes and on-the-ground moments from DESPU, straight from Instagram.
             Tap any reel to watch them one after another, just like the app.
           </p>

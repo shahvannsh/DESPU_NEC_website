@@ -7,7 +7,7 @@ export default function Vision() {
     <section
       id="vision"
       style={{ scrollMarginTop: "6rem" }}
-      className="relative flex min-h-[70vh] items-center overflow-hidden bg-base-950 px-6 py-28 lg:px-10"
+      className="relative flex min-h-[70vh] items-center overflow-hidden bg-white text-neutral-900 dark:bg-base-950 dark:text-white px-6 py-28 lg:px-10"
     >
       <div className="absolute inset-0 opacity-70">
         <Aurora colorStops={["#22d3ee", "#8b5cf6", "#3b82f6"]} amplitude={0.8} blend={0.55} speed={0.4} />
@@ -27,7 +27,7 @@ export default function Vision() {
           <br />
           We Build.
         </h2>
-        <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-white/60 sm:text-base">
+        <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-neutral-700 dark:text-white/60 sm:text-base">
           DESPU represents a generation that sees entrepreneurship not merely as
           starting a company, but as the courage to identify problems, challenge
           assumptions and build solutions that matter.

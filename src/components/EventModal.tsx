@@ -74,10 +74,10 @@ export default function EventModal({ event, onClose }: Props) {
 
             <div className="flex flex-col gap-5 p-6 sm:p-8">
               <div>
-                <h3 className="font-display text-2xl font-bold text-white sm:text-3xl">
+                <h3 className="font-display text-2xl font-bold text-neutral-900 dark:text-white sm:text-3xl">
                   {event.title}
                 </h3>
-                <div className="mt-2 flex flex-wrap items-center gap-4 text-xs text-white/50">
+                <div className="mt-2 flex flex-wrap items-center gap-4 text-xs text-neutral-500 dark:text-white/50">
                   <span className="flex items-center gap-1.5">
                     <Calendar size={13} />
                     {formatDate(event.date)}
@@ -91,7 +91,7 @@ export default function EventModal({ event, onClose }: Props) {
                 </div>
               </div>
 
-              <p className="whitespace-pre-line text-sm leading-relaxed text-white/70">
+              <p className="whitespace-pre-line text-sm leading-relaxed text-neutral-700 dark:text-white/70">
                 {event.fullMessage || event.description}
               </p>
 
@@ -100,18 +100,18 @@ export default function EventModal({ event, onClose }: Props) {
                   <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent-cyan">
                     Outcome
                   </h4>
-                  <p className="text-sm text-white/80">{event.outcome}</p>
+                  <p className="text-sm text-neutral-800 dark:text-white/80">{event.outcome}</p>
                 </div>
               )}
 
               {event.highlights && event.highlights.length > 0 && (
                 <div>
-                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-white/40">
+                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-white/40">
                     Highlights
                   </h4>
                   <ul className="space-y-1.5">
                     {event.highlights.map((h) => (
-                      <li key={h} className="flex items-start gap-2 text-sm text-white/70">
+                      <li key={h} className="flex items-start gap-2 text-sm text-neutral-700 dark:text-white/70">
                         <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-accent-cyan" />
                         {h}
                       </li>
@@ -122,7 +122,7 @@ export default function EventModal({ event, onClose }: Props) {
 
               {event.videoGallery && event.videoGallery.length > 0 && (
                 <div>
-                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-white/40">
+                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-white/40">
                     Highlights ({event.videoGallery.length})
                   </h4>
                   <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
@@ -152,7 +152,7 @@ export default function EventModal({ event, onClose }: Props) {
 
               {event.gallery && event.gallery.length > 0 && (
                 <div>
-                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-white/40">
+                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-white/40">
                     Photos
                   </h4>
                   <div className="grid grid-cols-3 gap-2">

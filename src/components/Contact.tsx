@@ -35,7 +35,7 @@ export default function Contact() {
   )}`;
 
   return (
-    <section id="contact" className="relative scroll-mt-24 bg-base-900 px-6 py-28 lg:px-10">
+    <section id="contact" className="relative scroll-mt-24 bg-white text-neutral-900 dark:bg-base-900 dark:text-white px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,13 +44,13 @@ export default function Contact() {
           transition={{ duration: 0.6, ease: EASE }}
           className="mb-12 text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#3054ff] dark:text-accent-cyan">
             Get In Touch
           </span>
-          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold text-neutral-900 dark:text-white sm:text-4xl">
             Mentors, Judges & Recruiters — Reach Out
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-sm text-white/55 sm:text-base">
+          <p className="mx-auto mt-4 max-w-lg text-sm text-neutral-600 dark:text-white/55 sm:text-base">
             Have a question, an opportunity, or want to collaborate with DESPU?
             We'd love to hear from you.
           </p>
@@ -61,7 +61,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: EASE }}
-          className="glass grid gap-0 overflow-hidden rounded-3xl sm:grid-cols-[1fr_260px]"
+          className="glass grid gap-0 overflow-hidden rounded-3xl sm:grid-cols-[1fr_260px] bg-neutral-50 dark:bg-white/[0.03] border border-neutral-200 dark:border-white/10"
         >
           <form
             onSubmit={(e) => e.preventDefault()}
@@ -69,7 +69,7 @@ export default function Contact() {
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="contact-name" className="text-xs font-medium text-white/60">
+                <label htmlFor="contact-name" className="text-xs font-medium text-neutral-700 dark:text-white/60">
                   Name
                 </label>
                 <input
@@ -78,11 +78,11 @@ export default function Contact() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your name"
-                  className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-accent-cyan/50 focus:outline-none"
+                  className="rounded-xl border border-neutral-300 dark:border-white/10 bg-white dark:bg-white/[0.03] px-4 py-2.5 text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-white/30 focus:border-accent-cyan/50 focus:outline-none"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="contact-email" className="text-xs font-medium text-white/60">
+                <label htmlFor="contact-email" className="text-xs font-medium text-neutral-700 dark:text-white/60">
                   Email
                 </label>
                 <input
@@ -91,13 +91,13 @@ export default function Contact() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-accent-cyan/50 focus:outline-none"
+                  className="rounded-xl border border-neutral-300 dark:border-white/10 bg-white dark:bg-white/[0.03] px-4 py-2.5 text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-white/30 focus:border-accent-cyan/50 focus:outline-none"
                 />
               </div>
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="contact-message" className="text-xs font-medium text-white/60">
+              <label htmlFor="contact-message" className="text-xs font-medium text-neutral-700 dark:text-white/60">
                 Message
               </label>
               <textarea
@@ -106,7 +106,7 @@ export default function Contact() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Tell us what's on your mind..."
-                className="resize-none rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-accent-cyan/50 focus:outline-none"
+                className="resize-none rounded-xl border border-neutral-300 dark:border-white/10 bg-white dark:bg-white/[0.03] px-4 py-2.5 text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-white/30 focus:border-accent-cyan/50 focus:outline-none"
               />
             </div>
 
@@ -118,18 +118,18 @@ export default function Contact() {
               <Send size={15} />
               Send Message
             </a>
-            <p className="text-xs text-white/35">
+            <p className="text-xs text-neutral-500 dark:text-white/35">
               Opens your email client with this message pre-filled.
             </p>
           </form>
 
-          <div className="flex flex-col justify-center gap-5 border-t border-white/10 bg-white/[0.02] p-7 sm:border-l sm:border-t-0 sm:p-9">
-            <div className="flex items-center gap-3 text-sm text-white/70">
+          <div className="flex flex-col justify-center gap-5 border-t border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-white/[0.02] p-7 sm:border-l sm:border-t-0 sm:p-9">
+            <div className="flex items-center gap-3 text-sm text-neutral-700 dark:text-white/70">
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="flex flex-1 items-center gap-3 transition-colors hover:text-white"
+                className="flex flex-1 items-center gap-3 transition-colors hover:text-neutral-900 dark:hover:text-white"
               >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-neutral-300 dark:border-white/10">
                   <Mail size={16} />
                 </span>
                 {CONTACT_EMAIL}
@@ -137,7 +137,7 @@ export default function Contact() {
               <button
                 onClick={handleCopyEmail}
                 aria-label="Copy email address"
-                className="shrink-0 text-white/40 transition-colors hover:text-white"
+                className="shrink-0 text-neutral-500 dark:text-white/40 transition-colors hover:text-neutral-900 dark:hover:text-white"
               >
                 {emailCopied ? <Check size={15} className="text-accent-cyan" /> : <Copy size={15} />}
               </button>
@@ -147,9 +147,9 @@ export default function Contact() {
               target="_blank"
               rel="noreferrer"
               onClick={() => trackEvent("whatsapp_click")}
-              className="flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-white"
+              className="flex items-center gap-3 text-sm text-neutral-700 dark:text-white/70 transition-colors hover:text-neutral-900 dark:hover:text-white"
             >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 text-[#25D366]">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-neutral-300 dark:border-white/10 text-[#25D366]">
                 <WhatsAppGlyph />
               </span>
               Join our WhatsApp community

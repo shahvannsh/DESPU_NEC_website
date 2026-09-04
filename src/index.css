@@ -149,13 +149,27 @@ html.light .section-divider {
 
 @media print {
   nav, footer, .no-print, div[role="dialog"], button, [aria-label="Privacy & Cookie Preferences"] { display: none !important; }
-  body, html, #root { background: #ffffff !important; }
-  * { color: #111 !important; box-shadow: none !important; text-shadow: none !important; }
+  body, html, #root { background: #000000 !important; color: #ffffff !important; }
+  * { 
+    opacity: 1 !important; 
+    visibility: visible !important; 
+    transform: none !important; 
+    transition: none !important; 
+    animation: none !important; 
+    color: #ffffff !important;
+    box-shadow: none !important; 
+    text-shadow: none !important; 
+  }
+  h1, h2, h3, h4, h5, h6, p, span, a, li, label, div {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: #ffffff !important;
+  }
   .glass {
-    background: #fff !important;
-    border: 1px solid #ddd !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
     backdrop-filter: none !important;
   }
   a[href]:after { content: none !important; }
-  img { break-inside: avoid; page-break-inside: avoid; }
+  img { break-inside: avoid; page-break-inside: avoid; opacity: 1 !important; }
 }

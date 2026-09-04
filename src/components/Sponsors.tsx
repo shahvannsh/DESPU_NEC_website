@@ -7,7 +7,7 @@ export default function Sponsors() {
   if (sponsors.length === 0) return null;
 
   return (
-    <section className="relative bg-base-900 px-6 py-20 lg:px-10">
+    <section className="relative bg-white text-neutral-900 dark:bg-base-900 dark:text-white px-6 py-20 lg:px-10">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,10 +16,10 @@ export default function Sponsors() {
           transition={{ duration: 0.6, ease: EASE }}
           className="mb-12 text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#3054ff] dark:text-accent-cyan">
             Backed By
           </span>
-          <h2 className="mt-4 font-display text-2xl font-semibold text-white sm:text-3xl">
+          <h2 className="mt-4 font-display text-2xl font-semibold text-neutral-900 dark:text-white sm:text-3xl">
             Sponsors & Partners
           </h2>
         </motion.div>
