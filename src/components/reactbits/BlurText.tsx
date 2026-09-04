@@ -46,17 +46,22 @@ const BlurText = ({
 
   useEffect(() => {
     if (!ref.current) return;
+    const fallbackTimer = setTimeout(() => setInView(true), 300);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
           observer.unobserve(ref.current!);
+          clearTimeout(fallbackTimer);
         }
       },
       { threshold, rootMargin }
     );
     observer.observe(ref.current);
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(fallbackTimer);
+      observer.disconnect();
+    };
   }, [threshold, rootMargin]);
 
   const defaultFrom = useMemo(

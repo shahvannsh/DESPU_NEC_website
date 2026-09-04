@@ -54,21 +54,10 @@ html.light .bg-base-850 { background-color: #e9ebf2; }
 html.light .bg-base-800 { background-color: #e4e7ef; }
 
 /*
- * Text opacity helper overrides for light mode theme container backgrounds.
- * Note: .text-white is intentionally NOT overridden here so that dark buttons 
- * (bg-black, bg-accent, bg-blue-600) with text-white retain high-contrast white text in light mode.
+ * Light mode base container background overrides.
+ * White/translucent text opacity utilities retain their natural white lightness 
+ * to guarantee high contrast across all dark section backgrounds.
  */
-html.light .text-white\/80 { color: rgba(10, 14, 24, 0.8); }
-html.light .text-white\/70 { color: rgba(10, 14, 24, 0.7); }
-html.light .text-white\/60 { color: rgba(10, 14, 24, 0.62); }
-html.light .text-white\/55 { color: rgba(10, 14, 24, 0.58); }
-html.light .text-white\/50 { color: rgba(10, 14, 24, 0.52); }
-html.light .text-white\/45 { color: rgba(10, 14, 24, 0.48); }
-html.light .text-white\/40 { color: rgba(10, 14, 24, 0.45); }
-html.light .text-white\/35 { color: rgba(10, 14, 24, 0.4); }
-html.light .text-white\/30 { color: rgba(10, 14, 24, 0.38); }
-html.light .text-white\/25 { color: rgba(10, 14, 24, 0.35); }
-html.light .text-white\/20 { color: rgba(10, 14, 24, 0.3); }
 
 html.light .border-white\/30 { border-color: rgba(10, 14, 24, 0.22); }
 html.light .border-white\/25 { border-color: rgba(10, 14, 24, 0.18); }

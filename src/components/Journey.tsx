@@ -10,17 +10,17 @@ const STATUS_STYLES: Record<
 > = {
   completed: {
     dot: "border-accent-cyan bg-accent-cyan/15 text-accent-cyan",
-    text: "text-white",
+    text: "text-white font-bold",
     label: "Completed",
   },
   current: {
-    dot: "border-accent-cyan bg-accent-cyan text-base-950",
-    text: "text-white",
+    dot: "border-accent-cyan bg-accent-cyan text-base-950 font-bold",
+    text: "text-white font-bold",
     label: "In Progress",
   },
   upcoming: {
-    dot: "border-white/15 bg-base-900 text-white/40",
-    text: "text-white/60",
+    dot: "border-white/25 bg-base-900 text-white/70",
+    text: "text-white/90 font-semibold",
     label: "Upcoming",
   },
 };
@@ -52,7 +52,7 @@ export default function Journey() {
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-[15px] top-2 bottom-2 w-px bg-white/10 sm:left-[19px]" />
+          <div className="absolute left-[15px] top-2 bottom-2 w-px bg-white/20 sm:left-[19px]" />
           <div className="flex flex-col gap-10">
             {journey.map((m, i) => {
               const style = STATUS_STYLES[m.status];
@@ -73,20 +73,20 @@ export default function Journey() {
                   </div>
                   <div className="pt-1">
                     <div className="flex flex-wrap items-center gap-2.5">
-                      <h3 className={`font-display text-lg font-semibold ${style.text}`}>
+                      <h3 className={`font-display text-lg sm:text-xl font-bold ${style.text}`}>
                         {m.title}
                       </h3>
                       <span
-                        className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
+                        className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${
                           m.status === "upcoming"
-                            ? "bg-white/5 text-white/35"
-                            : "bg-accent-cyan/10 text-accent-cyan"
+                            ? "bg-white/10 text-white/80"
+                            : "bg-accent-cyan/15 text-accent-cyan"
                         }`}
                       >
                         {style.label}
                       </span>
                     </div>
-                    <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-white/55">
+                    <p className="mt-1.5 max-w-xl text-sm sm:text-base leading-relaxed text-white/80">
                       {m.description}
                     </p>
                     {m.highlights && m.highlights.length > 0 && (
@@ -94,9 +94,9 @@ export default function Journey() {
                         {m.highlights.map((h) => (
                           <li
                             key={h}
-                            className="flex items-start gap-2 text-xs text-white/50"
+                            className="flex items-start gap-2 text-xs sm:text-sm text-white/70"
                           >
-                            <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent-cyan/60" />
+                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-cyan" />
                             {h}
                           </li>
                         ))}
