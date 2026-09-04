@@ -7,8 +7,8 @@ export default function Story() {
   if (story.length === 0) return null;
 
   return (
-    <section className="relative bg-base-900 px-6 py-28 lg:px-10">
-      <div className="mx-auto max-w-3xl">
+    <section className="relative bg-neutral-50/80 dark:bg-neutral-950/60 text-neutral-900 dark:text-white px-6 py-20 sm:py-28 lg:py-32 lg:px-10">
+      <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -16,41 +16,46 @@ export default function Story() {
           transition={{ duration: 0.6, ease: EASE }}
           className="mb-14 text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#3054ff] dark:text-[#22d3ee]">
             <DecryptedText text="The DESPU Story" animateOn="view" speed={35} maxIterations={12} />
           </span>
-          <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
-          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+          <h2 className="mt-3 font-sans text-3xl font-semibold text-neutral-900 dark:text-white sm:text-5xl tracking-tight">
             How We Got Here
           </h2>
         </motion.div>
 
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-10">
           {story.map((s, i) => (
             <motion.div
               key={s.id}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, ease: EASE, delay: i * 0.06 }}
-              className="flex flex-col gap-4"
+              transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }}
+              className="bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-white/10 rounded-2xl p-6 sm:p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#3054ff]/40 dark:hover:border-white/20 hover:shadow-xl hover:-translate-y-1 flex flex-col gap-6"
             >
               {s.image && (
-                <img
-                  src={s.image}
-                  alt={s.title}
-                  loading="lazy"
-                  className="aspect-video w-full rounded-2xl object-cover"
-                />
+                <div className="overflow-hidden rounded-xl border border-black/5 dark:border-white/10">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    loading="lazy"
+                    className="aspect-video w-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
               )}
               <div>
-                <div className="flex flex-wrap items-baseline gap-3">
-                  <h3 className="font-display text-xl font-semibold text-white">
+                <div className="flex flex-wrap items-baseline justify-between gap-3">
+                  <h3 className="font-sans text-xl font-semibold text-neutral-900 dark:text-white tracking-tight">
                     {s.title}
                   </h3>
-                  {s.date && <span className="text-xs text-white/40">{s.date}</span>}
+                  {s.date && (
+                    <span className="font-sans text-xs font-semibold uppercase tracking-wider text-black/50 dark:text-white/50">
+                      {s.date}
+                    </span>
+                  )}
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-white/60">
+                <p className="mt-3 font-sans text-base leading-[1.65] text-neutral-700 dark:text-neutral-300">
                   {s.description}
                 </p>
               </div>

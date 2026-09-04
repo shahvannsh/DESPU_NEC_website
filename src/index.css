@@ -182,7 +182,7 @@ html.light .section-divider {
 }
 
 @media print {
-  nav, footer, .no-print { display: none !important; }
+  nav, footer, .no-print, div[role="dialog"], button, [aria-label="Privacy & Cookie Preferences"] { display: none !important; }
   body, html, #root { background: #ffffff !important; }
   * { color: #111 !important; box-shadow: none !important; text-shadow: none !important; }
   .glass {
@@ -191,5 +191,5 @@ html.light .section-divider {
     backdrop-filter: none !important;
   }
   a[href]:after { content: none !important; }
-  img { break-inside: avoid; }
+  img { break-inside: avoid; page-break-inside: avoid; }
 }

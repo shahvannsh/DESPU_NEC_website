@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { PenSquare, AlertCircle } from "lucide-react";
+import { PenSquare, AlertCircle, FileText } from "lucide-react";
 import { EASE } from "../lib/motion";
 import { useAuth } from "../lib/auth";
 import { supabase, isSupabaseConfigured, type BlogPost } from "../lib/supabase";
+import Skeleton from "../components/ui/Skeleton";
+import EmptyState from "../components/ui/EmptyState";
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-IN", {
@@ -94,15 +96,26 @@ export default function Blog() {
         {isSupabaseConfigured && !error && posts === null && (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {[0, 1].map((i) => (
-              <div key={i} className="glass h-64 animate-pulse rounded-2xl" />
+              <Skeleton key={i} className="h-64 rounded-2xl" />
             ))}
           </div>
         )}
 
         {isSupabaseConfigured && posts !== null && posts.length === 0 && (
-          <div className="glass rounded-2xl p-10 text-center text-sm text-white/60">
-            No posts yet — {isTeamMember ? "be the first to write one." : "check back soon."}
-          </div>
+          <EmptyState
+            icon={FileText}
+            title="No posts published yet"
+            description={
+              isTeamMember
+                ? "Be the first team member to write and publish a post."
+                : "Check back soon for notes on startups, building in public, and team updates."
+            }
+            action={
+              isTeamMember
+                ? { label: "Write a post", href: "/blog/new" }
+                : undefined
+            }
+          />
         )}
 
         {posts && posts.length > 0 && (

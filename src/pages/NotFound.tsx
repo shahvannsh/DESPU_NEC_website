@@ -1,47 +1,83 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
-import { EASE } from "../lib/motion";
+import { ArrowLeft, Mail } from "lucide-react";
 import ParticleText from "../components/reactbits/ParticleText";
 
 export default function NotFound() {
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-base-950 px-6">
-      <div className="absolute inset-0 bg-grid bg-[size:56px_56px] opacity-30 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black,transparent)]" />
-      <div className="absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-accent-blue/15 via-accent-violet/10 to-transparent blur-3xl" />
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-white dark:bg-black text-neutral-900 dark:text-white px-6">
+      {/* Decorative Radial Gradients (subtle opacity-40) */}
+      <div className="absolute top-[-20%] left-[20%] w-[600px] h-[600px] rounded-full bg-blue-200/20 dark:bg-blue-900/15 blur-[120px] mix-blend-screen pointer-events-none opacity-40" />
+      <div className="absolute bottom-[-10%] right-[20%] w-[500px] h-[500px] rounded-full bg-indigo-200/20 dark:bg-indigo-900/15 blur-[120px] mix-blend-screen pointer-events-none opacity-40" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: EASE }}
-        className="relative z-10 flex flex-col items-center text-center"
-      >
-        <div className="h-40 w-full max-w-md sm:h-48">
+      {/* Content Container with Entrance Staggers */}
+      <div className="relative z-10 flex max-w-md flex-col items-center text-center">
+        {/* 1. Large 404 with ParticleText / Brand Gradient */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0 }}
+          className="h-36 w-full max-w-xs sm:h-44 flex items-center justify-center"
+        >
           <ParticleText
             text="404"
-            color="#ffffff"
-            highlightColor="#22d3ee"
-            fontSize="clamp(4rem, 18vw, 7rem)"
+            color="#3054ff"
+            highlightColor="#b4c0ff"
+            fontSize="clamp(5rem, 16vw, 8rem)"
             fontWeight={800}
             trigger="mount"
             glow
           />
-        </div>
-        <h1 className="mt-4 font-display text-xl font-semibold text-white sm:text-2xl">
-          Looks like this idea doesn't exist yet.
-        </h1>
-        <p className="mt-3 max-w-sm text-sm text-white/55">
-          Let's build the next one. The page you're looking for doesn't exist, or the
-          link might be outdated.
-        </p>
-        <Link
-          to="/"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan px-6 py-2.5 text-sm font-semibold text-base-950 shadow-lg shadow-accent-blue/20 transition-transform hover:scale-105"
+        </motion.div>
+
+        {/* 2. Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-4 font-sans text-2xl font-semibold text-neutral-900 dark:text-white sm:text-3xl tracking-tight"
         >
-          <ArrowLeft size={15} />
-          Back to DESPU
-        </Link>
-      </motion.div>
+          This page took a wrong turn
+        </motion.h1>
+
+        {/* 3. Subtext */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-3 text-base text-black/60 dark:text-white/60 font-sans leading-relaxed"
+        >
+          The page you're looking for doesn't exist, or the link might be outdated.
+        </motion.p>
+
+        {/* 4. CTAs (Primary & Secondary buttons reusing Hero button design system) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-8 flex flex-col sm:flex-row items-center gap-4"
+        >
+          <Link
+            to="/"
+            className="pl-6 pr-2 py-2 rounded-full bg-black text-white dark:bg-white dark:!text-black flex items-center gap-3 transition-all duration-300 hover:scale-105 group cursor-pointer shadow-lg"
+          >
+            <span className="font-sans font-bold text-base text-white dark:!text-black">
+              Back to Home
+            </span>
+            <div className="w-[36px] h-[36px] rounded-full bg-[#3054ff] hover:bg-[#2040e0] flex items-center justify-center transition-colors shrink-0">
+              <ArrowLeft className="w-4 h-4 text-white" />
+            </div>
+          </Link>
+
+          <a
+            href="/#contact"
+            className="text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white backdrop-blur-sm hover:bg-black/5 dark:hover:bg-white/10 px-5 py-2.5 rounded-full flex items-center font-sans font-semibold transition-all border border-black/10 dark:border-white/10"
+          >
+            <Mail className="w-4 h-4 mr-2" />
+            Contact Support
+          </a>
+        </motion.div>
+      </div>
     </div>
   );
 }

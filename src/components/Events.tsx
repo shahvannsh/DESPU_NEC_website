@@ -5,6 +5,7 @@ import { events, type DespuEvent } from "../data/events";
 import { EASE } from "../lib/motion";
 import { trackEvent } from "../lib/analytics";
 import EventModal from "./EventModal";
+import EmptyState from "./ui/EmptyState";
 
 function formatDate(iso: string): string {
   const d = new Date(iso + "T00:00:00");
@@ -53,18 +54,11 @@ export default function Events() {
         </motion.div>
 
         {events.length === 0 ? (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, ease: EASE }}
-            className="glass mx-auto flex max-w-md flex-col items-center gap-3 rounded-2xl border-dashed p-10 text-center"
-          >
-            <Calendar className="text-accent-cyan/40" size={26} />
-            <p className="text-sm text-white/50">
-              Our first event drop is coming soon. Check back here as things happen.
-            </p>
-          </motion.div>
+          <EmptyState
+            icon={Calendar}
+            title="No events scheduled yet"
+            description="Our first event drop is coming soon. Check back here as things happen."
+          />
         ) : (
           <div className="flex flex-col gap-10">
             {events.map((event, i) => (

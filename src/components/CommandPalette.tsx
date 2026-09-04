@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Search, ArrowRight, User, Hash } from "lucide-react";
 import { team, slugify } from "../data/team";
 import { EASE } from "../lib/motion";
+import EmptyState from "./ui/EmptyState";
 
 interface Item {
   id: string;
@@ -161,9 +162,11 @@ export default function CommandPalette() {
 
             <div className="max-h-80 overflow-y-auto p-2">
               {filtered.length === 0 && (
-                <p className="px-3 py-6 text-center text-sm text-white/40">
-                  No matches for "{query}"
-                </p>
+                <EmptyState
+                  icon={Search}
+                  title="No matches found"
+                  description={`We couldn't find any section or team member matching "${query}".`}
+                />
               )}
               {filtered.map((item, i) => (
                 <button

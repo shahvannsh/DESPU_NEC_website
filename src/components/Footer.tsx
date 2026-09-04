@@ -39,27 +39,38 @@ function WhatsAppGlyph() {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-base-950 px-6 py-14 lg:px-10">
+    <footer className="border-t border-black/10 dark:border-white/10 bg-white dark:bg-black text-neutral-900 dark:text-white px-6 py-14 lg:px-10 font-sans">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <Link to="/" className="flex items-center gap-2.5">
-            <img src={ecellLogo} alt="E-Cell, DES Pune University" className="h-10 w-auto" />
-            <span className="font-display text-lg font-bold text-white">DESPU</span>
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src={ecellLogo}
+              alt="E-Cell, DES Pune University"
+              className="h-10 w-auto bg-white/95 p-1 rounded-md shadow-sm border border-black/10 dark:border-white/20"
+            />
+            <span className="flex flex-col">
+              <span className="font-sans text-lg font-bold text-black dark:text-white leading-tight">
+                DESPU
+              </span>
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-black/70 dark:text-white/80">
+                NEC Team
+              </span>
+            </span>
           </Link>
-          <p className="mt-2 text-sm text-white/50">
+          <p className="mt-3 text-sm text-black/60 dark:text-white/60 font-sans">
             National Entrepreneurship Challenge
           </p>
-          <p className="text-sm text-white/50">
+          <p className="text-sm text-black/50 dark:text-white/50 font-sans">
             Deccan Education Society's Pune University
           </p>
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2.5">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
-              className="text-sm text-white/60 hover:text-white"
+              className="text-sm font-semibold text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white transition-colors"
             >
               {l.label}
             </a>
@@ -72,7 +83,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="Instagram"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/60 transition-colors hover:border-white/30 hover:text-white"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 dark:border-white/15 text-black/70 dark:text-white/70 transition-all hover:scale-105 hover:border-[#3054ff] hover:text-[#3054ff] dark:hover:text-white"
           >
             <InstagramGlyph />
           </a>
@@ -81,7 +92,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/60 transition-colors hover:border-white/30 hover:text-white"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 dark:border-white/15 text-black/70 dark:text-white/70 transition-all hover:scale-105 hover:border-[#3054ff] hover:text-[#3054ff] dark:hover:text-white"
           >
             <LinkedinGlyph />
           </a>
@@ -90,15 +101,15 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="WhatsApp community"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-[#25D366] transition-colors hover:border-white/30"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 dark:border-white/15 text-[#25D366] transition-all hover:scale-105 hover:border-[#25D366]"
           >
             <WhatsAppGlyph />
           </a>
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-8 text-center">
-        <p className="text-xs text-white/40">
+      <div className="mx-auto mt-10 max-w-7xl border-t border-black/10 dark:border-white/10 pt-8 text-center">
+        <p className="text-xs font-semibold text-black/50 dark:text-white/50">
           © 2026 DESPU. Built with curiosity, collaboration & ambition.
         </p>
       </div>

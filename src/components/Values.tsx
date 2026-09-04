@@ -5,25 +5,24 @@ import DecryptedText from "./reactbits/DecryptedText";
 
 export default function Values() {
   return (
-    <section className="relative bg-base-950 px-6 py-28 lg:px-10">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative bg-white dark:bg-black text-neutral-900 dark:text-white px-6 py-20 sm:py-28 lg:py-32 lg:px-10">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.69, ease: EASE }}
+          transition={{ duration: 0.6, ease: EASE }}
           className="mb-14 text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#3054ff] dark:text-[#22d3ee]">
             <DecryptedText text="What Drives Us" animateOn="view" speed={35} maxIterations={12} />
           </span>
-          <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
-          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+          <h2 className="mt-3 font-sans text-3xl font-semibold text-neutral-900 dark:text-white sm:text-5xl tracking-tight">
             Our Values
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((v, i) => {
             const Icon = v.icon;
             return (
@@ -32,16 +31,16 @@ export default function Values() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.57, ease: EASE, delay: i * 0.08 }}
-                className="card-hover glass group rounded-2xl p-6"
+                transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }}
+                className="group bg-white dark:bg-neutral-900/60 border border-neutral-200 dark:border-white/10 rounded-2xl p-6 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#3054ff]/40 dark:hover:border-white/20 hover:shadow-xl hover:-translate-y-1"
               >
-                <div className="card-hover-icon mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-accent-cyan group-hover:bg-accent-cyan/10">
-                  <Icon size={20} />
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-black/5 dark:bg-white/5 text-[#3054ff] dark:text-[#22d3ee] transition-transform duration-300 group-hover:scale-110">
+                  <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="font-display text-base font-semibold text-white">
+                <h3 className="font-sans text-lg font-semibold text-neutral-900 dark:text-white tracking-tight">
                   {v.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/55">
+                <p className="mt-2 font-sans text-sm leading-[1.65] text-neutral-600 dark:text-neutral-400">
                   {v.description}
                 </p>
               </motion.div>
