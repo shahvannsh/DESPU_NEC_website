@@ -8,8 +8,8 @@ export default function ProductStageTracker() {
   if (!stages || stages.length === 0) return null;
 
   return (
-    <div className="mt-6 rounded-2xl border border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.02] p-5 sm:p-6">
-      <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-white/40">
+    <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-6">
+      <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-white/40">
         Build Stage
       </h4>
       <div className="flex flex-wrap items-center gap-2">
@@ -28,14 +28,14 @@ export default function ProductStageTracker() {
                   ? "bg-accent-cyan/15 text-accent-cyan"
                   : s.status === "current"
                     ? "bg-accent-cyan text-base-950"
-                    : "bg-neutral-200 text-neutral-700 dark:bg-white/5 dark:text-white/35"
+                    : "bg-white/5 text-white/35"
               }`}
             >
               {s.status === "completed" && <Check size={12} />}
               {s.label}
             </span>
             {i < stages.length - 1 && (
-              <span className="text-neutral-400 dark:text-white/15" aria-hidden="true">
+              <span className="text-white/15" aria-hidden="true">
                 →
               </span>
             )}

@@ -20,12 +20,11 @@ export interface Announcement {
 
 export const announcements: Announcement[] = [
   {
-    id: "eureka-2026-event",
-    message: "EUREKA! Pitching Competition — 27 August 2026 at DES Pune University.",
-    linkLabel: "Event Details",
-    linkHref: "/#event-eureka-2026",
+    id: "100-rupee-challenge-2026",
+    message: "₹100. One day. Take the ₹100 Survival Challenge — tag @ecell_despu.",
+    linkLabel: "See How to Participate",
+    linkHref: "/#event-100-rupee-challenge-2026",
     type: "urgent",
-    expiresAt: "2026-08-27",
     active: true,
   },
 ];

@@ -70,7 +70,7 @@ export default function App() {
   return (
     <AuthProvider>
     <ClickSpark sparkColor={isDark ? "#ffffff" : "#3054ff"} sparkSize={8} sparkRadius={16} sparkCount={6} duration={400}>
-    <div className="min-h-screen bg-white text-neutral-900 dark:bg-black dark:text-white font-sans transition-colors duration-300 overflow-x-hidden max-w-[1920px] mx-auto relative">
+    <div className="min-h-screen bg-white dark:bg-black text-neutral-900 dark:text-white font-sans transition-colors duration-300 overflow-x-hidden max-w-[1920px] mx-auto relative">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-base-950"

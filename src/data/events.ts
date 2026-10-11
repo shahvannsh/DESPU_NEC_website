@@ -52,6 +52,7 @@ export interface DespuEvent {
  * 4. Add reel URLs to reelUrls as they get posted — no limit, they scroll.
  */
 import eurekaPoster from "../assets/events/eureka-2026.webp";
+import rupeeChallengePoster from "../assets/events/100-rupee-challenge-2026.webp";
 import eurekaClip01Poster from "../assets/events/eureka-clips/clip-01.webp";
 import eurekaClip02Poster from "../assets/events/eureka-clips/clip-02.webp";
 import eurekaClip03Poster from "../assets/events/eureka-clips/clip-03.webp";
@@ -95,6 +96,43 @@ import eurekaClip40Poster from "../assets/events/eureka-clips/clip-40.webp";
 import eurekaClip41Poster from "../assets/events/eureka-clips/clip-41.webp";
 
 export const events: DespuEvent[] = [
+  {
+    id: "100-rupee-challenge-2026",
+    title: "The ₹100 Survival Challenge",
+    date: "2026-09-10",
+    location: "DES Pune University",
+    type: "Social Media Challenge",
+    status: "upcoming",
+    image: rupeeChallengePoster,
+    description:
+      "₹100. One day. How far can you go? Survive an entire day on just ₹100 — meals, travel, snacks, everything — document it, and share your journey.",
+    fullMessage: `₹100. One day. One challenge. 🔥
+
+Could you survive an entire day with just ₹100? 💸
+
+Plan it. Spend it. Get creative. Document your journey! 🚀
+
+WHAT COUNTS TOWARD YOUR ₹100
+🍴 Meals — food
+🚌 Travelling — transportation
+☕ Snacks — drinks
+🛍️ Anything else — daily expenses
+
+HOW TO PARTICIPATE
+1️⃣ Start your day with a budget of ₹100
+2️⃣ Manage your food, travel & other expenses within ₹100
+3️⃣ Record your journey throughout the day
+4️⃣ Create an engaging Reel / Short Video
+5️⃣ Post it on social media and tag @ecell_despu
+6️⃣ Use the official challenge hashtags
+
+📸 Post your journey as a Story, Reel, or Post — just make sure to TAG @ecell_despu and show us how far ₹100 can take you! 👀
+
+Ready to take the challenge? 💙💛
+
+#100RupeeChallenge #ECellDESPU #NEC2026 #StudentChallenge #Entrepreneurship`,
+    reelUrls: [],
+  },
   {
     id: "eureka-2026",
     title: "EUREKA! — Pitching Competition",

@@ -15,7 +15,7 @@ export default function ProblemSolutionImpact() {
   ];
 
   return (
-    <section className="relative bg-white text-neutral-900 dark:bg-base-900 dark:text-white px-6 py-28 lg:px-10">
+    <section className="relative bg-base-900 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -24,11 +24,11 @@ export default function ProblemSolutionImpact() {
           transition={{ duration: 0.6, ease: EASE }}
           className="mb-14 text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#3054ff] dark:text-accent-cyan">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
             <DecryptedText text="The Idea" animateOn="view" speed={35} maxIterations={12} />
           </span>
           <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
-          <h2 className="mt-4 font-display text-3xl font-semibold text-neutral-900 dark:text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             Problem → Solution → Impact
           </h2>
         </motion.div>
@@ -43,16 +43,16 @@ export default function ProblemSolutionImpact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, ease: EASE, delay: i * 0.1 }}
-                className="glass flex gap-4 rounded-2xl p-6 bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10"
+                className="glass flex gap-4 rounded-2xl p-6"
               >
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/5 text-accent-cyan">
                   <Icon size={20} />
                 </div>
                 <div>
-                  <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-[#3054ff] dark:text-accent-cyan">
+                  <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-accent-cyan">
                     {r.label}
                   </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-neutral-700 dark:text-white/70">{r.text}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-white/70">{r.text}</p>
                 </div>
               </motion.div>
             );

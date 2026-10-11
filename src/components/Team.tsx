@@ -82,7 +82,7 @@ export default function Team() {
   );
 
   return (
-    <section id="team" className="relative scroll-mt-24 bg-white text-neutral-900 dark:bg-base-950 dark:text-white px-6 py-28 lg:px-10">
+    <section id="team" className="relative scroll-mt-24 bg-base-950 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -95,7 +95,7 @@ export default function Team() {
             <DecryptedText text="Meet DESPU" animateOn="view" speed={35} maxIterations={12} />
           </span>
           <div className="mx-auto mt-3 h-px w-10 bg-gradient-to-r from-transparent via-accent-cyan/60 to-transparent" />
-          <h2 className="mt-4 font-display text-3xl font-bold text-neutral-900 dark:text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             23 minds. Different strengths.
             <br />
             One shared ambition.
@@ -106,7 +106,7 @@ export default function Team() {
           <div className="relative">
             <Search
               size={15}
-              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-white/60"
+              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-white/35"
             />
             <input
               type="text"
@@ -114,13 +114,13 @@ export default function Team() {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search by name or role..."
               aria-label="Search team members"
-              className="w-full rounded-full border border-white/20 bg-white/5 py-2.5 pl-10 pr-9 text-sm text-white placeholder:text-white/60 focus:border-accent-cyan focus:outline-none"
+              className="w-full rounded-full border border-white/10 bg-white/[0.03] py-2.5 pl-10 pr-9 text-sm text-white placeholder:text-white/35 focus:border-accent-cyan/50 focus:outline-none"
             />
             {query && (
               <button
                 onClick={() => setQuery("")}
                 aria-label="Clear search"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/60 hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
               >
                 <XIcon size={14} />
               </button>
@@ -133,10 +133,10 @@ export default function Team() {
             <button
               key={c}
               onClick={() => setFilter(c)}
-              className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide transition-colors ${
+              className={`rounded-full px-4 py-2 text-xs font-medium uppercase tracking-wide transition-colors ${
                 filter === c
-                  ? "bg-white text-black font-bold"
-                  : "border border-white/20 text-white/80 hover:border-white/40 hover:text-white"
+                  ? "bg-white text-base-950"
+                  : "border border-white/10 text-white/60 hover:border-white/25 hover:text-white"
               }`}
             >
               {c}

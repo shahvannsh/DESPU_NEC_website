@@ -73,7 +73,7 @@ export default function TeamModal({ member, onClose }: Props) {
 
               <div className="flex flex-col gap-6 p-6 sm:p-8">
                 <div>
-                  <h3 className="font-display text-2xl font-bold text-neutral-900 dark:text-white sm:text-3xl">
+                  <h3 className="font-display text-2xl font-bold text-white sm:text-3xl">
                     {member.name}
                   </h3>
                   <p className="mt-1 text-sm font-medium text-accent-cyan">
@@ -82,26 +82,26 @@ export default function TeamModal({ member, onClose }: Props) {
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-white/40">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40">
                     About
                   </h4>
-                  <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-white/70">
+                  <p className="mt-2 text-sm leading-relaxed text-white/70">
                     {member.motivation}
                   </p>
-                  <p className="mt-3 text-sm leading-relaxed text-neutral-700 dark:text-white/70">
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
                     {member.expectations}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-white/40">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40">
                     Skills
                   </h4>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {member.skills.map((s) => (
                       <span
                         key={s}
-                        className="rounded-full border border-neutral-300 dark:border-white/10 bg-neutral-100 dark:bg-white/5 px-3 py-1 text-xs text-neutral-800 dark:text-white/70"
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
                       >
                         {s}
                       </span>
@@ -110,12 +110,12 @@ export default function TeamModal({ member, onClose }: Props) {
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-white/40">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40">
                     Responsibilities
                   </h4>
                   <ul className="mt-2 space-y-1.5">
                     {member.responsibilities.map((r) => (
-                      <li key={r} className="flex gap-2 text-sm text-neutral-700 dark:text-white/70">
+                      <li key={r} className="flex gap-2 text-sm text-white/70">
                         <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent-cyan" />
                         {r}
                       </li>
@@ -125,10 +125,10 @@ export default function TeamModal({ member, onClose }: Props) {
 
                 {member.funFact && (
                   <div>
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-white/40">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40">
                       Fun Fact
                     </h4>
-                    <p className="mt-2 text-sm text-neutral-700 dark:text-white/70">{member.funFact}</p>
+                    <p className="mt-2 text-sm text-white/70">{member.funFact}</p>
                   </div>
                 )}
 

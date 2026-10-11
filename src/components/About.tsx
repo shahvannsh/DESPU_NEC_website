@@ -30,7 +30,7 @@ function Counter({ to }: { to: number }) {
 
 export default function About() {
   return (
-    <section id="about" className="relative scroll-mt-24 bg-white text-neutral-900 dark:bg-black dark:text-white px-6 py-20 sm:py-28 lg:py-32 lg:px-10">
+    <section id="about" className="relative scroll-mt-24 bg-white dark:bg-black text-neutral-900 dark:text-white px-6 py-20 sm:py-28 lg:py-32 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           <motion.div
@@ -42,19 +42,19 @@ export default function About() {
             <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#3054ff] dark:text-[#22d3ee]">
               <DecryptedText text="About DESPU" animateOn="view" speed={35} maxIterations={12} />
             </span>
-            <h2 className="mt-3 font-sans text-3xl font-bold leading-tight text-neutral-900 dark:text-white sm:text-5xl tracking-tight">
+            <h2 className="mt-3 font-sans text-3xl font-semibold leading-tight text-neutral-900 dark:text-white sm:text-5xl tracking-tight">
               More Than a Team.
               <br />
-              <span className="bg-gradient-to-r from-[#3054ff] to-neutral-900 dark:from-[#b4c0ff] dark:to-white bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#3054ff] to-[#22d3ee] dark:from-[#b4c0ff] dark:to-white bg-clip-text text-transparent">
                 A Movement.
               </span>
             </h2>
-            <p className="mt-6 font-sans text-base leading-[1.65] text-neutral-800 dark:text-white/90 sm:text-lg font-medium">
+            <p className="mt-6 font-sans text-base leading-[1.65] text-neutral-700 dark:text-neutral-300 sm:text-lg">
               DESPU brings together students who believe entrepreneurship isn't reserved
               for a select few — it's a mindset anyone can build. We practice it through
               collaboration, problem solving, and a willingness to learn in public.
             </p>
-            <p className="mt-4 font-sans text-base leading-[1.65] text-neutral-700 dark:text-white/80">
+            <p className="mt-4 font-sans text-base leading-[1.65] text-neutral-600 dark:text-neutral-400">
               Representing DES Pune University in the National Entrepreneurship
               Challenge, we're using this journey to sharpen how we identify problems,
               lead teams, and turn raw ideas into something people actually need.

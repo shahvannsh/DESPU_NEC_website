@@ -28,7 +28,7 @@ export default function Connect() {
   return (
     <section
       id="connect"
-      className="relative scroll-mt-24 overflow-hidden bg-white text-neutral-900 dark:bg-base-950 dark:text-white px-6 py-28 lg:px-10"
+      className="relative scroll-mt-24 overflow-hidden bg-base-950 px-6 py-28 lg:px-10"
     >
       <div className="absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-accent-violet/10 via-accent-blue/10 to-transparent blur-3xl" />
 
@@ -40,13 +40,13 @@ export default function Connect() {
           transition={{ duration: 0.69, ease: EASE }}
           className="mb-14 text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#3054ff] dark:text-accent-cyan">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
             Stay Connected
           </span>
-          <h2 className="mt-4 font-display text-3xl font-semibold text-neutral-900 dark:text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             Follow the Journey
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-sm text-neutral-600 dark:text-white/55 sm:text-base">
+          <p className="mx-auto mt-4 max-w-lg text-sm text-white/55 sm:text-base">
             Behind-the-scenes, event drops, and everything DESPU — scan, follow, and stay
             in the loop.
           </p>
@@ -59,11 +59,11 @@ export default function Connect() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.63, ease: EASE }}
-            className="glass relative flex flex-col items-center overflow-hidden rounded-3xl p-8 text-center bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10"
+            className="glass relative flex flex-col items-center overflow-hidden rounded-3xl p-8 text-center"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#f9ce34]/10 via-[#ee2a7b]/10 to-[#6228d7]/10" />
             <div className="relative z-10 flex flex-col items-center">
-              <div className="mb-5 flex items-center gap-2 rounded-full border border-neutral-300 dark:border-white/15 bg-white/50 dark:bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-neutral-700 dark:text-white/70">
+              <div className="mb-5 flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-white/70">
                 <InstagramGlyph />
                 Instagram
               </div>
@@ -85,10 +85,10 @@ export default function Connect() {
                 />
               </a>
 
-              <p className="mt-5 font-display text-lg font-semibold text-neutral-900 dark:text-white">
+              <p className="mt-5 font-display text-lg font-semibold text-white">
                 @ecell_despu
               </p>
-              <p className="mt-1 text-xs text-neutral-600 dark:text-white/50">
+              <p className="mt-1 text-xs text-white/50">
                 Scan the code or tap below to follow
               </p>
 
@@ -110,11 +110,11 @@ export default function Connect() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.63, ease: EASE, delay: 0.1 }}
-            className="glass relative flex flex-col items-center justify-center overflow-hidden rounded-3xl p-8 text-center bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10"
+            className="glass relative flex flex-col items-center justify-center overflow-hidden rounded-3xl p-8 text-center"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#0a66c2]/15 via-accent-blue/5 to-transparent" />
             <div className="relative z-10 flex flex-col items-center">
-              <div className="mb-5 flex items-center gap-2 rounded-full border border-neutral-300 dark:border-white/15 bg-white/50 dark:bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-neutral-700 dark:text-white/70">
+              <div className="mb-5 flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-white/70">
                 <LinkedinGlyph />
                 LinkedIn
               </div>
@@ -123,10 +123,10 @@ export default function Connect() {
                 <LinkedinGlyph />
               </div>
 
-              <p className="mt-5 font-display text-lg font-semibold text-neutral-900 dark:text-white">
+              <p className="mt-5 font-display text-lg font-semibold text-white">
                 DESPU E-Cell
               </p>
-              <p className="mx-auto mt-1 max-w-xs text-xs leading-relaxed text-neutral-600 dark:text-white/50">
+              <p className="mx-auto mt-1 max-w-xs text-xs leading-relaxed text-white/50">
                 Connect with our official page for updates, opportunities, and everything
                 NEC 2026.
               </p>

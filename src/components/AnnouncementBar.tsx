@@ -43,7 +43,9 @@ export default function AnnouncementBar() {
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
-  }, [active]);
+    // `mounted` must be a dependency: the bar renders null until it mounts, so
+    // the first measurement reads 0. Re-measure once it's actually on screen.
+  }, [active, mounted]);
 
   const dismiss = (id: string) => {
     const next = [...dismissed, id];

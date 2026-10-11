@@ -19,7 +19,6 @@ import Testimonials from "../components/Testimonials";
 import Outcomes from "../components/Outcomes";
 import Sponsors from "../components/Sponsors";
 import Resources from "../components/Resources";
-import FAQ from "../components/FAQ";
 import Vision from "../components/Vision";
 import CTA from "../components/CTA";
 import Contact from "../components/Contact";
@@ -68,8 +67,6 @@ export default function Home() {
       <Sponsors />
       <div className="section-divider" />
       <Resources />
-      <div className="section-divider" />
-      <FAQ />
       <div className="section-divider" />
       <Vision />
       <div className="section-divider" />

@@ -32,7 +32,7 @@ export default function Events() {
   }, []);
 
   return (
-    <section id="events" className="relative scroll-mt-24 bg-white text-neutral-900 dark:bg-base-900 dark:text-white px-6 py-28 lg:px-10">
+    <section id="events" className="relative scroll-mt-24 bg-base-900 px-6 py-28 lg:px-10">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -41,13 +41,13 @@ export default function Events() {
           transition={{ duration: 0.6, ease: EASE }}
           className="mb-14 text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#3054ff] dark:text-accent-cyan">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
             On The Ground
           </span>
-          <h2 className="mt-4 font-display text-3xl font-semibold text-neutral-900 dark:text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
             Events
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-neutral-600 dark:text-white/55 sm:text-base">
+          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/55 sm:text-base">
             Sessions, workshops, and milestones from the DESPU journey — updated as they
             happen, with reels from the ground.
           </p>
@@ -69,7 +69,7 @@ export default function Events() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, ease: EASE, delay: (i % 4) * 0.08 }}
-                className="glass grid grid-cols-1 gap-0 overflow-hidden rounded-2xl lg:grid-cols-[340px_1fr] bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10"
+                className="glass grid grid-cols-1 gap-0 overflow-hidden rounded-2xl lg:grid-cols-[340px_1fr]"
               >
                 {/* poster */}
                 {event.image && (
@@ -96,17 +96,17 @@ export default function Events() {
                       className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${
                         event.status === "upcoming"
                           ? "bg-accent-cyan/15 text-accent-cyan"
-                          : "bg-neutral-200 text-neutral-700 dark:bg-white/10 dark:text-white/50"
+                          : "bg-white/10 text-white/50"
                       }`}
                     >
                       {event.status === "upcoming" ? "Upcoming" : "Completed"}
                     </span>
-                    <span className="flex items-center gap-1 text-xs text-neutral-500 dark:text-white/40">
+                    <span className="flex items-center gap-1 text-xs text-white/40">
                       <Calendar size={12} />
                       {formatDate(event.date)}
                     </span>
                     {event.location && (
-                      <span className="flex items-center gap-1 text-xs text-neutral-500 dark:text-white/40">
+                      <span className="flex items-center gap-1 text-xs text-white/40">
                         <MapPin size={12} />
                         {event.location}
                       </span>
@@ -120,10 +120,10 @@ export default function Events() {
                   </div>
 
                   <div>
-                    <h3 className="font-display text-lg font-semibold text-neutral-900 dark:text-white sm:text-xl">
+                    <h3 className="font-display text-lg font-semibold text-white sm:text-xl">
                       {event.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-white/60">
+                    <p className="mt-2 text-sm leading-relaxed text-white/60">
                       {event.description}
                     </p>
                     <button
