@@ -3,8 +3,15 @@
  * open the original post on LinkedIn.
  *
  * Only `url` is required. Everything else is optional and should be copied
- * from the real post — never invented. The card falls back to a plain
- * "LinkedIn post" label until `title` is filled in.
+ * from the real post — never invented.
+ *
+ * TO SHOW THE REAL POST ON THE PAGE: replace the short lnkd.in link in `url`
+ * with the full post link — open the short link, then copy the address from
+ * the browser's address bar (it looks like
+ * https://www.linkedin.com/posts/...-activity-7123456789-XXXX). The blog then
+ * embeds the actual post. (Or on LinkedIn: "..." menu > "Embed this post" and
+ * paste the iframe's src.) Short lnkd.in links can't be embedded, so those
+ * show as a plain card that opens the post on LinkedIn.
  *
  * To make a card richer, add any of:
  *   title   — the post's headline / first line
@@ -21,6 +28,8 @@ export interface LinkedInPost {
   excerpt?: string;
   date?: string;
   image?: string;
+  /** Height in px of the embedded post, if the default (600) cuts it off. */
+  embedHeight?: number;
 }
 
 export const linkedinPosts: LinkedInPost[] = [

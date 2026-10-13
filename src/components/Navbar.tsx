@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <header
       style={{ top: "var(--announcement-h, 0px)" }}
-      className={`fixed left-0 right-0 z-50 px-6 py-4 flex items-center justify-between w-full transition-all duration-300 ${
+      className={`fixed left-0 right-0 z-50 px-4 sm:px-6 py-4 flex items-center justify-between w-full transition-all duration-300 ${
         scrolled
           ? "bg-white/95 dark:bg-black/90 backdrop-blur-md border-b border-black/10 dark:border-white/10 shadow-sm"
           : "bg-transparent"
@@ -99,17 +99,23 @@ export default function Navbar() {
       </nav>
 
       {/* Right: Contact link, Theme Toggle, High-Contrast Meet Team Button */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2.5 sm:gap-4">
         <a
           href={to("#contact")}
           className="hidden sm:inline-block text-sm font-semibold text-black/80 hover:text-black dark:text-white/90 dark:hover:text-white transition-colors"
         >
           Contact
         </a>
+        <Link
+          to="/blog"
+          className="md:hidden text-sm font-semibold text-black/80 hover:text-black dark:text-white/90 dark:hover:text-white transition-colors"
+        >
+          Blog
+        </Link>
         <ThemeToggle />
         <a
           href={to("#team")}
-          className="bg-black text-white dark:bg-white dark:text-black rounded-full px-5 py-2.5 text-sm font-bold hover:opacity-90 transition-all inline-block font-sans shadow-md"
+          className="bg-black text-white dark:bg-white dark:text-black rounded-full px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm whitespace-nowrap font-bold hover:opacity-90 transition-all inline-block font-sans shadow-md"
         >
           Meet Team
         </a>

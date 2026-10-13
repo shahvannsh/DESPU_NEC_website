@@ -9,6 +9,7 @@ import Skeleton from "../components/ui/Skeleton";
 import EmptyState from "../components/ui/EmptyState";
 import { linkedinPosts } from "../data/linkedinPosts";
 import { SOCIAL_LINKS } from "../data/social";
+import { getLinkedInEmbedUrl } from "../lib/linkedin";
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-IN", {
@@ -195,10 +196,33 @@ export default function Blog() {
               <motion.div
                 key={post.id}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, ease: EASE, delay: (i % 4) * 0.06 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: EASE, delay: Math.min(i, 5) * 0.05 }}
               >
+                {getLinkedInEmbedUrl(post.url) ? (
+                  <div className="glass flex h-full flex-col overflow-hidden rounded-2xl">
+                    <iframe
+                      src={getLinkedInEmbedUrl(post.url) as string}
+                      title={post.title ?? `DESPU E-Cell LinkedIn post ${i + 1}`}
+                      loading="lazy"
+                      allowFullScreen
+                      className="w-full border-0 bg-white"
+                      style={{ height: post.embedHeight ?? 600 }}
+                    />
+                    <a
+                      href={post.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-between gap-2 border-t border-white/10 px-5 py-3 text-xs font-medium text-accent-cyan hover:text-white"
+                    >
+                      <span className="inline-flex items-center gap-1.5">
+                        <LinkedinGlyph />
+                        Open on LinkedIn
+                      </span>
+                      <ExternalLink size={12} />
+                    </a>
+                  </div>
+                ) : (
                 <a
                   href={post.url}
                   target="_blank"
@@ -232,6 +256,7 @@ export default function Blog() {
                     </div>
                   </div>
                 </a>
+                )}
               </motion.div>
             ))}
           </div>
