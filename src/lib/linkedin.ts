@@ -20,8 +20,8 @@ export function getLinkedInEmbedUrl(url: string): string | null {
   const urn = url.match(/urn:li:(share|ugcPost|activity):(\d{10,})/);
   if (urn) return `https://www.linkedin.com/embed/feed/update/urn:li:${urn[1]}:${urn[2]}`;
 
-  const activity = url.match(/activity[-:](\d{10,})/);
-  if (activity) return `https://www.linkedin.com/embed/feed/update/urn:li:activity:${activity[1]}`;
+  const slug = url.match(/-(activity|share|ugcPost)-(\d{10,})/) ?? url.match(/(activity):(\d{10,})/);
+  if (slug) return `https://www.linkedin.com/embed/feed/update/urn:li:${slug[1]}:${slug[2]}`;
 
   return null;
 }

@@ -10,6 +10,12 @@ import EmptyState from "../components/ui/EmptyState";
 import { linkedinPosts } from "../data/linkedinPosts";
 import { SOCIAL_LINKS } from "../data/social";
 import { getLinkedInEmbedUrl } from "../lib/linkedin";
+import linkedinResolved from "../data/linkedinResolved.generated.json";
+
+// Full post addresses found at build time by scripts/resolve-linkedin.mjs.
+const resolvedLinks = linkedinResolved as Record<string, string>;
+const embedFor = (post: { id: string; url: string }) =>
+  getLinkedInEmbedUrl(resolvedLinks[post.id] ?? post.url);
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-IN", {
@@ -199,10 +205,10 @@ export default function Blog() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: EASE, delay: Math.min(i, 5) * 0.05 }}
               >
-                {getLinkedInEmbedUrl(post.url) ? (
+                {embedFor(post) ? (
                   <div className="glass flex h-full flex-col overflow-hidden rounded-2xl">
                     <iframe
-                      src={getLinkedInEmbedUrl(post.url) as string}
+                      src={embedFor(post) as string}
                       title={post.title ?? `DESPU E-Cell LinkedIn post ${i + 1}`}
                       loading="lazy"
                       allowFullScreen

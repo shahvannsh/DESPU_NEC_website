@@ -5,7 +5,12 @@
  * Only `url` is required. Everything else is optional and should be copied
  * from the real post — never invented.
  *
- * TO SHOW THE REAL POST ON THE PAGE: replace the short lnkd.in link in `url`
+ * AUTOMATIC: on every build, scripts/resolve-linkedin.mjs follows each short
+ * link to find the post's full address, and the blog then embeds the real post
+ * (needs internet, which Vercel builds have). If that ever fails for a post, it
+ * just shows as a plain card.
+ *
+ * MANUAL FALLBACK — TO SHOW THE REAL POST ON THE PAGE: replace the short lnkd.in link in `url`
  * with the full post link — open the short link, then copy the address from
  * the browser's address bar (it looks like
  * https://www.linkedin.com/posts/...-activity-7123456789-XXXX). The blog then

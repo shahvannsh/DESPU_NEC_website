@@ -2,15 +2,16 @@
   "name": "despu-website",
   "private": true,
   "version": "1.0.0",
-  "description": "DESPU — National Entrepreneurship Challenge team website (Deccan Education Society's Pune University)",
+  "description": "DESPU \u2014 National Entrepreneurship Challenge team website (Deccan Education Society's Pune University)",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "generate:seo": "node scripts/generate-seo.mjs",
-    "prebuild": "npm run generate:seo",
+    "prebuild": "npm run generate:seo && npm run resolve:linkedin",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "resolve:linkedin": "node scripts/resolve-linkedin.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.4",
